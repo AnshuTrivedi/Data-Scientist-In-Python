@@ -1,0 +1,28 @@
+
+1. > Browse through directories using a file manager like Explorer in Windows, or Finder in OS X. 
+     The framework that allows us to do that is called a filesystem.
+   > When a directory isn't contained in any other directory, it is called a root.
+   > when a directory contains another, we say that the latter is a subdirectory of the first, 
+     and that the former is parent directory of the latter.
+   > The current working directory ( or just working directory) is the directory where our terminal session is located
+   > metadata is data about the file itself, not its contents. Examples of metadata are (the last) modification time and date of the file,
+    its size, its name, and so on.
+
+2. Inspecting directories
+  > pwd : print working directory
+  > ls : file list in directory
+  > ls -p : This option signals what items are directories by appending a slash to the end of their names, 
+            allowing us to tell directories from regular files apart.
+  > ls -l : shows files metadata
+  > ls -h :  h is for human readable and what it does is format the sizes in a more intelligible manner
+ 
+3. Navigating file system
+  > we don't have to type the whole path whenever we want to access a directory that is a child of the current working directory.
+  > An absolute path is any path that starts with a slash (/). 
+    Any other path is called a relative path, because they are paths relative to the current working directory.
+  > Using ls -A files starts with '.' shows current directory and  .. parent direcory 
+  > cd : change directory
+  > cd. : current directory
+  > cd.. : parent directory
+  > cd ~ : home directory
+  > cd - :back and forth btw directories
