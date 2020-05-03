@@ -1,0 +1,34 @@
+
+1. Make directories
+   > mkdir : an abbreviation of make directory
+     eg-mkdir dir1
+   > We can create more than one directory at once
+   > mkdir dir1 dir2 dir3 .......
+
+2. Remove directories
+   > rmdir : an abbreviation of remove directory
+     eg- rmdir dir1
+   > We can remove more than one directory at once
+   > rmdir dir1 dir2 dir3 ..........
+   > Deleting empty directory may result in error due to hidden files 
+   > rm -R dir , deletes directory
+   > rm file   
+   > rm -i file , interactive mode
+
+3. Copying files
+  > commnad format : cp source_files destination 
+  > We should be careful when copying files, as cp will silently overwrite files with the same name.
+  > To protect ourselves against this, we can enter the interactive mode of cp with the option -i
+  > cp -i source-file destination , it asks Y and N for overwriting
+
+4. Copying directories
+  > we need to use the -R option with cp. The R stands for recursive, 
+    as it will get into the directory's subdirectories, and into these subdirectories' subdirectories, and so on, copying everything.
+  > cp -R source destination
+
+5. Moving files and directories
+  > mv source_dir destination_dir
+
+
+
+     
