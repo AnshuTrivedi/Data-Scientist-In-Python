@@ -1,0 +1,33 @@
+
+1. > A GUI is a user interface that allows its users to interact with computers by means of icons and pointing devices, 
+    like mouses and fingers.
+   > A CLI is a text only interface through which users interact with computers by typing text instructions in a console (or terminal),
+     using specific syntax.
+   > Terminals emulated within GUIs,are terminal emulators (also terminal window or just terminal).
+   > Some of the most popular shells are Bash, Z shell, KornShell, Command Prompt and Windows PowerShell
+   
+2. > command prompt or prompt-it prompts the user to insert a command. 
+     The command prompt is customizable and can vary in appearance, depending on the settings.
+   > The screen area to the right of the prompt is called a command line and it is where we, as users, enter commands.
+   > An option is a string of symbols that modifies the behavior of the command and it always starts with a dash (-). 
+     Other possible names for this parameter are flag and switch
+   > An argument — or operand — is an object upon which the command acts.
+     The utility (also command or program) is the first item in the instruction.
+   > options alters the behavior of commands.
+   > An option is said to be a long option if it starts with --, otherwise it is a short option.
+   > advantage of long options is that they usually are more descriptive, which makes them:
+      Easier to remember
+      Easy to guess what they do
+  > One or more options without option-arguments, followed by at most one option that takes an option-argument,
+    should be accepted when grouped behind one - delimiter. ( i.e diff -qy file1 file2)
+
+3. Commands
+   > diff -y file1 file2: outputs difference between two files
+   > diff -q file1 file2 only reports that the files are different or not instead of differences
+   > history : outpust used command history
+   > clear: clears console
+   > exit :closes terminal
+
+4. > History expansion allows us to very quickly reference lines in the command history by the number to the left of the command.
+     (!command_no)
+    
