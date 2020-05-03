@@ -1,0 +1,16 @@
+
+1. > The patterns we create to match filenames are called glob patterns.
+   > The shell gives us a way to specify groups of files by creating patterns to match filenames
+   > Glob patterns are built from special characters called wildcards
+   >  '*'  will match any character, any number of times, except for leading dots (.).
+   >  '?'  matches any character exactly one time
+   > Just like in regular expressions, we have the possibility of using a character's literal meaning (as opposed to its special meaning) 
+    by "escaping" it with a backslash (\). In these circumstances, a backslash is called an escape character. (mkdir hosts\?)
+   > [] We also have a wildcard that allows us to match specific characters, as opposed to any character. 
+    We call it the square brackets wildcard
+  > We can also use character classes like [:alpha:] (the usual letters), [:digit:] (the numbers 0 through 9),
+    [:lower:] (lowercase letters), [:upper:] (uppercase letters), and [:alnum:]
+   eg- To list all files (and the content of directories) in the working directory with names that do not start with an uppercase letter 
+       and end with a number, we can run ls [![:upper:]]*[[:digit:]]
+  > We can search for files by using the find command.
+    find [location] -name ['filename']
