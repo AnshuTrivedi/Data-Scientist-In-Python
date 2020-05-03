@@ -1,0 +1,81 @@
+
+1.> Historically, at a time when computers were expensive, gigantic monstrosities only owned by large institutions and 
+   shared by multiple people,they were operated through command-line interfaces
+  > computer would have numerous terminals located throughout the premises. 
+    People would use the same computer simultaneously through these terminals.
+  > In order to protect the integrity of the computer and to protect users from each other, the concept of user arose. 
+    Each user has their own set of permissions (actions that the user is allowed to perform)
+
+
+2. User id
+  > whoami or id -un: what user is logged in and active
+  > id : In addition to the identification of the user, it also includes information about what groups the user belongs to. 
+         Groups are a mechanism used to facilitate granting and revoking permissions from users. 
+         uid : unique id , gid: group id ,group: groups user belong to with unique ids and unique names
+
+ >  Take for instance companies that employ a large number of people. It would be extremely cumbersome to manually define 
+   what level of access each new employee should have. Instead, these permissions are defined for groups of people 
+   (possibly as a function of what team they belong to). Whenever someone new joins, 
+   a system administrator just has to assign the new employee to the appropriate group and the right permissions will be automatically set.
+
+ > We have established that every action in a *nix system is associated with a user. In addition to this, 
+   every file and directory must have an owner.
+ > When a user creates a file or directory, ownership is attributed to the user who created it. 
+   The Owner column tells us who the owner of the file/directory is. There's also group ownership.
+
+ > A primary group is simply a group that is associated with a user.
+   It will typically have the same name and unique number than that of the user.
+
+3. Permissions on files
+   > there are permissions for the owner, for the owner group, and for everyone else.
+   > permissions are defined by a sequence of three characters called file access modes. They are, in order, the read mode, 
+     the write mode and the execute mode.
+   >  execution permissions are hereditary. A corollary of this is that if an ancestor doesn't have execution permissions,
+      none of its descendants will either, regardless of whether the x bit is set or not.
+   > each character in the file permissions string says that the given permission is either enabled or disabled
+     ,it's common to call them bits
+
+4. Changing permissions
+  > We can change the permissions of files with the chmod (change mode) command. 
+    chmod permissions files
+    Scope: owner/user (u), group (g), others (o), all (a – this references all scopes simultaneously)
+    Operator: add (+), remove (-), set (=)
+    Mode: read (r), write (w), execute (x)
+    With this context, we can now rewrite the command above as:
+    chmod [ugoa][+-=][rwx] files
+  > We can also simultaneously set permissions for several scopes
+    chmod u=rwx,g=rx,o=r my_file
+  
+  > stat : gives info about file and permissions
+
+5. Changing permissions octal notaion
+    each of the file access modes can either be enabled or disabled. Since there are three of them, a 
+    little combinatorics (a branch of mathematics concerned with counting) tells us that for each scope we have eight possibilities ().
+    We can list them: ---, --x, -w-, -wx, r--, r-x, rw-, and rwx.
+
+  > ---:0 (no permissions)
+    --x:1 (execute only permission)
+    -w-:2 (write only permissions)
+    -wx:3 (write and execute permissions)
+    r--:4 (read only permissions)
+    r-x:5 (read and execute permissions)
+    rw-:6 (read and write permissions)
+    rwx:7 (read, write, and execute permissions)
+  >
+  > Alternatively, note that all permissions can be obtained from its building blocks -:0, x:1, w:2 and r:4. 
+   If we want permission to read and write, we just add the corresponding digits (4 and 2, respectively), giving rw-:6. 
+   If we want permission to write and execute, the result is -wx:3 (because 0+2+1=3).
+   rw-rw-r--  equivalant 664
+
+ > user that has full access to all files and commands: the root user.
+
+6. Changing ownership
+   > Access control depends not only on permissions, but also on ownership
+   > Commands chown (change owner) and chgrp (change group). We'll only learn about chown because 
+     it actually allows us to change the primary group in addition to the owner
+   > chown [new_owner][:new_group] file...
+     The ellipsis (...) also have a meaning: the argument that precedes it can occur multiple times. In the example above, 
+     it means this command can be applied to several files.
+   
+  
+  
