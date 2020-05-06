@@ -1,0 +1,25 @@
+
+1.Text files
+  > They are one of the most common ways to store and handle data — both regular text and datasets.
+  > All code is stored in text.
+  > Many file formats, like CSV, HTML, and XML are actually text files. 
+
+2. Commands 
+  > head filename : ouputs few lines from begenning of file (by default 10)
+  > tail filename : outputs lines from end of file (by default 10)
+  > head [-n [[-]K]] example_data.csv 
+    Above, K represents the number of lines we wish to print.(eg- head -n 5 file1.txt)
+ >  '-' When included with k, it will make head print all lines except the last K lines:(eg-head -n -5 file1.txt)
+ >  we can use the optional + together with K to include last line
+ > wc : counts lines,words and characters in file
+ 
+3. Pretty printing
+  > column file_name : outputs content by column
+  > column -s"separator" -t file_name: prints in tabular format
+  
+4.File sample
+  > shuf filename : outputs random lines from sample
+  > shuf -n k filename : outputs k random lines from sample
+ 
+5. Type of file
+  > file file_name: outputs what type of file is
