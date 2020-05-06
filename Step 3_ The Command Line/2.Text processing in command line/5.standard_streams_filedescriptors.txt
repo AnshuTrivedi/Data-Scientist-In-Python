@@ -1,0 +1,40 @@
+
+1.Standard Streams
+  > Every process — every running instance of a command - interacts with its environment by means of communication channels called streams. 
+    In *nix systems, processes commonly start with three special kinds of streams called standard streams:
+    standard input (which is used to receive input)
+    standard output (where command output goes)
+    standard error (where error messages go)
+  > They are often abbreviated as stdin, stdout, and stderr, respectively.
+
+2. Redirecting two streams
+  > ls file1 file2 where file2 doesn't exist,redirect output for both files using separate file
+    ls file1 file2 >out 2>err
+  > In case of redirecting to same file such as ( ls file1 file2 >same 2>same)
+    When using the character > for redirection twice, the file is truncated at zero bytes (twice), 
+    and then any writing that happens on one of the streams will overwrite the data already written by the other stream.    
+
+3.File descriptors
+  > The names stdin, stdout and stderr exist for human convenience. The shell does not know them by that name. Rather, for each process,
+    the operating system will create a table that will refer to these streams by non-negative integers called file descriptors (fd).
+  > File Descriptor	Stream
+       0	        stdin
+       1	        stdout
+       2	        stderr 
+ 
+4. Duplicating File Descriptors
+   > Running command 2>&1 will copy file descriptor 1 into 2. This means that whatever is written to fd 2 will go to where fd 1 goes
+   >  using file descriptor duplication to redirect both stdout and stderr to a file. We can achieve this by running command >filename 2>&1
+   
+5.Order of redirection
+  > (command >filename 2>&1) and (command 2>&1 >filename)
+  > using the order 2>&1 >filename is equivalent to >filename
+  
+6. Standard Input
+  > This is characterized by inserting data manually into the shell, instead of passing filenames as arguments.
+  
+7. Redirecting Standard Input
+   > Some commands only take input from stdin. This is the case for tr, 
+     a command used for transliteration, i.e. a command used to replace characters with (possibly other) characters.
+  > read input from a file instead of the standard input using <
+ 
