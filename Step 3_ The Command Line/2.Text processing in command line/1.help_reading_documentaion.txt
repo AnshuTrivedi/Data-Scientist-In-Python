@@ -1,0 +1,43 @@
+
+1. Types of commands
+   > Some programs — specifically those that run with their own executable file — are commands
+   > file: Usually refered to as program, utility, tool, or sometimes just command, these are simply executable files 
+    (analogous to Windows' files whose extension is exe).
+
+   > builtin: Usually refered to as a command or built-in command. Built-in commands are always available in RAM 
+    (a special kind of computer memory that is very fast to access, contrary to hard drives).
+    They run quickly and are always available, which is useful when we need to troubleshoot problems in the system.
+
+  > alias: This is just a different name for a command. We usually use aliases to abbreviate frequently used commands.
+
+  > function: A function here is similar to what you learned in Python, only it is in a different language (namely the shell 
+    language that we happen to be using).
+
+  > keyword: Keywords are words reserved for specific things and shouldn't be used for other purposes (like being aliases). 
+   We'll become more familiar with them when we learn about programming in the shell
+
+ > To figure out a command's type, we can use the type command: eg - type command_name 
+ 
+ 
+2. Aliases,Functions and keywords
+  > Commands and features that aren't POSIX compliant and are available in Bash are called bashisms
+  > declare -F : tells if command is function
+  > We can also use compgen to list all aliases, all built-in commands, all keywords, etc.
+    compgen -k
+ > compgen : generate completions for partial name
+ > alias alias_name=command , eg- alias d=date
+ > unalias alias_name , eg- unalias d
+ 
+ > To use man to access documentation, we can run man <utility>, where <utility> is a placeholder for the program 
+   whose documentation we wish to see. This command will display the documentation in an interactive program called less. 
+   The displayed document is usually called the man page.
+
+ > We use man to access the documentation of programs.
+   We use help to access the documentation of built-in commands (in Bash).
+
+3. Reading synopsis
+  >  A terminal pager is a program used to view the contents of a text file by navigating it page by page (or line by line).
+  > Access the manual of an executable file: man command.
+  > Access the manual of a built-in command: help command.
+  > See the contents of a file with less: less filename.
+  > See the contents of a file with less without wraping lines: less -S filename.
