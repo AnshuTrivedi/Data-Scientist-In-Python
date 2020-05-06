@@ -1,0 +1,47 @@
+
+1. > when we'll want to save this output in another file. Known as output redirection,
+    we'll redirect the output from the screen to files.
+ 
+2. Redirecting output with >
+  > command > flename (echo Hi Anshu > first_redirection)
+  > The redirection operator > will:
+      Empty the contents of the target file when it is invoked, if the file exists.
+      If it doesn't exist, it will create it.
+  > -h option in grep, which allows us to exclude the filenames from the output.
+
+3. Redirecting output with >>
+  >  Whereas > always creates a new file, >> appends to the target file, if the target file exists,
+     otherwise it creates a new file. 
+  > output >> filename
+ 
+4. Creating empty files
+   > Can create file using echo but it is non empty file or another way is (echo -n " " >file_name) it creates empty file
+   > touch command creates empty files
+   > If the files exist, it will alter their last modification time, otherwise it will create empty files with the arguments' name.
+
+5. Why pipelines
+  > Accessing specific columns and then selecting specific rows required two commands and accessing the hard drive for reading and writing. 
+    This can be very inefficient when working with large datasets:
+      1) It can be slow because we access the hard drive, which is slower than accessing RAM.
+      2) It occupies disk space unnecessarily, and disk space costs money.
+
+6. Using pipelines
+   > We can connect the output of command1 to the input of command2 by running command1 | command2. 
+     The vertical bar (|) is called a pipe and it is responsible for "piping" the output of the first
+     command into the input of the second command.
+
+7.The unix philosophy
+  > An additional feature of the shell is that it allows us to use as many pipes as we want, 
+   making it easy to combine the capabilities of several programs. 
+   This feature is at the core of the Unix philosophy
+  > Some of the benefits of this are:
+    1) Makes it unnecessary to write big programs that accomplish only one goal, 
+       by virtue of the fruitfulness of combining already existing commands.
+    2) It empowers the users to create more complex commands by virtue of the existing programs.
+    3) The smaller programs are actually useful on their own, and not just as part of a whole.
+
+8. Trying to redirect errors
+  > /dev/null is a special file used to discard data. Any data redirected to this file will be ignored
+    by the operating system and simply disappear.
+  > This is useful when a command performs an action and outputs something, but we just care about the action.
+
