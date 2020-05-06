@@ -1,0 +1,61 @@
+
+1. Text processing
+  > Here are some tasks that fall under this concept:
+    1) Reformatting the text 
+    2) Extracting specific parts of the text
+    3) Modifying the text
+  > It's very common to use the shell to prune a text file to obtain only the information that is relevant to us, 
+    and then work on it using Python.
+
+2. Concatenation
+  > cat concatenates the contents of the arguments, in order, and displays them.
+  > cat * : concatenates all files
+  > We used column to display the whole contents of a file. 
+    We can use cat to do the same by passing the filename to cat.
+  > Since this isn't the primary purpose of cat and since there are other options for displaying the contents of files,
+    this is called a cat abuse or a useless use of cat
+  > tac command. It does the same, only it reverses the order (tac is the reverse of cat) 
+    of the lines (while keeping the order of the files).
+
+3. Sorting files
+  > sort file_name
+  > sort -r -u file1 file2.... : -r for (reversing the order) and -u (for keeping only unique results, 
+                                 in other words, for getting rid of duplicates)
+  > sort places each lowercase letter immediately above its uppercase version. 
+
+4. SOrting datasets
+  > Sorting, by default, uses the lexicographic order on the whole content of the line.
+    When working with data sets, we frequently want to sort by specific columns. 
+  > To make the shell sort the numbers numerically, we can pass in the -g option together with the -k option
+    sort -t":" -k3,3 characters_no_header  (lexicographic sorting)
+    sort -t":" -k4,4g characters_no_header  (numerically sorting)
+
+5. Sorting on multiple columns
+  > option -k receives as an argument a range. When we pass the option-parameters 1,1 or 4,4 to -k, we are passing ranges
+  > sort -t":" -k3,3 -k4,4gr characters_no_header , sorts 3rd column lexicographically and 4th column numerically in reverse order
+
+6. Selecting columns
+  > cut commands helps us with displaying selected columns
+  > cut -d"," -f2,5 example_data.csv , -f takes range of columns here columns are 2 and 5
+ 
+7. GREP
+  > The re in grep stands for regular expressions. More generally, grep stands for global regular expressions print.
+  > It prints lines matching pattern
+  > grep -n 'pattern' file_name (eg- grep -n '[aeiou].[aeiou]' characters_no_header)
+  > grep -v 'pattern' file_name  (eg - grep -v '9' characters_no_header) prints lines which do not end with 9 ,-v inverts pattern
+
+8. Extended Regular Expressions
+  > A regular expression is a pattern that describes a set of strings. Regular expressions are
+       constructed  analogously  to  arithmetic expressions, by using various operators to combine
+       smaller expressions.
+
+       grep understands three different versions of regular expression  syntax: “basic” (BRE),
+       “extended” (ERE) and “perl” (PCRE). In GNU grep, there is no difference in available
+       functionality between basic and extended syntaxes. In other implementations, basic regular
+       expressions  are  less  powerful. The following description applies to extended regular expressions; 
+       differences for basic regular expressions are summarized  afterwards.
+
+ > In  basic  regular  expressions the meta-characters ?, +, {, |, (, and ) lose their special
+       meaning; instead use the backslashed versions \?, \+, \{, \|, \(, and \).
+ 
+  
