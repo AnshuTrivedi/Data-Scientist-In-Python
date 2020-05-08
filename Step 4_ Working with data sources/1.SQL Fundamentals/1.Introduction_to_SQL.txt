@@ -1,0 +1,39 @@
+
+1. SQL structured query language enables to pull data many resources
+
+2. > Working with databases allows us to handle data on a greater scale and with greater security.
+   > A database usually consists of multiple, related tables of data. Each table contains rows and columns, just like a CSV file.
+   > SELECT: filters specific columns
+   > WHERE : filters specific rows
+  
+3. Previewiing table using select
+  > SELECT *
+    From table_name
+    LIMIT something
+
+4. Filtering rows using WHERE
+  > SELECT *
+   FROM table_name
+   WHERE some_column> some_value
+   LIMIT something
+
+5.Expressing multiple filter criterion using AND
+ >  SELECT *
+   FROM table_name
+   WHERE some_column> some_value AND some_column < some_value
+   LIMIT something
+   
+
+6. Several conditions with OR and Grouping operators with parenthesis
+  >If we wanted to specify a filter that meets either of the conditions instead, we would use the OR operator.
+  SELECT *
+   FROM table_name
+   WHERE some_column> some_value OR (some_column < some_value AND other condition)
+   LIMIT something
+
+7. Ordering results by ORDER BY
+  > SELECT *
+   FROM table_name
+   WHERE some_column> some_value AND some_column < some_value
+   ORDER BY column_name ASC or DESC
+   LIMIT something
