@@ -1,0 +1,71 @@
+
+1. What's an API? 
+  few situations where data sets don't work well:
+  > The data changes frequently. It doesn't really make sense to regenerate a data set of stock prices, for example,
+    and download it every minute. This approach would require a lot of bandwidth, and be very slow.
+  > You only want a small piece of a much larger data set. Reddit comments are one example. What if you want to pull just
+    your own comments from reddit? It doesn't make much sense to download the entire reddit database, then filter it for a few items.
+  > It involves repeated computation. For example, Spotify has an API that can tell you the genre of a piece of music.
+    You could theoretically create your own classifier and use it to categorize music, but you'll never have as much data as Spotify does.
+  
+  > An API is a set of methods and tools that allows different applications to interact with each other. 
+   Programmers use APIs to query and retrieve data dynamically (which they can then integrate with their own apps).
+   A client can retrieve information quickly and effectively through an API.
+
+2. Introduction to API requests
+  > We make an API request to the Web server we want to get data from. The server then replies and sends it to us.
+    In Python, we use the requests library to do this.
+  > Organizations host their APIs on Web servers. 
+  > The API usually returns this data in JavaScript Object Notation (JSON) format.
+
+3. Types of requests
+  > There are many different types of requests. The most common is a GET request
+  >  An endpoint is a server route for retrieving specific data from an API.For example, the /comments endpoint on the
+     reddit API might retrieve information about comments, while the /users endpoint might retrieve data about users.
+  
+4. Understanding status code
+  > Web servers return status codes every time they receive an API request. 
+  > Here are some codes that are relevant to GET requests:
+   200 - Everything went okay, and the server returned a result (if any).
+   301 - The server is redirecting you to a different endpoint. This can happen when a company switches domain names,
+         or an endpoint's name has changed.
+   401 - The server thinks you're not authenticated. This happens when you don't send the right credentials to access an API 
+         (we'll talk about this in a later mission).
+   400 - The server thinks you made a bad request. This can happen when you don't send the information the API 
+         requires to process your request, among other things.
+   403 - The resource you're trying to access is forbidden; you don't have the right permissions to see it.
+   404 - The server didn't find the resource you tried to access.
+
+5. Hitting right endpoint
+  > add .json to make request valid
+
+6.Adding Query Parameters
+  > We can make a dictionary that contains parameters to be passed, and then pass them into the function.
+    We can also do the same thing directly by adding the query parameters to the url
+ > It's almost always preferable to set up the parameters as a dictionary, because the requests library we mentioned earlier
+   takes care of certain issues,like properly formatting the query parameters.
+ >  response = requests.get("http://api.open-notify.org/iss-pass.json?lat=40.71&lon=-74")
+    or 
+   parameters = {"lat": 37.78, "lon": -122.41}
+   response = requests.get("http://api.open-notify.org/iss-pass.json", params=parameters)
+
+7.JSON Fomat
+  > Strings are the way we pass information back and forth through APIs, but it's hard to get the information we want out of them
+  > This format encodes data structures like lists and dictionaries as strings to ensure that machines can read them easily.
+    JSON is the primary format for sending and receiving data through APIs.
+  > Python offers great support for JSON through its json library. We can convert lists and dictionaries to JSON, and vice versa.
+  >  The JSON library has two main methods:
+      dumps -- Takes in a Python object, and converts it to a string
+      loads -- Takes a JSON string, and converts it to a Python object
+      json.dumps(python object)
+      json.loads(json string)
+8. Getting JSON From a Requests
+  > We can get the content of a response as a Python object by using the .json() method on the response.
+  > response.json()
+
+9. Content Type
+   > The server sends more than a status code and the data when it generates a response. 
+    It also sends metadata containing information on how it generated the data and how to decode it.
+    This information appears in the response headers. We can access it using the .headers property that responses have.
+   > The headers will appear as a dictionary. For now, the content-type within the headers is the most important key. 
+     It tells us the format of the response, and how to decode it
