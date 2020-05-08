@@ -1,0 +1,46 @@
+
+1.Introduction
+  > APIs also use authentication to perform rate limiting.
+  > Developers typically use APIs to build interesting applications or services.
+   In order to ensure that it remains available and responsive for all users, an API will prevent you 
+   from making too many requests in too short a time. We call this restriction rate limiting. 
+   It ensures that one user can't overload the API server by making too many requests too fast.
+
+2. API Authentication
+  >  Using a token is preferable to a username and password for a few reasons:
+    Typically, you'll be accessing an API from a script. If you put your username and password in the script and 
+    someone manages to get their hands on it, they can take over your account.
+   In contrast, you can revoke an access token to cancel an unauthorized person's access if there's a security breach.
+   Access tokens can have scopes and specific permissions. For instance, you can make a token that has permission 
+   to write to your GitHub repositories and make new ones. Or, you can make a token that can only read from your repositories. 
+   Using read-access-only tokens in potentially insecure or shared scripts gives you more control over security.
+  > create disctionary of headers containg authorisation header and pass to requests
+
+3. Pagination
+  > Sometimes, a request can return a lot of objects, and it takes time
+  > This means that the API provider will only return a certain number of records per page. You can specify the page number that
+    you want to access.To access all of the pages, you'll need to write a loop.
+  >  params = {"per_page": 50, "page": 1}
+     response = requests.get("https://api.github.com/users/VikParuchuri/starred", headers=headers, params=params)
+
+4. POST requests
+   >  We use GET requests to retrieve information from a server (hence the name GET)
+   >  we use POST requests to send information (instead of retrieve it), and to create objects on the API's server
+   > Different API endpoints choose what types of requests they will accept. Not all endpoints will accept a POST request, 
+     and not all will accept a GET request.
+   > We can make POST requests using requests.post
+   >  # Create the data we'll pass into the API endpoint.  While this endpoint only requires the "name" key, there are other optional keys.
+      payload = {"name": "learning-about-apis"}
+      # We need to pass in our authentication headers!
+      response = requests.post("https://api.github.com/user/repos", json=payload, headers=headers)
+
+5. PUT/PATCH Requests
+   > Sometimes we want to update an existing object, rather than create a new one. This is where PATCH and PUT requests come into play.
+   > We use PATCH requests when we want to change a few attributes of an object, but don't want to resend the entire object to the server.
+   > We use PUT requests to send the complete object we're revising as a replacement for the server's existing version.
+   >  eg-   payload = {"description": "Learning about requests!", "name": "learning-about-apis"}
+            response = requests.patch("https://api.github.com/repos/VikParuchuri/learning-about-apis", json=payload, headers=headers)
+
+6. DELETE Requests
+  > The DELETE request removes objects from the server. 
+  > response = requests.delete("https://api.github.com/repos/VikParuchuri/learning-about-apis", headers=headers)
