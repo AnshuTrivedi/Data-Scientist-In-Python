@@ -1,0 +1,22 @@
+
+
+1. > A subquery is a query nested within another query
+   > a subquery must always be contained within parentheses ()
+
+2. Uses of subqueries with WHERE and SELECT clause
+   SELECT cast(COUNT(*) as float)/cast((SELECT COUNT(*) FROM recent_grads) as float) proportion_abv_avg 
+   FROM recent_grads
+   WHERE ShareWomen > (SELECT AVG(ShareWomen) FROM recent_grads)
+
+   
+3. Returning multiple results in subqueries
+
+   SELECT Major,Major_category
+   FROM recent_grads
+   WHERE Major_category IN (SELECT Major_category FROM recent_grads
+   group by Major_category
+   order by SUM(Total) DESC
+   limit 5)
+
+4. BUilding complex subqueries
+   
