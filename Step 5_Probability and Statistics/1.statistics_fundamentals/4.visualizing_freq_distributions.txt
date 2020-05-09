@@ -1,0 +1,85 @@
+
+
+1. Visualizing Distributions
+  > To find patterns in a frequency table we have to look up the frequency of each unique value or class interval and
+    at the same time compare the frequencies.
+  > This process can get time consuming for tables with many unique values or class intervals, or when the frequency values are
+    large and hard to compare against each other.
+  > We can solve this problem by visualizing the data in the tables with the help of graphs. 
+    Graphs make it much easier to scan and compare frequencies, providing us with a single picture of the entire distribution of a variable.
+  > Because they are easy to grasp and also eye-catching, graphs are a better choice over frequency tables if we need to present 
+    our findings to a non-technical audience.
+
+
+2. Bar Plots
+   > For variables measured on a nominal or an ordinal scale it's common to use a bar plot to visualize their distribution.
+   > To generate a bar plot for the distribution of a variable we need two sets of values:
+    1) One set containing the unique values.
+    2) Another set containing the frequency for each unique value.
+   > We can use Series.value_counts() to generate the table, and then use the Series.plot.bar() method on the resulting table
+     to generate a bar plot.
+   > To generate a horizontal bar plot, we can use the Series.plot.barh() method:
+
+3. Horizontal Bar Plots
+   > tick labels of the x-axis are hard to read in verical bar plots
+   > To fix this we can rotate the labels, or we can switch to a horizontal bar plot.
+   > We can rotate the labels using the rot parameter of Series.plot.bar(rot=value) method .
+   > Series.plot.barh(title='')
+
+4. Pie Charts
+   > Another kind of graph we can use to visualize the distribution of nominal and ordinal variables is a pie chart.
+   > We can generate pie charts using the Series.plot.pie() method.
+   > The main advantage of pie charts over bar plots is that they provide a much better sense for the
+     relative frequencies (proportions and percentages) in the distribution.  
+   
+5. Customizing a Pie Chart
+   > To give a pie chart the right shape, we need to specify equal values for height and width in the figsize parameter of Series.plot.pie()
+   > Series.value_counts().plot.pie(figsize = (6,6))
+     plt.ylabel('') , it removes labels
+   > Series.value_counts().plot.pie(figsize = (6,6), autopct = '%.1f%%') , autopct gives percenteges of wedges in pie chart
+   
+6. Histograms
+   > For discrete varibales measured on ratio scales
+   > Series.plot.hist()
+   
+7.  Statistic behind Histograms
+   > Series.plot.hist(grid = True, xticks = arange(2,585,58.2), rot = 30) 
+   > The distribution of values is uneven, with each class interval having a different frequency. 
+     If the distribution was even, all the class intervals would have the same frequency.
+     Most values (roughly three quarters) are clustered in the left half of the histogram.
+
+8. Histograms as modified bar plots
+   > Histogram is basically the visual form of a grouped frequency table
+   > Structurally, a histogram can also be understood as a modified version of a bar plot.The main difference is that in the case of 
+     a histogram there are no gaps between bars, and each bar represents an interval,not a single value.
+   > The main reason we remove the gaps between bars in case of a histogram is that we want to show that the class intervals
+     we plot are adjacent to one another.
+   >  Scale of measurement        graph can be used to show distribution
+        nominal                          bar plot, pie chart
+        ordinal                          bar plot, pie chart
+        interval                         histogram
+        ratio                            histogram
+
+9. Binning for Histograms
+   > Series.plot.hist() splits a distribution by default into 10 class intervals
+   > Choose bins to ensure good balance between information and comprehensibility.
+   > Series.plot.hist(range = (start,end), bins = no_of_bins)
+
+10. Skewed Distributions
+    > In a skewed distribution:
+      1) The values pile up toward the end or the starting point of the range, making up the body of the distribution.
+      2) Then the values decrease in frequency toward the opposite end, forming the tail of the distribution.
+    > If the tail points to the left, then the distribution is said to be left skewed. When it points to the left,
+      the tail points at the same time in the direction of negative numbers, and for this reason the distribution is 
+      sometimes also called negatively skewed.
+    > If the tail points to the right, then the distribution is right skewed. The distribution is
+     sometimes also said to be positively skewed because the tail points in the direction of positive numbers.
+
+11. Symmetrical distributions
+    > if the shape of the histogram is symmetrical, then we say that we have a symmetrical distribution.
+    > A very common symmetrical distribution is one where the values pile up in the middle and gradually decrease in frequency
+     toward both ends of the histogram. This pattern is specific to what we call a normal distribution (also called Gaussian distribution).
+    > Another common symmetrical distribution is one where the values are distributed uniformly across the entire range.
+     This pattern is specific to a uniform distribution.
+    
+
