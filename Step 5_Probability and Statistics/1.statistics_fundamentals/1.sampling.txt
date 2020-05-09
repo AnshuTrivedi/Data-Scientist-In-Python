@@ -1,0 +1,97 @@
+
+In this first mission, our focus will be on the details around getting data for analysis.
+
+1. Introduction
+   > Getting data >> understand how data is structured and measured >> organise data in comprehensiblee forms to find patterns 
+      >> visulaise patterns
+  
+2. Solving Problems with Statistics
+   > Using statistical techniques, we can organize, summarize, and visualize large amounts of data to 
+     find patterns that otherwise would remain hidden.
+   
+3. Population and Samples
+  > In statistics, the set of all individuals relevant to a particular statistical question is called a population.
+  > A smaller group selected from a population is called a sample. When we select a smaller group from a population we do sampling.
+  > Whether a set of data is a sample or a population depends on the question we're trying to answer 
+  > Elements of a population referred to as individuals, units, events, observations. These are all used interchangeably 
+    and refer to the same thing: the individual parts of a population. When we use the term "population individuals",the population is 
+    not necessarily composed of people. "Individuals" here is a general term that could refer to people, needles, frogs, stars, etc.
+  > In the case of a sample,terminology used interchangeably: sample unit, sample point, sample individual, or sample observation.
+
+4. Sampling Error
+  > A sample is by definition an incomplete set of data for the question we're trying to answer. For this reason, there's 
+    almost always some difference between the metrics of a population and the metrics of a sample.
+  > This difference can be seen as an error, and because it's the result of sampling, it's called sampling error.
+  > A metric specific to a population is called a parameter, while one specific to a sample is called a statistic.
+  > sampling error= parameter -statistic
+  
+5. Simple Random Sampling
+   > When we sample we want to minimize the sampling error as much as possible. 
+     We want our sample to mirror the population as closely as possible.
+   > If a sample is representative, then the sampling error is low. The more representative a sample is, the smaller the sampling error. 
+     The less representative a sample is, the greater the sampling error.
+   > To make our samples representative, we can try to give every individual in the population an equal chance to be selected in our samples.
+     To give every individual an equal chance of being picked, we need to sample randomly.
+   > One way to perform random sampling is to generate random numbers and use them to select a few sample units from the population. 
+     In statistics, this sampling method is called simple random sampling, SRS
+   > Series.sample() to sample,this method performs simple random sampling by generating an array of random numbers, 
+    and then using those numbers to select values from a Series at the indices corresponding to those random numbers. 
+    The method can be also extended for DataFrame objects, where random rows or columns can be sampled.
+
+6. Importance of Sample Size
+   > Because sample means vary a lot around the population mean, there's a good chance we get a sample that is not
+     representative of the population:
+   > This problem can be solved by increasing the sample size. As we increase the sample size,
+     the sample means vary less around the population mean, and the chances of getting an unrepresentative sample decrease.
+   > Simple random sampling is not a reliable sampling method when the sample size is small. 
+     Because sample means vary a lot around the population mean, there's a good chance we'll get an unrepresentative sample.
+   > When we do simple random sampling, we should try to get a sample that is as large as possible. A large sample decreases 
+     the variability of the sampling process, which in turn decreases the chances that we'll get an unrepresentative sample.
+
+7. Stratified Sampling
+   > Because simple random sampling is entirely random, it can leave out certain population individuals
+     that are of great interest to some of the questions we may have.
+   > To ensure we end up with a sample that has observations for all the categories of interest
+     We can organize our data set into different groups, and then do simple random sampling for every group.
+   > This sampling method is called stratified sampling, and each stratified group is also known as a stratum.
+
+8. Proportional Stratified Sampling
+   > In case of overestimation or underestimation of population mean use 
+     stratified sampling while being mindful of the proportions in the population.
+
+9. Choosing the Right Strata
+   > Here are a few guidelines for choosing good strata:
+    1. Minimize the variability within each stratum.
+      For instance, avoid having in the same stratum a player that has scored 10 points and a player that has scored 500. 
+      If the variability is high, it might be a sign that you either need a more granular stratification (need more strata), or 
+      you need to change the criterion of stratification (an example of criterion is minutes played).
+   2. Maximize the variability between strata.
+      Good strata are different from one another. If you have strata that are similar to one another with respect to what you want to measure,
+      you might need a more granular stratification,or to change the stratification criterion. In the previous screen,
+      stratifying the data by games played resulted in strata that 
+      weren't too different from each other with respect to the distribution of the total points. 
+      We managed to increase the variability between strata by changing the criterion of stratification to minutes played.
+   3. The stratification criterion should be strongly correlated with the property you're trying to measure.
+      For instance, the column describing minutes played (the criterion) should be strongly correlated with the number of 
+      total points (property we want to measure). 
+
+10. Cluster Sampling
+    > When data is scattered accross different sources and to be collected for ananlysis this method of sampling is suitable
+    > List all the data sources you can find, and then randomly pick only a few of them to collect data from. 
+     Then you can sample individually each of the sources you've randomly picked. This sampling method is called cluster sampling, 
+     and each of the individual data sources is called a cluster.
+    > It's actually possible to use different sampling methods for different clusters. 
+     For instance, we can use stratified sampling on the first two clusters, and simple random sampling on the other two.
+
+11. Sampling in Data Science Practice
+    > It could be that you need to collect data from an API that either has a usage limit, or is not free. 
+      In this case, you are more or less forced to sample. Knowing how and what to sample can be of great use.
+    > Another common use case of sampling is when the data is scattered across different locations (different websites, 
+      different databases, different companies, etc.).Cluster sampling would be a great choice in such a scenario.
+
+12. Descriptive and Inferential Statistics
+    > When we describe a sample or a population (by measuring averages, proportions, and other metrics; 
+      by visualizing properties of the data through graphs; etc.), we do descriptive statistics.
+    > When we try to use a sample to draw conclusions about a population, we do inferential statistics 
+     (we infer information from the sample about the population).
+
