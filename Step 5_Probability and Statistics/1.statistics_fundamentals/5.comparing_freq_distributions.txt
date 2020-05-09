@@ -1,0 +1,54 @@
+
+1.  Comparing frequency Distributions
+    > In this mission, we'll learn about the graphs we can use to compare multiple frequency distributions at once.
+
+2. Grouped Bar Plots
+   > It is cumbersome to compare multiple distributions at once using frequency tables. 
+    Fortunately, we can make the comparison much quicker and more efficiently using graphs.
+   > A simple solution to our problem is to generate a bar plot for each table, and then group all the bar plots on a single figure
+   > We can generate a grouped bar plot using the seaborn.countplot() function from the seaborn module
+      sns.countplot(x = 'Exp_ordinal', hue = 'Pos', data = wnba,order=[],hue_order=[])
+        - hue_order parameter, order the bars of each bar plot in ascending alphabetic order
+
+3. Comparing Histogtams
+   > The easiest way to compare two histograms is to superimpose one on top of the other. 
+       wnba[wnba.Age >= 27]['MIN'].plot.hist(histtype = 'step', label = 'Old', legend = True)
+       wnba[wnba.Age < 27]['MIN'].plot.hist(histtype = 'step', label = 'Young', legend = True)
+    
+4. Kernel Density Estimate Plots
+   > The step-type histograms we built made it possible to see clearly both distributions. The graph looked a bit overcrowded though, 
+      and the legend was not ideally positioned
+   > One solution to this problem is to smooth out the shape of the histograms to make them look less dense on the graph.
+   > We can smooth out histograms using the Series.plot.kde() function
+   > Unlike histograms, kernel density plots display densities on the y-axis instead of frequencies
+
+5. Drawbacks of kernel density plots
+   > Grouped bar plots are ideal for variables measured on nominal and ordinal scales. For variables measured on a ratio or interval scale,
+      we learned that kernel density plots are a good solution when we have many distributions to compare.
+      However, kernel density plots tend to become unreadable as we reach five distributions or more.
+  
+6. Strip Plots
+   > we can use the sns.stripplot() function from the seaborn module to create plot
+   > sns.stripplot(x = 'Pos', y = 'Height', data = wnba)
+   > A big downside of strip plots is that the bullet points overlap. We can fix this by adding a bit of jitter to each distribution. 
+     We can do this by setting the jitter parameter to True:
+
+7. Box plots
+   > Besides strip plots, there's another kind of graph we can use to display many distributions at once and make sure everything is 
+    still readable.
+   > The two lines extending upwards and downwards out of the box in the middle look a bit like two whiskers, reason for which we call
+     this plot a box-and-whisker plot,or, more convenient, just box plot.
+      sns.boxplot(x = 'Pos', y = 'Height', data = wnba)
+ 
+8. Outliers
+    >  A value that is much lower or much larger than the rest of the values in a distribution is called an outlier.
+    > A value is an outlier if:
+      It's larger than the upper quartile by 1.5 times the difference between the upper quartile and the lower quartile 
+       (the difference is also called the interquartile range).
+      It's lower than the lower quartile by 1.5 times the difference between the upper quartile and the lower quartile 
+    > This formal definition of an outlier is arbitrary, and it could be changed if we wanted to.
+    > If the factor is increased, then the range outside which values are considered outliers increases as well.
+     If the factor is decreased, the range outside which values are considered outlier decreases as well.
+    > When we generate boxplots, we can increase or decrease this factor by using the whis parameter of the sns.boxplot() function. 
+
+      sns.boxplot(wnba[wnba['Pos'] == 'C']['Height'], whis = 4,orient = 'vertical', width = .15)
