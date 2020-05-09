@@ -1,0 +1,78 @@
+
+1. Simplifying data
+   > Our capacity to understand a data set just by looking at it in a table format is limited, and it decreases
+     dramatically as the size of the data set increases.To be able to analyze data, we need to find ways to simplify it.
+   > One way to simplify data set is to select a variable, count how many times each unique value occurs, 
+     and represent the frequencies (the number of times a unique value occurs) in a table. 
+   > Because the table shows how frequencies are distributed, it's often called a frequency distribution table, or, shorter,
+     frequency table or frequency distribution.
+
+2. Frequency Distribution Tables
+   > One column records the unique values of a variable, and the other the frequency of each unique value.
+   > To generate a frequency distribution table using Python, we can use the Series.value_counts() method
+
+3. Sorting Frequency distribution Tables
+   > Sorting by default create problems for variables , we can sort index too to solve direction problems of variables
+   > We can also sort the table by index in a descending order using series.value_counts().sort_index(ascending = False)
+   
+4. Sorting Tables for Ordinal Variables
+  > The sorting techniques learned in above can't be used for ordinal scales where the measurement is done using words.
+  > The solution is to do selection by index label.
+    eg- print(wnba['PTS_ordinal_scale'].value_counts()[['very few points', 'few points', 'many points', 'a lot of points']])
+  > This approach can be time-consuming because it involves more typing than is ideal. We can use iloc[] instead to reorder by position:
+    eg- print(wnba['PTS_ordinal_scale'].value_counts().iloc[[3, 1, 2, 0]])
+
+5. Proportions and percentages
+  >  we can transform frequencies to proportions.
+  >  eg- print(wnba['Pos'].value_counts() / len(wnba))
+  > It's slightly faster though to use Series.value_counts() with the normalize parameter set to True:
+    eg- print(wnba['Pos'].value_counts(normalize = True))*100)
+  > Because proportions and percentages are relative to the total number of instances in some set of data, they are called relative frequencies. 
+    In contrast, the frequencies we've been working with so far are called absolute frequencies because they are 
+    absolute counts and don't relate to the total number of instances. 
+
+6. Percentiles and Percentiles Ranks
+   > A percentile rank of a value x in a frequency distribution is given by the percentage of values that are equal or less than x
+   > percentileofscore(a, score, kind='weak') function from scipy.stats: to get percentile
+   > eg- print(percentileofscore(a = wnba['Age'], score = 23, kind = 'weak'))
+
+7. Finding Percentiles with Pandas
+  > e can use the Series.describe() method, which returns by default the 25th, the 50th, and the 75th percentiles:
+  > We are not interested here in the first three rows of the output (count, mean, and standard deviation). 
+    We can use iloc[] to isolate just the output we want: print(wnba['Age'].describe().iloc[3:])
+  > The three percentiles that divide the distribution in four equal parts are also known as quartiles 
+    (from the Latin quartus which means four).
+  > we can use the percentiles parameter of Series.describe(). 
+   This parameter requires us to pass the percentages we want as proportions between 0 and 1.
+   eg- print(wnba['Age'].describe(percentiles = [.1, .15, .33, .5, .592, .85, .9]).iloc[3:])
+
+8. Grouped Frequency Tables
+  > Because we group values in a table to get a better sense of frequencies in the distribution, the table 
+    we generated above is also known as a grouped frequency distribution table.
+  > We only need to make use of the bins parameter of Series.value_counts()
+    eg- print(wnba['Weight'].value_counts(bins = 10).sort_index())
+  > Each group (interval) in a grouped frequency distribution table is also known as a class interval. 
+
+9. Information loss
+   > When we increase the number of class intervals, we can get more information, but the table becomes harder to analyze. 
+     When we decrease the number of class intervals, we get a boost in comprehensibility, but the amount of information in the table decreases.
+   
+10. Readability for grouped frequncy Tables
+    > We start with creating the intervals using the pd.interval_range() function:
+    > eg-intervals = pd.interval_range(start = 0, end = 600, freq = 100)
+
+11. Frequency Tables and Continous Variables
+    > When we build frequency tables for continuous variables, we need to take into account that the values are intervals.
+      wnba['Height'].value_counts()[175] outpust 16
+      This doesn't mean that there are 16 players that are all exactly 175 cm tall. It rather means that there are 16 players with 
+      a height that's somewhere between 174.5 cm and 175.5 cm.
+    > Continuous variables affect as well the way we read percentiles.
+      wnba['Height'].describe().iloc[3:]
+      min    165.0
+      25%    176.5
+      50%    185.0
+     This means that 50% of the values are less than or equal to 185.5 cm (the upper limit of 185 cm), not equal to 185 cm.
+
+ Frequency tables allow us to transform large and incomprehensible amounts of data to a format we can understand.
+      
+      
