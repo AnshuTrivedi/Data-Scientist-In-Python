@@ -1,0 +1,84 @@
+
+1. Variables in statistics
+  > The properties with varying values we call variables
+  > A row in data set describes the actual values that each variable takes for a given individual.
+
+2. Quantitative and Qualitative variables
+  > Variables in statistics can describe either quantities, or qualities.
+  > how much there is of something describes a quantity, and, for this reason, it's called a quantitative variable.
+  > Variables that describe qualities are called qualitative variables or categorical variables.
+    Generally, qualitative variables describe what or how something is.
+  >  Comparison btw quantitative and qualitative variables
+                                  quantitative variable      qualitative variables
+     1) Describe quantities             YES                        NO               
+     2) Describe qualities              NO                         YES
+     3) Use numbers                     YES                        YES
+     4)numbers are actual quantities    YES                        NO
+     5) Use words                        YES                        YES
+     6) Words express quantity           YES                        NO
+
+3. Scales of Measurement
+   > The amount of information a variable provides depends on its nature (whether it's quantitative or qualitative), 
+     and on the way it's measured.
+   > The system of rules that define how each variable is measured is called scale of measurement or, less often, level of measurement.
+   > System of measurement made up of four different scales of measurement: nominal, ordinal, interval, and ratio
+   > characteristics of each scale pivot around three main questions:
+     Can we tell whether two individuals are different?
+     Can we tell the direction of the difference?
+     Can we tell the size of the difference?
+
+4. The Nominal Scale
+   > For any variable measured on a nominal scale:
+     We can tell whether two individuals are different      YES
+     We can tell direction of difference                     NO
+     We can tell size of difference                          NO
+     We can measure quantitative variables                   NO
+     We can measure qualtitative variables                   YES
+ 
+5. The ordinal SClae
+   > For any variable measured on a ordinal scale:
+     We can tell whether two individuals are different      YES
+     We can tell direction of difference                    YES
+     We can tell size of difference                          NO
+     We can measure quantitative variables                  YES
+     We can measure qualtitative variables                   NO
+  > The values of the variables measured on an ordinal scale can be both words and numbers.
+
+6. The Interval and Ratio Scales
+   > A variable measured on a scale that preserves the order between values and has well-defined intervals using real numbers is an example 
+    of a variable measured either on an interval scale, or on a ratio scale.
+   > For any variable measured on Interval or Ratio  scales:
+     We can tell whether two individuals are different      YES
+     We can tell direction of difference                    YES
+     We can tell size of difference                         YES
+     We can measure quantitative variables                  YES
+     We can measure qualtitative variables                   NO
+
+7. Difference btw Ratio and Interval SCales
+   > What sets apart ratio scales from interval scales is the nature of the zero point.
+   > On a ratio scale, the zero point means no quantity
+   > On an interval scale, however, the zero point doesn't indicate the absence of a quantity. It actually indicates the presence of a quantity.
+   > Another important difference between the two scales is given by the way we can measure the size of the differences.
+     On a ratio scale, we can quantify the difference in two ways.
+      One way is to measure a distance between any two points by simply subtracting one from another.
+      The other way is to measure the difference in terms of ratios.
+   > On an interval scale, however, we can measure meaningfully the difference between any two points only by finding the distance
+     between them (by subtracting one point from another).
+   >                                                     Interval             Ratio
+      1)well defined intervals                             YES                  YES
+      2)zero point indicates absense of quantity            NO                  YES
+      3)difference measured in terms of distance            YES                 YES
+      4) difference measured in terms of ratios             NO                  YES
+    
+8. Discrete and Continuous variables
+   > Quantitative variables can be measured on ordinal, interval, or ratio scales.
+   > Generally, if there's no possible intermediate value between any two adjacent values of a variable, we call that variable discrete.
+   > Generally, if there's an infinity of values between any two values of a variable, we call that variable continuous.
+   > Whether a variable is discrete or continuous is determined by the underlying nature of the variable being considered, 
+     and not by the values obtained from the measurement.
+   
+9. Real limits
+   > Generally, every value of a continuous variable is an interval, no matter how precise the value is. 
+     The boundaries of an interval are sometimes called real limits. 
+     The lower boundary of the interval is called lower real limit, and the upper boundary is called upper real limit.
+
