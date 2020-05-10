@@ -1,0 +1,36 @@
+
+1. Introduction
+   > Weighted mean when mean have diferent weights
+   
+2. Median for Open-ended distributions
+   > The upper boundary ("10 or more") is thus open, and for this reason we say that the TotRms AbvGrd variable has an open-ended distribution.
+     mean calculation is not possible in such cases
+   > calculate median by arranging in ascending or descending order
+  
+3. Distribution with Even Number of Values
+   > When a distribution has an even number of values, it's not clear which is the middle one.
+   > The workaround is to take the two middle values and compute their mean. 
+   > In statistics, the term "average" refers to the most representative value of a distribution.
+   >  Although it's common to use "average" and "mean" interchangeably, "average" is not restricted to refer only to the mean. 
+      Depending on the context, it can also refer to the median or the mode.
+   
+
+4. Median as a Resistant Statistic
+   > When we compute the mean, we account equally for each value in the distribution — we sum up 
+     all the values in the distribution and then divide the total by the number of values we added. When we compute the median, however, 
+     we don't consider equally each value in the distribution.In fact, we only consider the middle value (or the middle two values).
+   > This property makes the median more resistant to changes in the data compared to the mean.
+   > This property makes the median ideal for finding reasonable averages for distributions containing outliers. 
+   > When variables are numerical, you can use the Series.median() method and the Series.mean() method.
+   
+
+5. The Median for Ordinal Scales
+   > It can be argued thus that the numerical values of an ordinal variable are not subject to meaningful arithmetical operations. 
+    But computing the mean involves meaningful arithmetical operations, so it's not theoretically sound to use the mean for ordinal variables.
+   
+
+6. Sensitivity to changes
+   > Unlike the median, the mean is sensitive to small changes in the data
+   > It should be clear by now that whether we should use the mean for ordinal data is contentious. In practice, 
+    you should be flexible and make your choice on a case by case basis. Also, you are not constrained to choose one metric or
+    the other — you can choose both the mean and median to describe a distribution.
