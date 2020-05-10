@@ -1,0 +1,83 @@
+
+1. Introduction
+   > We learned that the mean takes into account each value in the distribution, and we saw that it's fairly easy to define the 
+     mean algebraically.These two properties make the mean far superior to the median
+   > The median comes in handy, however, when it's not possible or appropriate to compute the mean.
+   > In this mission we'll explore a couple of cases where neither the mean nor the median are suitable for finding an average value
+
+2. Mode for ordinal Variables
+   > However, if the two middle values were ['Gtl', 'Mod'], then it wouldn't be clear at all what to choose for the median. In cases like this, 
+     one workaround for finding an average value is to measure the most frequent value in the distribution.
+   > mode is ideal for ordinal data represented using words. T
+   
+3. Mode for nominal variables
+   >  we made the case that we could compute the mean for ordinal variables if the values are numbers. This reasoning doesn't
+     extend to nominal variables because they don't describe quantities, like ordinal variables do.
+   
+4. Mode for discrete variables
+   > The mean and the median generally summarize the distribution of a discrete variable much better than the mode, 
+    and you should use the mode only if you need to communicate your results to a non-technical audience.
+
+5. Special Cases
+   > There are distributions that can have more than one mode. 
+   > unimodal,bimodal,multimodal
+   > We can also have cases when there is no mode at all.
+      there's no value (or values) that occurs more often than others. For this reason, this distribution doesn't have a mode.
+   > Distributions without a mode are often specific to continuous variables.
+     It's quite rare to find two identical values in a continuous distribution (especially if we have decimal numbers),
+     so the frequency of each unique value is usually 1. Even if we find identical values, their frequency is very likely 
+      to be too low to produce a meaningful mode value.
+
+   > The workaround is to organize the continuous variable in a grouped frequency table, and select for the mode the midpoint of 
+     the class interval (the bin) with the highest frequency.
+
+6. Skewed Distributions
+   > When we plot a histogram or a kernel density plot to visualize the shape of a distribution,
+     the mode will always be the peak of the distribution.
+   > So in a right-skewed distribution, the mean will usually be to the right of the median, and the median will be to the right of the mode.
+   > For a left-skewed distribution, the direction is simply reversed: the mean is positioned to the left of the median,
+     and the median to the left of the mode.
+
+7.  SymmetricaL distributions
+   > The median divides the distribution in two equal halves. As a consequence, the median will always be at the center of a
+     perfectly symmetrical distribution because only a line drawn at the center can divide the distribution in two equal halves.
+   > The mean and the median are always equal for any perfectly symmetrical distribution.
+   > Although the mean and the median have a constant location for every symmetrical distribution (no matter the shape), 
+    the location of the mode can change. The mode is where the peak is, so for a normal distribution the mode will be at the center, 
+    right where the mean and the median are.
+   > It's possible to have a symmetrical distribution with more than one peak, which means that the mode won't be at the center
+   > A uniform distribution doesn't have any peaks, which means it doesn't have any mode
+
+  In this mission, we learned that the mode is ideal for summarizing:
+   Ordinal data represented using words.
+   Nominal data.
+   Discrete data (when the average value needs to be communicated to a non-technical audience).
+
+
+#########################################################################################################
+   Summary for mean mode and median
+   
+              can be used for                              can't be used for                                ideal for
+  
+  mean    * Data measured on interval                * Nominal data                                        * Summarizing numerical distributions 
+           or ratio scales                           * Ordinal data that is not encoded                      by taking into account each value
+         * Ordinal data encoded with                 * Data points with different weights                    in the distribution
+           numbers(contentious)                        need to use weighted mean
+
+
+
+  median   * Data measured on interval                * Nominal Data                                        * Summarizing numerical distributions
+            or ratio scales                           * Ordinal data that is not encoded                      having outliers
+          * Ordinal data encoded with                   with numbers                                         * Open-ended distribution
+            numbers(contentious)
+
+
+
+  mode    * Nominal data                              * perfectly uniform distribution                       * Nominal data
+          * ordinal data                              * Continous variables(need to create                   * Ordinal data that is not encoded
+          * Data measured on interval                   grouped freq table as workaround)                      with numbers
+            or ratio scales                                                                                   * Discrete data: results need to be 
+                                                                                                                communicated to non-technical
+                                                                                                                audience
+
+
