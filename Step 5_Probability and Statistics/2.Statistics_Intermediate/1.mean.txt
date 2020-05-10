@@ -1,0 +1,32 @@
+
+1. Introduction 
+  > Summarize the distribution of a variable with a single value. we'll see that we can summarize it using the mean,
+    the weighted mean, the median, or the mode.
+  > summarize the distribution below with a single value that is representative of the distribution as a whole. (using mean)
+    [1,4,7,8,10,0] mean is 5. Here 5 represents whole distribution of variable
+  > Although the distance for each individual value varies, the sum of the distances of the values that are below the mean is equal 
+   to the sum of the distances of the values that are above the mean: 
+
+2. The Mean as a Balance Point
+   > In some cases, the mean will be equivalent to the center of the distribution's range, 
+     but this doesn't hold true for all distributions.
+   > We should think of the mean as being the value located at that particular point in the distribution where the total distance of the 
+     values below the mean is the same as the total distance of the values that are above the mean. 
+
+3. Defining the Mean Algebraically
+   > By convention, the mean of a population is denoted with the Greek letter  (pronounced "mew")
+     (x1+x2+x3.....+xn)/N where N is number of population
+   > When we compute the mean for a sample, we need to use a slightly different notation to indicate that we're computing the mean for a sample and not for a population. Instead of ,
+     we denote the sample mean using  (pronounced "x-bar"), and we use n  instead of N to denote the number of values in the sample.
+   
+4. Variability around population mean
+   > Generally, as we increase the sample size, there will be less and less variability around the population mean. If there's less variability,
+     there are less chances to get a poor estimate for the population mean — the worst sample means we can get are fairly 
+      close to the population mean, which is good.
+
+5. Sample Mean as an Unbiased Estimator
+   > So on average the sample mean is equal to the population mean. This is true for the distribution above
+     and for any other distribution of real numbers.
+   > When a statistic is on average equal to the parameter it estimates, we call that statistic an unbiased estimator. 
+     In our case, the sample mean is an unbiased estimator for the population mean .
+   
