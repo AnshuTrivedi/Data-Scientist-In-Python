@@ -1,0 +1,90 @@
+
+1. Introduction
+  > A lot of data aren't accessible through data sets or APIs. They may exist on the Internet as Web pages, though. 
+    One way to access the data without waiting for the provider to create an API is to use a technique called Web scraping.
+  > Before we can do Web scraping, we need to understand the structure of the Web page we're working with, 
+    then find a way to extract parts of that structure in a sensible way.
+  > We'll use the requests library heavily as we learn about Web scraping. This library enables us to download a Web page.
+    We'll also use the beautifulsoup library to extract the relevant parts of the Web page.
+
+2. WEb Page Structure
+  > Web pages use HyperText Markup Language (HTML). HTML isn't a programming language like Python. 
+   It's a markup language with its own syntax and rules
+  > response=requests.get('url')
+    response.content  
+
+3. Retrieving elements from a page
+   > We can think of HTML documents as "trees," and the nested tags as "branches" (similar to a family tree). BeautifulSoup works the same way.
+   > We'll use the BeautifulSoup library to parse the Web page with Python. This library allows us to extract tags from an HTML document.
+   > from bs4 import BeautifulSoup
+     # Initialize the parser, and pass in the content we grabbed earlier.
+     parser = BeautifulSoup(content, 'html.parser')
+     # Get the body tag from the document.
+     # Since we passed in the top level of the document to the parser, we need to pick a branch off of the root.
+     # With BeautifulSoup, we can access branches by using tag types as attributes.
+     body = parser.body
+     # Get the p tag from the body.
+     p = body.p
+   
+4. Using Find_all
+  > While it's nice to use the tag type as a property, it's not always a very robust way to parse a document. 
+    It's usually better to be more explicit by using the find_all method.
+  > This method will find all occurrences of a tag in the current element, and return a list.
+  > eg-
+    parser = BeautifulSoup(content, 'html.parser')
+    # Get a list of all occurrences of the body tag in the element.
+    body = parser.find_all("body")
+    # Get the paragraph tag.
+    p = body[0].find_all("p")
+    # Get the text.
+    print(p[0].text)
+    head = parser.find_all("head")
+    title = head[0].find_all("title")
+    title_text = title[0].text
+
+5. Element IDs
+   > HTML allows elements to have IDs. Because they are unique, we can use an ID to refer to a specific element.
+   > # Pass in the ID attribute to only get the element with that specific ID.
+     first_paragraph = parser.find_all("p", id="first")[0]
+     print(first_paragraph.text)
+
+6. Element Classes
+   > In HTML, elements can also have classes. Classes aren't globally unique. In other words, 
+     many different elements belong to the same class, usually because they share a common purpose or characteristic.
+   > We can use find_all to select elements by class. We'll just need to pass in the class_ parameter.
+     first_inner_paragraph = parser.find_all("p", class_="inner-text")[0]
+     print(first_inner_paragraph.text)
+
+7. CSS Selecters
+   > Cascading Style Sheets, or CSS, is a language for adding styles to HTML pages. 
+   > CSS uses selectors to add styles to the elements and classes of elements you specify.You can use selectors to 
+     add background colors, text colors, borders, padding, and many other style choices to the elements on HTML pages.
+   > We select classes with the period or dot symbol (.)
+     p.inner-text{
+    color: red}
+   > We select IDs with the pound or hash symbol (#):
+     p#first{
+    color: red}
+   > You can also style IDs and classes without using any specific tags. 
+      #first{
+    color: red}
+    This CSS will make any element with the class inner-text red:
+    .inner-text{
+    color: red}
+
+8. Using CSS Selectors  
+   > We can use BeautifulSoup's .select method to work with CSS selectors
+   > same element can have both an ID and a class. We can also assign multiple classes to a single element; 
+     we just separate the classes with a space.
+    eg- first_outer_text=parser.select('.outer-text')[0].text
+
+9. Nesting CSS Selectors
+   >we can nest CSS selectors in infinite ways. This allows us to extract data from websites with complex layouts.
+     eg- body div #first
+     It selects any item that's inside a div tag inside a body tag, but only if it also has the ID first
+     eg- div .first-item
+     This selector will target any item inside a div tag that has the class first-item
+
+10. Using Nested CSS Selectors
+    > eg- seahawks_total_yards_count=parser.select('#total-yards')[0].select('td')[1].text
+
