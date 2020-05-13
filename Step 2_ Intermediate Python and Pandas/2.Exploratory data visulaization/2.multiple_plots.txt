@@ -1,0 +1,57 @@
+
+
+1. Matplotlib Classes
+   >  what pyplot automatically stores under the hood when we create a single plot:
+        a container for all plots was created (returned as a Figure object)
+        a container for the plot was positioned on a grid (the plot returned as an Axes object)
+        visual symbols were added to the plot (using the Axes methods)
+   > A figure acts as a container for all of our plots and has methods for customizing the appearance and behavior for the plots 
+     within that container.
+  > fig = plt.figure()
+  > The Axes object acts as its own container for the various components of the plot, such as:
+    values on the x-axis and y-axis
+    ticks on the x-axis and y-axis
+    all visual symbols, such as:
+      markers
+      lines
+      gridlines
+  > While plots are represented using instances of the Axes class, they're also often referred to as subplots in matplotlib.
+    To add a new subplot to an existing figure, use Figure.add_subplot. 
+    axes_obj = fig.add_subplot(nrows, ncols, plot_number)
+  
+
+2. Grid Positioning
+   > For each subplot, matplotlib generates a coordinate grid 
+   > As we add each subplot, we specify the plot number we want returned and the corresponding Axes object is created and returned.
+   >  In matplotlib, the plot number starts at the top left position in the grid (left-most plot on the top row), 
+      moves through the remaining positions in that row, then jumps to the left-most plot in the second row, and so forth.
+   > If we created a grid of 4 subplots but don't create a subplot for each position in the grid, areas without axes are left blank
+
+
+3.  Adding Data
+   > To generate a line chart within an Axes object, we need to call Axes.plot() and pass in the data you want plotted
+     
+
+4. Formatting and Spacing
+   > To tweak the dimensions of the plotting area, we need to use the figsize parameter when we call plt.figure()
+      fig = plt.figure(figsize=(width, height))
+   
+5. Overlaying Line Charts
+   > We now have to visually scan over more space, which is a limitation that we experienced when scanning the table 
+    representation of the same data
+   > We can handle the visual overhead each additional plot adds by overlaying the line charts in a single subplot.
+   > To extract the month values from the DATE column and assign them to a new column, we can use the pandas.Series.dt accessor
+     Calling pandas.Series.dt.month returns a Series containing the integer values for each month (e.g. 1 for January, 2 for February, etc.)
+   > If we call pyplot.plot() multiple times, matplotlib will generate the line charts on the single subplot.
+
+6. Adding a legend
+   > When we generate each line chart, we need to specify the text label we want each color linked to.
+     The pyplot.plot() function contains a label parameter, which we use to set the value
+   > We can create the legend using pyplot.legend and specify its location using the loc parameter:
+     plt.legend(loc='upper')
+   >  When we need to create a legend for each subplot, we can use Axes.legend() instead.
+
+
+7. Final tweaks
+  >To set the x-axis and y-axis labels, we use pyplot.xlabel() and pyplot.ylabel(). Both of these functions accept string values.
+  >  To set the title, we use pyplot.title() and pass in a string value
