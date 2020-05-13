@@ -1,0 +1,78 @@
+
+1. Understanding numpy and pandas
+   > Although NumPy provides fundamental structures and tools that make working with data easier, there are several things 
+     that limit its usefulness:
+    1) The lack of support for column names forces us to frame questions as multi-dimensional array operations.
+    2) Support for only one data type per ndarray makes it more difficult to work with data that contains both numeric and string data.
+    3) There are lots of low level methods, but there are many common analysis patterns that don't have pre-built methods.
+  > The pandas library provides solutions to all of these pain points and more
+  > The primary data structure in pandas is called a dataframe. Dataframes are the pandas equivalent of a Numpy 2D ndarray, 
+   with a few key differences:
+    1) Axis values can have string labels, not just numeric ones.
+    2) Dataframes can contain columns with multiple data types: including integer, float, and string.
+       column labels along column axis and row labels along index axis
+
+2. Introduction to data
+   > type(dataframe_name)
+   > dataframe_name.shape
+
+3. Introducing Dataframes
+   > To view the first few rows of our dataframe, we can use the 
+     DataFrame.head()
+   > we can use the DataFrame.tail() method to show us the last rows of our dataframe:
+     Dataframe.tail()
+
+4. Introducing Dataframes Continued
+   > We can use the DataFrame.dtypes attribute (similar to NumPy's ndarray.dtype attribute) 
+     to return information about the types of each column.
+    Dataframe.dtype
+   > If we wanted an overview of all the dtypes used in our dataframe, along with its shape and other information, 
+     we could use the DataFrame.info() method. 
+   > show us the number of entries in our index (representing the number of rows), a list of each column with their dtype and 
+     the number of non-null values, as well as a summary of the different dtypes and memory usage.
+   
+5. Selecting column from dataframe by label
+   > Because our axes in pandas have labels, we can select data using those labels — unlike in NumPy, where we needed 
+     to know the exact index location. To do this, we can use the DataFrame.loc[] attribute. 
+     df.loc[row_label, column_label]
+   
+6. Introduction to series
+   > Series is the pandas type for one-dimensional objects
+   
+7. Selecting column from dataframe by label continued
+         Select by Label	Explicit Syntax	             Common Shorthand
+         Single column	        df.loc[:,"col1"]	        df["col1"]
+         List of columns	df.loc[:,["col1", "col7"]]	df[["col1", "col7"]]
+         Slice of columns	df.loc[:,"col1":"col4"]	
+
+8. Selecting Rows From a DataFrame by Label
+   > single row       df.loc['row_name']
+     list of rows     df.loc[['row1','row2']]
+     slice of rows    df.loc['row1':'row2'] 
+
+9. value counts method
+   > Because series and dataframes are two distinct objects, they have their own unique methods
+   >  Series.value_counts(),this method displays each unique non-null value in a column and their counts in order.
+   
+10. Selecting items from series by label
+         Select by Label	 Explicit Syntax	          Shorthand Convention
+      Single item from series	  s.loc["item8"]	                s["item8"]
+     List of items from series	  s.loc[["item1","item7"]]	       s[["item1","item7"]]
+    Slice of items from series	  s.loc["item2":"item4"]	        s["item2":"item4"]
+
+11. summary
+          Select by Label	            Explicit Syntax           	Shorthand Convention
+    Single column from dataframe	   df.loc[:,"col1"]	        df["col1"]
+   List of columns from dataframe	   df.loc[:,["col1","col7"]]	df[["col1","col7"]]
+   Slice of columns from dataframe	   df.loc[:,"col1":"col4"]	
+    Single row from dataframe	           df.loc["row4"]	
+   List of rows from dataframe	           df.loc[["row1", "row8"]]	
+    Slice of rows from dataframe	   df.loc["row3":"row5"]	df["row3":"row5"]
+    Single item from series	           s.loc["item8"]	        s["item8"]
+   List of items from series	           s.loc[["item1","item7"]]	s[["item1","item7"]]
+   Slice of items from series	           s.loc["item2":"item4"]	s["item2":"item4"]
+
+
+
+
+
