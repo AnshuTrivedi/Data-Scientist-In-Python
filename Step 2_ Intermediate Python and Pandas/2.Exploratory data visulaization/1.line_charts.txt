@@ -1,0 +1,70 @@
+
+
+1. Representation of Data
+   >  It's very difficult to explore a dataset to uncover patterns when it's represented as a table,
+      especially when that dataset contains many values.
+   > data visualization, a discipline that focuses on the visual representation of data
+   > As humans, our brains have evolved to develop powerful visual processing capabilities. We can quickly find patterns in the visual information we encounter,
+    which was incredibly important from a survivability standpoint.
+   > Exploratory Data Visualization, we'll focus on data visualization techniques to explore datasets and help us uncover patterns
+
+2. Introduction to the Data
+   > When we read the dataset into a DataFrame, pandas will set the data type of the DATE column as a text column. 
+    Because of how pandas reads in strings internally, this column is given a data type of object.
+    We need to convert this column to the datetime type using the pandas.to_datetime() function, 
+    which returns a Series object with the datetime data type that we can assign back to the DataFrame:
+
+3. Table Representation
+   > Take a minute to visually scan the table and observe
+
+4. Observations from table representation
+   > Seasonality is when a pattern is observed on a regular, predictable basis for a specific reason
+
+5. Visual Representation
+   >  Plots are a category of visual representations that allow us to easily understand the relationships between variables
+   > Line charts represents information as series of data points called markers,on coordinated grid
+     These markers are connected by lines,which helps us visualize trends in data
+     usually,coordinated grid and data points are hidden so the viewer can focus on trends instead of indiviudal data points
+
+6. Introduction to matplotlib
+   > matplotlib library, which allows us to:
+      1) quickly create common plots using high-level functions
+      2) extensively tweak plots
+      3) create new kinds of plots from the ground up 
+   > When working with commonly used plots in matplotlib, the general workflow is:
+    1) create a plot using data
+    2) customize the appearance of the plot
+    3) display the plot
+    4) edit and repeat until satisfied
+   > The pyplot module provides a high-level interface for matplotlib that allows us to quickly create common data plots 
+    and perform common tweaks to them : matplotlib.pyplot
+   > The pyplot module is commonly imported as plt from matplotlib:
+     import matplotlib.pyplot as plt
+  > plt.plot()
+    plt.show()
+    we didn't assign the plot to a variable and then call a method on the variable to display it. 
+    We instead called 2 functions on the pyplot module directly.
+    This is because every time we call a pyplot function, the module maintains and updates the plot internally (also known as state).
+    When we call show(), the plot is displayed and the internal state is destroyed.
+    While this workflow isn't ideal when we're writing functions that create plots on a repeated basis as part of a larger application,
+    it's useful when exploring data.
+
+7. Adding Data
+  > By default, Matplotlib displayed a coordinate grid with:
+    the x-axis and y-axis values ranging from -0.06 to 0.06
+    no grid lines
+    no data 
+  > The axis ticks consist of tick marks and tick labels
+  > Matplotlib will accept any iterable object, like NumPy arrays and pandas.Series instances.
+  > plt.plot(x_values,y_values) generates line chart
+
+8. Fixing Axis Ticks
+   > The xticks() function within pyplot lets you customize the behavior of the x-axis ticks.
+   > matplotlib.pyplot.xticks(*args, **kwargs)
+   >  the y-axis counterpart to the xticks() function is the yticks() function.
+
+9. Adding Axis Labels and A Title
+   > xlabel(): accepts a string value, which gets set as the x-axis label.
+     ylabel(): accepts a string value, which is set as the y-axis label.
+      title(): accepts a string value, which is set as the plot title.
+
