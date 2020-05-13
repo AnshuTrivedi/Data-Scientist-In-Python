@@ -1,0 +1,59 @@
+
+
+1. Bar Plot
+  >  An effective bar plot uses categorical values on one axis and numerical values on the other axis. 
+    Because bar plots can help us find the category corresponding to the smallest or largest values, it's important that 
+    we restrict the number of bars in a single plot. Using a bar plot to visualize hundreds of values makes it difficult to trace the
+    category with the smallest or largest value.
+  > If the x-axis contains the categorical values and the rectangular bars are scaled vertically, this is known as a vertical bar plot. 
+    A horizontal bar plot flips the axes, which is useful for quickly spotting the largest value.
+  > We can generate a vertical bar plot using either pyplot.bar() or Axes.bar()
+  > We can use pyplot.subplots() to first generate a single subplot and return both the Figure and Axes object
+    fig, ax = plt.subplots()
+  > Axes.bar() method has 2 required parameters, left and height. Now in updated version x replaced left.
+    We use the height parameter to specify the height of each bar.
+  > ax.bar(bar_positions, bar_heights)
+  > We can also use the width parameter to specify the width of each bar
+    ax.bar(bar_positions, bar_heights,bar_width_value)
+
+
+2. Aligning axis ticks and labels
+   > By default, matplotlib sets the x-axis tick labels to the integer values the bars spanned on the x-axis (from 0 to 6).
+   > We can use Axes.set_xticks(tick_positions) to change the positions of the ticks 
+   > We can use Axes.set_xticklabels() to specify the tick labels 
+
+
+3. Horizontal Bar Plot
+   > We use Axes.barh(). This method has 2 required parameters, bottom and width.
+     We use the bottom parameter to specify the y coordinate for the bottom sides for the bars and the
+     width parameter to specify the lengths of the bars
+     ax.barh(bar_positions, bar_widths,bar_width_value)
+
+4.  Scatter plot
+   > line charts we generated always connected points from left to right. This helped us show the trend, up or down,
+     between each point as we scanned visually from left to right
+   > A plot containing just the markers is known as a scatter plot.
+   > A scatter plot helps us determine if 2 variables or columns are weakly or strongly correlated.
+     While calculating the correlation coefficient will give us a precise number, a scatter plot helps us find outliers,
+     gain a more intuitive sense of how spread out the data is, and compare more easily.
+   > To generate a scatter plot, we use Axes.scatter(). The scatter() method has 2 required parameters, x and y
+   >  The values for these parameters need to be iterable objects of matching lengths (lists, NumPy arrays, or pandas series).
+     ax.scatter(x,y)
+   >  The correlation is weak because for many x values, there are multiple corresponding y values. 
+      The correlation is positive because, in general, as x increases, y also increases.
+
+5. Switching axes
+   > it's usually not important which one is on the x-axis and which one is on the y-axis.
+     This is because the relationship is still captured either way, even if the plots look a little different
+   > If you want to instead understand how an independent variable affects a dependent variables, 
+    you want to put the independent one on the x-axis and the dependent one on the y-axis.
+    Doing so helps emphasize the potential cause and effect relation.
+
+
+6. Benchmark correlation
+   > When generating multiple scatter plots for the purpose of comparison, 
+     it's important that all plots share the same ranges in the x-axis and y-axis.
+   > We can use Axes.set_xlim() and Axes.set_ylim() to set the data limits for both axes
+
+
+  
