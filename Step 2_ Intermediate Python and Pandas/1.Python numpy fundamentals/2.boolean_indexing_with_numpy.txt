@@ -1,0 +1,43 @@
+
+1. Reading CSV files with Numpy
+  > np.genfromtxt(filename, delimiter=None,skip) to read files from ndarrays
+  > we can pass an additional parameter, skip_header, to the numpy.genfromtxt() function. The skip_header parameter accepts an integer, 
+    the number of rows from the start of the file to skip.
+  > NumPy ndarrays can contain only one datatype.
+  > when numpy.genfromtxt() reads in a file, it attempts to determine the data type of the file by looking at the values,
+   so no explicit type conversion
+  > We can use the ndarray.dtype attribute to see the internal datatype that has been used 
+
+2. Boolean Arrays
+  >  A boolean array, as the name suggests, is an array of boolean values. Boolean arrays are sometimes 
+    called boolean vectors or boolean masks.
+  > Create boolean arrays using vectorized boolean operations. Next,index (or select) using boolean arrays, known as boolean indexing.
+
+3. Boolean indexing with 1-D ndarrays
+  > The boolean array acts as a filter, so that the values corresponding to True become part of the result 
+    and the values corresponding to False are removed.
+    bool_index=np.array[]<something, array[bool_index]
+
+4. Boolean indexing with 2D ndarrays
+   > The only limitation is that the boolean array must have the same length as the dimension you're indexing.
+   > Because a boolean array contains no information about how it was created, 
+     we can use a boolean array made from just one column of our array to index the whole array.
+   
+5. Assigning Values in ndarrays
+   > ndarray[location_of_values] = new_value
+   
+6. Assignment using Boolean Arrays
+  > The boolean array controls the values that the assignment applies to, and the other values remain unchanged.
+  > array[bool_array]= assigned_value
+
+
+ In this mission we learned:
+
+ 1) How to use numpy.genfromtxt() to read in an ndarray.
+ 2) About NaN values.
+ 3) What a boolean array is, and how to create one.
+ 4) How to use boolean indexing to filter values in one and two-dimensional ndarrays.
+ 5) How to assign one or more new values to an ndarray based on their locations.
+ 6) How to assign one or more new values to an ndarray based on their values.
+
+
