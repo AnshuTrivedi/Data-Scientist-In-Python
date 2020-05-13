@@ -1,0 +1,64 @@
+
+1. Introduction to the Data
+   >  Dataframe.head()
+      Dataframe.info()
+
+2. Vectorized Operations
+   > Vectorization not only improves our code's performance, but also enables us to write code more quickly.
+   > Because pandas is an extension of NumPy, it also supports vectorized operations.
+
+3. Series data exploration method
+   Series.max()
+   Series.min()
+   Series.mean()
+   Series.median()
+   Series.mode()
+   Series.sum()
+
+4.  Series Describe Method
+   series.describe()
+   > If we use describe() on a column that contains non-numeric values, we get some different statistics. 
+
+5. Method Chaining
+  > a way to combine multiple methods together in a single line
+    eg- f500["country"].value_counts().loc["China"])
+
+6. Dataframe Exploration Methods
+   > Series.max() and    DataFrame.max()
+    Series.min() and     DataFrame.min()
+   Series.mean() and     DataFrame.mean()
+   Series.median() and   DataFrame.median()
+   Series.mode() and     DataFrame.mode()
+   Series.sum() and     DataFrame.sum()
+  > dataframe methods require an axis parameter so we know which axis to calculate across
+
+7. Dataframe Describe Method
+  > By default, DataFrame.describe() will return statistics for only numeric columns.
+    If we wanted to get just the object columns, we need to use the include=['O'] parameter:
+     eg- Dataframe.describe(include=['O'])
+
+8.  Assignment with pandas
+   >  When we selected a whole column by label and used assignment, we assigned the value to every item in that column.
+      By providing labels for both axes, we can assign them to a single value within our dataframe.
+
+9.  Using boolean indexing with pandas objects
+   > While it's helpful to be able to replace specific values when we know the row label ahead of time,
+     this can be cumbersome when we need to replace many values. Instead, we can use boolean indexing to change
+     all rows that meet the same criteria, just like we did with NumPy.
+   
+10. Using boolean arrays to assign values
+    > Perform assignment in pandas
+      Use boolean indexing in pandas
+
+11. Creating new columns
+    > Pandas uses the NumPy integer dtype, which does not support NaN values.
+      Pandas inherits this behavior, and in instances where you try and assign a NaN value to an integer column, 
+      pandas will silently convert that column to a float dtype
+
+ In this mission, we learned:
+
+  How to select data from pandas objects using boolean arrays.
+  How to assign data using labels and boolean arrays.
+  How to create new rows and columns in pandas.
+  Many new methods to make data analysis easier in pandas.
+
