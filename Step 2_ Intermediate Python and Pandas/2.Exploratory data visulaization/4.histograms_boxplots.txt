@@ -1,0 +1,46 @@
+
+
+1. Frequency distribution
+   > A column's frequency distribution consists of the unique values in that column along with the count for 
+     each of those values (or their frequency).
+   
+
+2.Binning
+  > Dividing the range of possible values into a series of fixed length intervals, called bins
+  > The distributions of multiple columns are now easier to compare because of the shared x-axis (the bins).
+    We can now plot the bins along with the frequency sums as a bar plot.
+  
+3. Histogram in Matplotlib
+   > We can generate a histogram using Axes.hist()
+   > The default behavior of Axes.hist() is problematic for the use case of comparing distributions for multiple columns using 
+     the same binning strategy.This is because the binning strategy for each column would depend on the minimum and maximum values,
+     instead of a shared binning strategy
+  >  We can use the range parameter to specify the range we want matplotlib to use as a tuple
+     ax.hist(norm_reviews['Fandango_Ratingvalue'], range=(0, 5))
+  > Histograms help us visualize continuous values using bins while bar plots help us visualize discrete values
+  
+
+4. Comparing histograms
+   > The bins parameter for Axes.hist() is the 2nd positional parameter, but can also be specified as a named parameter
+   
+
+5. Quartiles
+   > While histograms allow us to visually estimate the percentage of ratings that fall into a range of bins, 
+    they don't allow us to easily understand how the top 25% or the bottom 25% of the ratings differ across the sites.
+   > The bottom 25% of values and top 25% of values both represent quartiles. 
+     The four quartiles divide the range of values into four regions where each region contains 1/4th of the total values.
+   >  Each bin covers an equal proportion of the values in the range. On the other hand,
+      each quartile covers an equal number of values (1/4th of the total values).
+
+6. Box Plot
+   > The two regions contained within the box in the middle make up the interquartile range, or IQR. 
+     The IQR is used to measure dispersion of the values. The ratio of the length of the box to the whiskers around
+     the box helps us understand how values in the distribution are spread out.
+   > We can generate a boxplot using Axes.boxplot().
+
+7. Multiple box plots
+   >  When selecting multiple columns to pass in to Axes.boxplot(), we need to use the values accessor to return a multi-dimensional numpy array
+   > num_cols = ['RT_user_norm', 'Metacritic_user_nom', 'IMDB_norm', 'Fandango_Ratingvalue', 'Fandango_Stars']
+     ax.boxplot(norm_reviews[num_cols].values)
+   > Outliers are usually treated as abnormal values and affect the overall observation of the data set due to their very high or low values.
+
