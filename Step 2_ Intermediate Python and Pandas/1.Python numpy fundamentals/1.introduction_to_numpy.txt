@@ -1,0 +1,76 @@
+
+1. Introduction
+  > Python is a high-level language, which means we don’t need to worry about allocating memory or choosing how certain operations
+    are done by our computers' processors like we do when we use a low-level language, such as C. 
+   This means that coding in a low-level language takes longer; however, we have more ability to optimize our code to run faster.
+  > There are two Python libraries that allow us to write code quickly without sacrificing performance: NumPy and pandas
+
+2. Introduction to Ndarrays
+  > The core data structure in NumPy is the ndarray or n-dimensional array. 
+  > The word n-dimensional refers to the fact that ndarrays can have one or more dimensions.
+  > To use the NumPy library, we first need to import it into our Python environment. NumPy is commonly imported using the alias np:
+    import numpy as np
+  > we can directly convert a list to an ndarray using the numpy.array() constructor. eg- np.array([1,2,3])
+
+3. Understanding Vectorization
+  > lists of lists are sufficient for working with small data sets, they aren't very good for working with larger data sets.
+    It limits to row operations , column operations are not possible so have to refer to numpy
+  > computer would take eight processor cycles to process the eight rows of our data.
+     The NumPy library takes advantage of a processor feature called Single Instruction Multiple Data (SIMD) to process data faster. 
+     SIMD allows a processor to perform the same operation, on multiple data points, in a single processor cycle:
+  > This concept of replacing for loops with operations applied to multiple data points at once is called vectorization and 
+    ndarrays make vectorization possible
+
+4. Array shapes
+   numpy_array.shape
+
+5. Selecting slicing rows and items from ndarrays
+   > For any 2D array, the full syntax for selecting data is:  ndarray[row_index,column_index]
+   > ndarray[index] produces 1-d array
+   > ndarray[index:] produces 2-d array
+
+6.  Selecting Columns and Custom Slicing ndarrays
+   > ndarray[:,index] produces single column , 1-d array
+   > ndaaray[:,index1:index2] produces multiple columns , 2-d arry
+   > ndaary[:,cols] producs specific columns 2-d arry where cols=[2,33,5,...]
+
+7. Vector math
+   > NumPy ndarrays allow us to select data much more easily. Beyond this, the selection we make is a lot faster when working
+     with vectorized operations because the operations are applied to multiple data points at once.
+   > We can actually use any of the standard Python numeric operators with vectors, including:
+      vector_a + vector_b - Addition
+      vector_a - vector_b - Subtraction
+      vector_a * vector_b - Multiplication (this is unrelated to the vector multiplication used in linear algebra).
+      vector_a / vector_b - Division
+   > When we perform these operations on two 1D vectors, both vectors must have the same shape.
+
+8. Calculating statistics for 1D ndarrays
+   > Numpy ndarrays have methods for many different calculations. A few key methods are:
+    ndarray.min() to calculate the minimum value
+    ndarray.max() to calculate the maximum value
+    ndarray.mean() to calculate the mean or average value
+    ndarray.sum() to calculate the sum of the values
+  > Functions act as stand alone segments of code that usually take an input, perform some processing, and return some output.
+    For example, we can use the len() function to calculate the length of a list or the number of characters in a string.
+    In contrast, methods are special functions that belong to a specific type of object. This means that, 
+   for instance, when we work with list objects, there are special functions or methods that can only be used with lists.
+  >  Function Representation	Method Representation
+      np.min(trip_mph)	        trip_mph.min()
+      np.max(trip_mph)	        trip_mph.max()
+      mean(trip_mph)	        trip_mph.mean() where trip_mph is ndaarray
+
+9. Calculating Statistics for 2D ndaarays
+   >  If we use the ndarray.max() method on a 2D ndarray without any additional parameters, 
+      it will return a single value, just like with a 1D array:
+   > Pass axis parameter to method
+   > ndarray.method_name(axis=0) pprocess along column
+   > ndarray.method_name(axis=1) process along tow
+
+In this mission we learned:
+ 1) How vectorization makes our code faster.
+ 2) About n-dimensional arrays, and NumPy's ndarrays.
+ 3) How to select specific items, rows, columns, 1D slices, and 2D slices from ndarrays.
+ 4) How to apply simple calculations to entire ndarrays.
+ 5) How to use vectorized methods to perform calculations across either axis of ndarrays.
+
+
