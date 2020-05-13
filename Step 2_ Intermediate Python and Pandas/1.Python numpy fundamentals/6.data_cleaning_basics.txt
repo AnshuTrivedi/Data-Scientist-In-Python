@@ -1,0 +1,77 @@
+
+
+1. Reading CSV Files with Encodig
+   > UTF-8, which is a type of encoding. Computers, at their lowest levels, can only understand binary - 0 and 1- and 
+     encodings are systems for representing characters in binary.
+   > Something we can do if our file has an unknown encoding is to try the most common encodings:
+    1) UTF-8
+    2) Latin-1 (also known as ISO-8859-1)
+    3) Windows-1251
+   > The pandas.read_csv() function has an encoding argument we can use to specify an encoding:
+     df = pd.read_csv("filename.csv", encoding="some_encoding")
+
+2. Cleaning columns names
+   > every column is represented as the object type, indicating that they are represented by strings
+   > The column labels have a variety of upper and lowercase letters, as well as spaces and parentheses,
+     which will make them harder to work with and read.  
+   > We can access the column axis of a dataframe using the DataFrame.columns attribute
+     This returns an index object — a special type of NumPy ndarray — with the labels of each column
+   > Replacing spaces with underscores
+     Removing special characters.
+     Making all labels lowercase.
+     Shortening any long column names.
+  > Use the str.strip() method to remove whitespace from the start and end of the string.
+    Use the str.replace() method to remove special characters from the string.
+    Use the str.lower() method to make the string lowercase 
+
+
+3. Converting String columns to Numeric
+    > Whenever we convert text to numeric data, we can follow this data cleaning workflow
+      Explore data in column >> identify patterns and special cases >> remove non-digit characters >>convert column to numeric 
+      >>rename column if required
+    > The first step is to explore the data. One of the best ways to do this is to use the Series.unique() method
+      to view all of the unique values in the column
+    > Our next step is to identify patterns and special cases. We can observe the following:
+     All values in this column follow the same pattern - a series of digit and period characters, followed by a quote character (").
+    There are no special cases. Every value matches the same pattern.
+    We'll need to convert the column to a float dtype, as the int dtype won't be able to store the decimal values.
+
+4.  Removing Non-Digit Characters
+    >  Most vectorized string methods are available using the Series.str accessor, 
+      which means we can access them by adding str between the series name and the method name
+    > we can use the Series.str.replace() method, which is a vectorized version of the Python str.replace()
+     Series.str.replace('replacable','replaced_by')
+
+5. Converting Columns to numeric dtypes
+   >  we use the Series.astype() method to convert (or cast) the columns to a numeric dtype.
+   > we can use either int or float as the parameter for the method
+
+6.  Renaming Columns
+   > we can use the DataFrame.rename() method to rename the column
+     laptops.rename({"screen_size": "screen_size_inches"}, axis=1, inplace=True)
+
+7.  Correcting Bad Values
+   > The Series.map() method is ideal when we want to change multiple values in a column
+   > The most common way to use Series.map() is with a dictionary
+   >  One important thing to remember with Series.map() is that if a value from your series doesn't exist as a key in your dictionary,
+      it will convert that value to NaN.
+    eg-  corrections = { "pair": "pear","oranje": "orange","bananna": "banana"}
+         s = s.map(corrections)
+
+8. Dropping missing values
+   > DataFrame.isnull() method to identify missing values, which returns a boolean dataframe.
+     We can then use the DataFrame.sum() method to give us a count of the True values for each column
+   > There are a few options for handling missing values:
+     1) Remove any rows that have missing values.
+     2) Remove any columns that have missing values.
+     3) Fill the missing values with some other value.
+     4) Leave the missing values as is.
+   >  We can use the DataFrame.dropna() method to remove or drop rows and columns with null values
+   > The default value for the axis parameter is 0, so df.dropna() returns an identical result to df.dropna(axis=0)
+   
+
+9. Filling missing values
+   > While dropping rows or columns is the easiest approach to deal with missing values, it may not always be the best approach
+   > Because of this, it's a good idea to explore the missing values in the column before making a decision
+   > Series.value_counts(dropna=False) : Because we set the dropna parameter to False, the result includes null values
+
