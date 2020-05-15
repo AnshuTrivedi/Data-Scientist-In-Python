@@ -1,0 +1,37 @@
+
+
+1. Aesthetics
+   > In this mission, we'll start with a standard matplotlib plot and improve its appearance to better communicate the patterns 
+     we want a viewer to understand.
+
+2. Data-Ink Ratio
+   > Excess elements, sometimes known as chartjunk, increase as we add more plots for visualizing the other trends, 
+     making it harder for anyone trying to interpret our charts. In general, we want to maximize the data-ink ratio, 
+     which is the fractional amount of the plotting area dedicated to displaying the data.
+   > Non-data ink includes any elements in the chart that don't directly display data points. This includes tick markers, tick labels, and legends
+   > As we increase the data-ink ratio, we decrease non-data ink that can help a viewer understand certain aspects of the plots.
+     We need to be mindful of this trade-off as we work on tweaking the appearance of plots to tell a story, 
+     because plots we create could end up telling the wrong story.
+   > TO incrase data-ink ratio
+     - remove backgrounds
+     - remove redundant levels
+     - remove borders
+     - reduce colors
+     - lighten labels and lines or remove lines
+     - Tufte's first book, The Visual Display of Quantitative Information, is considered a bible among information designers. 
+
+3. Hiding tick marks
+   > To customize the appearance of the ticks, we use the Axes.tick_params() method. 
+     Using this method, we can modify which tick marks and tick labels are displayed. 
+     By default, matplotlib displays the tick marks on all four sides of the plot.
+   > To hide all of them, we need to pass in the following values for each parameter when we call Axes.tick_params():
+     bottom: "off"
+     top: "off"
+     left: "off"
+     right: "off"
+   
+4. Hiding Spines
+   > The following line of code removes the spines for the right axis:
+     ax.spines["right"].set_visible(False)
+  
+  
