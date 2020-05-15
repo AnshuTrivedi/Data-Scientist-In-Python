@@ -1,0 +1,54 @@
+
+
+1.Introduction to Seaborn
+  > We'll be working with the seaborn visualization library, which is built on top of matplotlib. 
+   Seaborn has good support for more complex plots, attractive default styles, and integrates well with the pandas library
+ 
+2. Creating histograms in seaborn
+   >  Like the pyplot module from matplotlib, seaborn creates a matplotlib figure or adds to the current, 
+      existing figure each time we generate a plot
+   > sns.distplot(df['col'])
+     plt.show()
+
+3. Generating a Kernel Density Plot
+  > While having both the histogram and the kernel density plot is useful when we want to explore the data
+    sns.kdeplot(df['col'],shade=True)
+  > To bring back some of the ability to easily compare proportions, we can shade the area under the line using a single color. 
+    When calling the seaborn.kdeplot() function,we can shade the area under the line by setting the shade parameter to True.
+
+4. Modifying the apperance of plots
+   > We can use the seaborn.set_style() function to change the default seaborn style sheet. Seaborn comes with a few style sheets:
+      darkgrid: Coordinate grid displayed, dark background color
+      whitegrid: Coordinate grid displayed, white background color
+      dark: Coordinate grid hidden, dark background color
+      white: Coordinate grid hidden, white background color
+      ticks: Coordinate grid hidden, white background color, ticks visible
+   > To remove the axis spines for the top and right axes, we use the seaborn.despine() function
+   > By default, only the top and right axes will be despined, or have their spines removed
+      sns.set_style()
+
+5. Conditional Distributions Using A single Condition
+   >  small multiple, which is a group of plots that have the same axis scales so the viewer can compare plots effectively
+   > We accomplished this by subsetting the data manually and generating a plot using matplotlib for each one.
+     In seaborn, we can create a small multiple by specifying the conditioning criteria and the type of data visualization we want. 
+   >  # Condition on unique values of the "Survived" column.
+      g = sns.FacetGrid(titanic, col="Survived", size=6)
+      # For each subset of values, generate a kernel density plot of the "Age" columns.
+      g.map(sns.kdeplot, "Age", shade=True)
+   > The seaborn.FacetGrid object is used to represent the layout of the plots in the grid and the columns used for subsetting the data.
+    The word "facet" from FacetGrid is another word for "subset". Setting the col parameter to "Survived" specifies a 
+    separate plot for each unique value in the Survived column. Setting the size parameter to 6 specifies a 
+     height of 6 inches for each plot.
+
+6. Creating Conditional plot using two conditions
+   > When creating a FacetGrid, we use the row parameter to specify the column in the
+     dataframe we want used to subset across the rows in the grid. 
+   g = sns.FacetGrid(titanic, col="Survived", row="Pclass")
+
+7. Creating conditional plot using three conditions
+   > When subsetting data using two conditions, the rows in the grid represented one condition while the columns represented another.
+   > We can express a third condition by generating multiple plots on the same subplot in the grid and color them differently. 
+    Thankfully, we can add a condition just by setting the hue parameter to the column name from the dataframe.
+    
+8. Adding legend
+   > sns.add_legend()
