@@ -1,0 +1,44 @@
+
+
+1. Introduction
+  > In this mission, we'll focus more directly on customizing colors, line widths, layout, and annotations 
+    to improve the ability for a viewer to extract insights from the charts.
+  
+2. Color
+   > When selecting colors, we need to be mindful of people who have some amount of color blindness. 
+     People who have color blindness have a decreased ability to distinguish between certain kinds of colors
+   > The Ishihara test is a well known test for color blindness, where the person is asked to identify the number in the image
+   
+
+3. Setting Line Color Using RGB
+   > To specify a line color using RGB values, we pass in a tuple of the values to the c parameter when we generate the line chart.
+     Matplotlib expects each value to be scaled down and to range between 0 and 1 (not 0 and 255). 
+   > cb_dark_blue = (0/255,107/255,164/255)
+     ax.plot(women_degrees['Year'], women_degrees['Biology'], label='Women', c=cb_dark_blue)
+   
+4. Setting Line width
+   > By default, the actual lines reflecting the underlying data in the line charts we've been generating are quite thin. 
+     The white color in the blank area in the line charts is still a dominating color. 
+     To emphasize the lines in the plots, we can increase the width of each line. 
+     Increasing the line width also improves the data-ink ratio a little bit, because more of the chart area is used to showcase the data.
+   > When we call the Axes.plot() method, we can use the linewidth parameter to specify the line width. 
+     Matplotlib expects a float value for this parameter
+
+5. Improve layout and ordering
+   > To make the viewing experience more coherent, we can:
+     - use layout of a single row with multiple columns
+      - order the plots in decreasing order of gender gap in stem
+
+6. Replacing legend with Annotations
+   > The purpose of a legend is to ascribe meaning to symbols or colors in a chart
+   
+
+7. Annotating in Matplotlibb
+   > To add text annotations to a matplotlib plot, we use the Axes.text() method. This method has a few required parameters:
+     x: x-axis coordinate (as a float)
+     y: y-axis coordinate (as a float)
+     s: the text we want in the annotation (as a string value)
+  > The values in the coordinate grid match exactly with the data ranges for the x-axis and the y-axis. 
+
+
+
