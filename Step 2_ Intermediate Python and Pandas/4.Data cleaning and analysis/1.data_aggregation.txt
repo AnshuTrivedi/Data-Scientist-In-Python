@@ -1,0 +1,82 @@
+
+1. Introduction
+   
+
+2. Using loops to aggregate data
+   > we'll learn how to perform different kinds of aggregations, applying a statistical operation to groups of our data, and create visualizations
+   > Split the dataframe into groups.
+     Apply a function to each group.
+     Combine the results into one data structure.
+
+3. Group By Operations
+   > The groupby operation performs the "split-apply-combine" process on a dataframe, but condenses it into two steps:
+     Create a GroupBy object.
+     Call a function on the GroupBy object.
+   > The GroupBy object, distinct from a dataframe or series object, allows us to split the dataframe into groups, but only in an abstract sense.
+     Nothing is actually computed until a function is called on the GroupBy object.
+   > To create a GroupBy object, we use the DataFrame.groupby() method
+
+4. Creating GroupBy Objects
+   >  GroupBy.get_group() method to select data for a certain group.
+      eg-  grouped = happiness2015.groupby('Region')
+           grouped.get_group('North America')
+
+5. Exploring GroupBy Objects
+   > We can also use the GroupBy.groups attribute to get more information about the GroupBy object:
+     eg- grouped.groups
+
+6. Common aggregation methods with Groupby
+   > computing the number of rows for each of the groups.
+     We can use the GroupBy.size() method to confirm the size of each group
+   > Methods	Description
+    mean()	Calculates the mean of groups.
+   sum()	Calculates the sum of group values.
+   size()	Calculates the size of the groups.
+   count()	Calculates the count of values in groups.
+   min()	Calculates the minimum of group values.
+   max()	Calculates the maximum of group values.
+
+7.  Aggregating specific columns with groupby
+    > GroupBy objects actually support column indexing, just like dataframes.
+      You can select specific columns for a GroupBy object the same way you would for a dataframe
+    > groupby[column name].aggregate_function()
+
+8.  Introduction to the Agg() method
+    >  the GroupBy.agg() method can perform multiple aggregations at once. We can use the following syntax:
+       Agg_Syntax: groupby.agg([function1,function2,function3])
+
+    
+9. Computing Multiple and Custom Aggregations with the Agg() Method
+   > we can use the GroupBy.agg() method to:
+     - Perform more than one aggregation at once.
+       import numpy as np
+       grouped = happiness2015.groupby('Region')
+       happy_grouped = grouped['Happiness Score']
+       happy_mean_max = happy_grouped.agg([np.mean, np.max])
+
+     - Compute custom aggregations.
+        def dif(group):
+        return(group.max() - group.mean())
+       happy_grouped.agg(dif)
+   >  happiness2015.groupby('Region')['Happiness Score'].agg(dif)
+
+10.  Aggregation with Pivot Tables
+    > Region column are the index of the resulting series and the Happiness Score column contained the values that would be aggregated:
+    > Index and values are actually arguments used in another method used to aggregate data - the DataFrame.pivot_table() method.
+    > df.pivot_table() method can perform the same kinds of aggregations as the df.
+      groupby method and make the code for complex aggregations easier to read.     
+   >  df.pivot_table() method to perform the same aggregation as above.
+      happiness2015.pivot_table(values='Happiness Score', index='Region', aggfunc=np.mean)
+    > Keep in mind that this method returns a dataframe, so normal dataframe filtering and methods can be applied to the result
+       pv_happiness = happiness2015.pivot_table('Happiness Score', 'Region')
+       pv_happiness.plot(kind='barh', title='Mean Happiness Scores by Region', xlim=(0,10), legend=False)
+
+11.  Aggregating Multiple Columns and Functions with Pivot Tables
+    > The pivot_table method also allows us to aggregate multiple columns and apply multiple functions at once.
+    > Below, we aggregate both the 'Happiness Score' and 'Family' columns in happiness2015 and group by the 'Region' column:
+      Below, we aggregate both the 'Happiness Score' and 'Family' columns in happiness2015 and group by the 'Region' column:
+       happiness2015.pivot_table(['Happiness Score', 'Family'], 'Region')
+    > To apply multiple functions, we can pass a list of the functions into the aggfunc parameter:
+      happiness2015.pivot_table('Happiness Score', 'Region', aggfunc=[np.mean, np.min , np.max], margins=True)
+    
+In this mission, we learned how to use the groupby operation and the df.pivot_table() method for aggregation.
