@@ -1,0 +1,85 @@
+
+
+1. Introduction
+   > Often, you'll find that you need additional data to perform analysis or you'll find that you have the data, 
+     but need to pull it from mulitiple sources. In this mission, we'll learn a couple of different techniques for
+     combining data using pandas to easily handle situations like these.
+
+2. Combining Dataframes with the Concat Function
+   > The concat() function combines dataframes one of two ways:
+     - Stacked: Axis = 0 (This is the default option.) 
+     - Side by Side: Axis = 1
+   > pass dataframes you want to combine as list in function
+      pd.concat([df1,df2])
+
+3. Combining Dataframes with the Concat Function Continued
+   > what happens if the dataframes have different shapes or columns?
+   > analogy of "gluing" dataframes together doesn't fully describe what happens when concatenating dataframes of different shapes.
+     Instead, the function combined the data according to the corresponding column names
+  
+
+4.  Combining Dataframes with Different Shapes Using the Concat Function
+   >  indexes of the original dataframes didn't change. If the indexes aren't meaningful, it can be better to reset them.
+       This is especially true when we create duplicate indexes, because they could cause errors as we perform other data cleaning tasks
+   > concat function has a parameter, ignore_index, that can be used to clear the existing index and reset it in the result
+      pd.concat([df1,df2],ignore_index=True)
+
+5. Joining Dataframes with the Merge Function
+   >  pd.merge() function - a function that can execute high performance database-style joins.
+   >  Note that unlike the concat function, the merge function only combines dataframes horizontally (axis=1) and 
+      can only combine two dataframes at a time   
+   > However, it can be valuable when we need to combine very large dataframes quickly and provides more flexibility in terms
+     of how data can be combined
+   > With the merge() function, we'll combine dataframes on a key, a shared index or column. When choosing a key, 
+    it's good practice to use keys with unique values to avoid duplicating data.
+   > pd.merge(left=df1,right=df2,on='column name')
+
+6. Joining on Columns with the Merge Function
+   > Above way of combining, or joining, data is called an inner join. An inner join returns only the intersection of the keys, 
+    or the elements that appear in both dataframes with a common key.
+   > There are actually four different types of joins:
+     1) Inner: only includes elements that appear in both dataframes with a common key
+     2) Outer: includes all data from both dataframes
+     3) Left: includes all of the rows from the "left" dataframe along with any rows from the "right" dataframe with a common key; 
+              the result retains all columns from both of the original dataframes
+     4) Right: includes all of the rows from the "right" dataframe along with any rows from the "left" dataframe with a common key; 
+               the result retains all columns from both of the original dataframes
+    > pd.merge(left=df1,right=df2,on='col_name',how='left')
+
+7. Left Joins with the Merge Function
+   > Changing the join type from an inner join to a left join resulted in a dataframe with more rows and created NaNs.
+     When using a left join, interchanging the dataframes assigned to the left and right parameters changes the results. 
+   > merge function added a suffix of either _x or _y to columns of the same name to distinguish between them
+   > Set the suffixes parameter to ('_2015', '_2016') in merge() to set suffixes in columns names
+
+     merged_updated_suffixes=pd.merge(left=three_2016,right=three_2015,how='left',on='Country',suffixes=('_2016','_2015'))
+
+8. Join on Index with the Merge Function
+   > To join on the index, we'll set the left_index and right_index parameters to True
+   > When we join on index, however, our result will contain only common indexes.
+     pd.merge(left=four_2015, right=three_2016, left_index=True, right_index=True, suffixes=('_2015','_2016'))
+    merge_index_left = pd.merge(left=four_2015, right=three_2016, how='left', left_index=True, right_index=True, suffixes=('_2015','_2016'))
+
+9. Comapre concat() and merge()
+   Let's summarize what we learned in this mission:
+
+                                                                     pd.concat()	                pd.merge()
+   Default Join Type	                                                Outer	                         Inner
+Can Combine More Than Two Dataframes at a Time?	                         Yes	                          No
+
+Can Combine Dataframes Vertically
+(axis=0) or Horizontally (axis=1)?                                       Both	                        Horizontally
+
+Syntax               	                                         Concat (Vertically)                    Merge (Join on Columns)
+                                                                 concat([df1,df2,df3])             merge(left = df1, right = df2, how = 'join_type', on = 'Col')
+
+                                                                 Concat (Horizontally)``                Merge (Join on Index)
+
+                                                             concat([df1,df2,df3], axis = 1)    merge(left = df1, right = df2, how = 'join_type', left_index = True, right_index = True)
+
+
+
+
+
+
+
