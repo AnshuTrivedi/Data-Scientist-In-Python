@@ -1,0 +1,78 @@
+
+
+1. Introduction
+   > In this mission, we'll learn a couple other string cleaning tasks such as:
+     Finding specific strings or substrings in columns
+     Extracting substrings from unstructured data
+     Removing strings or substrings from a series
+  
+2. Using Apply to transform strings
+   > series.appy(string_function)
+
+3. Vectorized string methods overview
+   > use  Series.str.split() method, the vectorized equivalent of Python's string.split() method
+   > pandas has built in a number of vectorized methods that perform the same operations for strings in series as Python string methods
+   > 
+      Below are some common vectorized string methods, but you can find the full list here:
+      Method	                       Description
+   Series.str.split()	Splits each element in the Series.
+   Series.str.strip()	Strips whitespace from each string in the Series.
+   Series.str.lower()	Converts strings in the Series to lowercase.
+  Series.str.upper()	Converts strings in the Series to uppercase.
+  Series.str.get()	Retrieves the ith element of each element in the Series.
+  Series.str.replace()	Replaces a regex or string in the Series with another string.
+  Series.str.cat()	Concatenates strings in a Series.
+  Series.str.extract()	Extracts substrings from the Series matching a regex pattern.
+  > We access these vectorized string methods by adding a str between the Series name and method name:
+     series.str.method_name
+  > vectorized string methods can be chained
+    merged['CurrencyUnit'].str.upper().str.split()
+ 
+4. Exploring Missing Values with Vectorized String Methods
+   > We learned that using vectorized string methods results in:
+      Better performance
+      Code that is easier to read and write
+       third benefit of using vectorized string methods - they exclude missing values:
+   > use the Series.isnull() method to confirm if there are any missing values in the column
+       merged['CurrencyUnit'].isnull().sum()
+   > we can check the number of missing values in the result by setting the dropna parameter in the Series.value_counts() method to False
+       engths_apply.value_counts(dropna=False)
+  
+5. Finding Specific Words in Strings
+   > Suppose we needed to parse the elements of a Series to find a string or substring that 
+     doesn't appear in the same position in each string We can handle problems like this with regular expressions, or regex for short
+   > In pandas, regular expression is integrated with vectorized string methods to make finding and extracting
+     patterns of characters easier. 
+   > Use the Series.str.contains() method to search for pattern 
+   
+6. Finding Specific words in strings Continued
+   >  we used the Series.str.contains() method to see if a specific phrase appeared in a series.
+      The result was a series containing True, False, and missing values:
+   > we should be able to use boolean indexing to return only the rows that contain pattern but it throws error if NAN value occurs
+   >  One way we could fix this is to change the NaN values to False 
+      merged['SpecialNotes'].str.contains(pattern,na=False)
+
+7. Extracting Substrings from a Series
+   > series.str.extract(pattern)
+   > When we used the Series.str.extract() method, we enclosed our regular expression in parentheses.
+     The parentheses indicate that only the character pattern matched should be extracted and returned in a series.
+     We call this a capturing group.
+
+   
+8. Extracting Substrings from a Series Continued
+   > If the capturing group doesn't exist in a row (or there is no match) the value in that row is set to NaN instead.
+   > We can also return the results as a dataframe by changing the expand parameter to True.
+      merged['SpecialNotes'].str.extract(pattern,expand=True)
+
+9.  Extracting All Matches of a Pattern from a Series
+   > Series.str.extract() method will only extract the first match of the pattern. 
+   > If we wanted to extract all of the matches, we can use the Series.str.extractall() method.
+   > df.set_index() method to set the any column as the index
+   > we'll use a named capturing group. Using a named capturing group means that we can refer to the group by the specified 
+     name instead of just a number. We can use the following syntax to add a name: (?P<Column_Name>...).
+       pattern = r"(?P<Years>[1-2][0-9]{3})"
+
+10.  Extracting More Than One Group of Patterns from a Series
+    > pattern = r"(?P<First_Year>[1-2][0-9]{3})/?(?P<Second_Year>[0-9]{2})?"
+ 
+   
