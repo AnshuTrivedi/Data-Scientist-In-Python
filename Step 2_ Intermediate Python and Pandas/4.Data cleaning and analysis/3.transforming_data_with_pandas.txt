@@ -1,0 +1,54 @@
+
+
+1. Introduction
+  > We'll explore the following functions and methods to perform this task:
+    Series.map()
+    Series.apply()
+    DataFrame.applymap()
+    DataFrame.apply()
+    pd.melt()
+
+2. Apply a Function Element-wise Using the Map and Apply Methods
+  >  tranformation we need to perform is so specific to our data that one doesn't exist. 
+    pandas has a couple methods that can be used to apply a custom function to our data, starting with the following two methods:
+      Series.map(function_name) method
+      Series.apply(function_name) method
+   > Both methods above apply a function element-wise to a column. When we say element-wise, 
+     we mean that we pass the function one value in the series at a time and it performs some kind of transformation.
+   > 
+
+3. Apply a Function Element-wise Using the Map and Apply Methods Continued
+   > we can only use the Series.apply() method to apply a function with additional arguments element-wise - 
+     the Series.map() method will return an error.
+     df.apply(function,argument=anything)
+
+4. Apply a Function Element-wise to Multiple Columns Using Applymap Method
+   > pandas already has a method that can apply functions element-wise to multiple columns at once - the 
+      DataFrame.applymap() method
+    factors = ['Economy', 'Family', 'Health', 'Freedom', 'Trust', 'Generosity']
+    factors_impact=happiness2015[factors].applymap(label)
+
+5. Apply Functions along an Axis using the Apply Method
+   > 
+     Method            Series or Dataframe Method	Applies Functions Element-wise?
+      Map	               Series                   	Yes
+     Apply	               Series	                        Yes
+    Applymap	               Dataframe	                Yes
+  > You can also use the apply() method on a dataframe, but the DataFrame.apply() method has different capabilities
+  >  Instead of applying functions element-wise, the df.apply() method applies functions along an axis, either column-wise or row-wise.
+  
+
+6. Apply Functions along an Axis using the Apply Method Continued
+  > In general, we should only use the apply() method when a vectorized function does not exist.
+  > When we use the apply() method, we're actually looping through rows, 
+    so a vectorized method can perform an equivalent task faster than the apply() method.
+  
+
+7. Reshaping Data with the Melt Function
+   > pd.melt(df,id_vars=[col1,col2],value_vars=[col1,col2,col3,col4..])
+     id_vars=[col1,col2] name of columns that should remain same in result
+     value_vars=[col1,col2] name of columns that should be changed to rows in result
+
+   > pandas has a method to "un-melt" the data, or transform rows into columns. 
+     This method is called the df.pivot() method, not to be confused with the df.pivot_table() method used to aggregate data.
+
