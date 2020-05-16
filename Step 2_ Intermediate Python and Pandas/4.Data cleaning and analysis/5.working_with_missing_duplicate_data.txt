@@ -1,0 +1,91 @@
+
+
+1. Introduction
+   > Missing or duplicate data may exist in a data set for a number of different reasons. Sometimes, missing or duplicate data is introduced as we perform cleaning and transformation tasks such as:
+     - Combining data
+     - Reindexing data
+     - Reshaping data
+  > Other times, it exists in the original data set for reasons such as:
+     - User input error
+     - Data storage or conversion issues
+
+2. Identifying missing values
+   > In pandas, missing values are generally represented by the NaN value, as seen in the dataframe above, or the None value.
+   > df.isnull().sum() , gives summary of all missing values in each column
+
+3. Correcting Data Cleaning Errors that Result in Missing Values
+   > we'll use the following workflow to clean our missing values, starting with checking for errors:
+    - Check for errors in data cleaning/transformation.
+    - Use data from additional sources to fill missing values.
+    - Drop row/column.
+    - Fill missing values with reasonable estimates computed from the available data.
+  > Dataframe columns having mintue differences in same column name in separate dataframe introduce null values on combining
+    Trust (Government Corruption)  , Trust..Government.Corruption. : these are columns name in different dataframe 
+     when two combined it introduces null values
+
+4.  Visualizing missing data
+   > we corrected some of the missing values by fixing the column names. Note that we could have cleaned the column names 
+     without changing the capitalization. It's good practice, however, to make the capitalization uniform, 
+     because a stray uppercase or lowercase letter could've reintroduced missing values.
+   > We can learn more about where these missing values are located by visualizing them with a heatmap, 
+     a graphical representation of our data in which values are represented as colors.
+     We'll use the seaborn library to create the heatmap.
+   
+5. Using Data From Additional Sources to Fill in Missing Values
+  > Combined data frames to fill values then drop extra column
+
+6. Identifying Duplicate Values
+   > DataFrame.duplicated() method to check for duplicate values. 
+     If no parameters are specified, the method will check for any rows in which all columns have the same values.
+   > However, one thing to keep in mind is that the df.duplicated() method will only look for exact matches, 
+     so if the capitalization for country names isn't exactly the same, they won't be identified as duplicates.
+
+7.  Correcting Duplicates Values
+   > df.drop_duplicates() method will define duplicates as rows in which all columns have the same values.
+   > It's also important to note that by default, the drop_duplicates() method will only keep the first duplicate row. 
+    To keep the last duplicate row, set the keep parameter to 'last'
+
+8. Handle missing Values by Dropping Columns
+   > When deciding if you should drop a row or column, carefully consider whether you'll lose information that could alter your analysis.
+     Instead of just saying, "If x percentage of the data is missing, we'll drop it.", it's better to also ask the following questions:
+      Is the missing data needed to accomplish our end goal?
+      How will removing or replacing the missing values affect our analysis?
+    > Use the df.drop() method to drop the columns
+
+9. Handle Missinng Values by Dropping Columns Continued
+   > However, as you start working with bigger datasets, it can sometimes be tedious to create a long list of column names to drop. 
+     Instead we can use the DataFrame.dropna() method to complete the same task.
+   > By default, the dropna() method will drop rows with any missing values. To drop columns, we can set the axis parameter equal to 1
+   > However, this would result in dropping columns with any missing values - we only want to drop certain columns.
+     Instead, we can also use the thresh parameter to only drop columns if they contain below a certain number of non-null values.
+   >  To confirm the number of values that are NOT missing, we can use the DataFrame.notnull()method
+      then decide thres
+   
+10. Analyzing Missing Data
+   > To make a decision about how to handle the rest of the missing data, we'll analyze if it's better to just drop the 
+    rows or replace the missing values with other values.
+   > extending in more deatail How will removing or replacing the missing values affect our analysis? 
+     What percentage of the data is missing?
+     Will dropping missing values cause us to lose valuable information in other columns?
+     Can we identify any patterns in the missing data? 
+   
+11. Handling Missing Values with Imputation
+    > handling the missing values by replacing them with estimated values, also called imputation.
+    > There are many options for choosing the replacement value, including:
+      constant value
+      The mean of the column
+      The median of the column
+      The mode of the column
+    > we'll use the Series.fillna() method to replace the missing values ,
+       we must pass the replacement value into the Series.fillna() method.
+
+We also started to set a more defined data cleaning workflow, in which we:
+
+ Set a goal for the project.
+ Researched and tried to understand the data.
+ Determined what data was needed to complete our analysis.
+ Added columns.
+ Cleaned specific data types.
+ Combined data sets.
+ Removed duplicate values.
+ Handled the missing values.
