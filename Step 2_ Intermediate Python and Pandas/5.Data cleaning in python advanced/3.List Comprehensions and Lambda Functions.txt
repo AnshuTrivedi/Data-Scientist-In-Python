@@ -1,0 +1,99 @@
+
+
+1. The JSON Format
+  > In this mission we will learn
+   - Creating list comprehensions to replace loops with a single line of code.
+   - Creating single use functions called lambda functions.
+  > From a Python perspective, JSON can be thought as a collection of Python objects nested inside each other
+  > The Python json module contains a number of functions to make working with JSON objects easier. 
+    We can use the json.loads() method to convert JSON data contained in a string to the equivalent set of Python objects
+
+2. Reading JSON file
+  > One of the places where the JSON format is commonly used is in the results returned by an Application programming interface (API)
+  > The json.loads() function is used for loading JSON data from a string ("loads" is short for "load string"), 
+    whereas the json.load() function is used to load from a file object
+  
+3. Deleting Dictionary keys
+  > json.dumps() function ("dump string") which does the opposite of the json.loads() function
+  >  text = json.dumps(obj, sort_keys=True, indent=4)
+     create function and pass dictionary and key as arg , using del keyword delete keys
+
+4. Writing List Comprehensions
+  > A list comprehension provides a concise way of creating lists in a single line of code.
+   eg - plus_one = []
+        for i in ints:
+            plus_one.append(i + 1) , i+1 is code which transforms data , plus_one is target variable and for statement
+
+  > To transform this structure into a list comprehension, we do the following within brackets:
+    Start with the code that transforms each item.
+    Continue with our for statement (without a colon).
+    plus_one=[i+1 for i in ints]
+
+5. Using List Comprehensions to Transform and Create Lists
+   > List comprehensions can be used for many different things. Three common applications are:
+    - Transforming a list
+    - Creating a new list
+    - Reducing a list
+   >  You are taking an existing list, applying a transformation to every value, and assigning it to a variable.
+   > The second application, creating a new list, is useful for creating test data or data that is based on a set of numbers.
+    -  create a list of generic columns names that we could use to create a dataframe using the range() function and the str.format()
+      method to combine numbers and text:
+    - cols = ["col_{}".format(i) for i in range(1,5)]
+      data = np.zeros((4,4))
+     df = pd.DataFrame(data, columns=cols)
+    
+6. Using List Comprehensions to Reduce a list
+   > The last common application of list comprehensions is reducing a list.
+     for i in ints:
+         if i>=50:
+           emp_list.append(i)
+
+   -  emp_list=[i for i in ints if i>=50]
+
+7. Passing Functions as Arguments
+   > The key argument specifies a one-argument ordering function like that used for list.sort().
+   > key specifies a function of one argument that is used to extract a comparison key from each list element. 
+     The key corresponding to each item in the list is calculated once and then used for the entire sorting process.
+   > def get_age(json_dict):
+     return json_dict['age']
+     youngest = min(json_obj, key=get_age)
+     jprint(youngest)
+
+8. Lambda Functions
+   > Lambda functions can be defined in a single line, which allows you to define a function you want to pass
+     as an argument at the time you need it.
+   > To create a lambda function equivalent of this function, we:
+      Use the lambda keyword, followed by
+      The parameter and a colon, and then
+      The transformation we wish to perform on our argument
+   >  def plus_one(x):
+          return x+1
+   >  plus_one=lambda x:x+1 (function name as variable,parameter x, transformation x+1)
+
+9. Using Lambda Functions to Analyze JSON data
+   > The primary use of lambda functions is to define a function in place, like when we are providing a function as an argument.
+   > eg- min(json_obj,key=lambda d:d['age']) where json_obj is list of dictionary and 'age' is item of dictionary to be sorted
+        - each item(dictionary) in json list is passed to lambda function which returns value to be used by json list
+        - values returned by function are used to find minimum by list function
+
+10. Reading JSON files into pandas
+   > One other option available to us is to convert the JSON to a pandas dataframe and then use pandas methods to manipulate it.
+   > Pandas has the pandas.read_json() function, which is designed to read JSON from either a file or a JSON string. 
+   > Each of the dictionaries will become a row in the dataframe, with each key corresponding to a column name on passing list 
+    of dictionary to pandas.read_json() function
+ 
+
+11. Explorinig tags Using Apply Function
+    > we could use the Series.apply() method to apply a function to every item in a series.
+      - tag=df['col'].apply(type),it returns type of series items
+        type_counts=tag.value_counts(dropna=False)
+
+12. Extracting tags using apply with a lambda function
+   > tags.apply(lambda l: l[-1] if len(l) == 4 else None)
+
+   Let's quickly recap the techniques we learned:
+     How to read and work with JSON data.
+     How to use list comprehensions to extract specific values from JSON objects
+     Some of the theory behind passing functions as arguments.
+     How to create single-use lambda functions.
+     How to use lambda functions in pandas to extract tags from Hacker News stories.
