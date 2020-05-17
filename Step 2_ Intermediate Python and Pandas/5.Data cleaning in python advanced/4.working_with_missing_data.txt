@@ -1,0 +1,40 @@
+
+
+1. Introduction
+   > In this mission, we'll learn how to handle missing data without having to drop rows and columns 
+   > df.isnull().sum() : to count missing values in dataframe in each column
+   
+
+2. Verifying the Total Columns
+   > calculate the percentage of null values in each column : df.isnull().sum()/df.shape[0]*100
+   > add both the counts and percentages to a dataframe to make them easier to compare: pd.DataFrame({'col1':null_values,'col2':percent)
+   >  Rotate the dataframe so that rows become columns and vice-versa :null_df = null_df.T.astype(int)
+   > add columns related to analysis values and comapare with total
+
+3. Filling and verifying the killed and injured Data
+  > Series.mask() is useful when you want to replace certain values in a series based off a boolean mask.
+    Series.mask(bool_mask, val_to_replace) 
+  
+4. Assigning the Corrected Data Back
+
+5. Visualizing missing Data with Plots
+  > The function uses seaborn.heatmap() to represent null values as light squares and non-null values as dark squares
+  > plot_null_matrix(mvc.head(1), figsize=(18,1)) 
+  > Correlations of missing values accross columns
+    cols_with_missing_vals = df.columns[df.isnull().sum() > 0]
+    missing_corr = df[cols_with_missing_vals].isnull().corr()
+  >  A number close to  or  represents a strong relationship, where a number in the middle (close to ) represents a weak relationship.
+  > plot_null_correlations(), which will plot correlations between null values in a dataframe.
+
+6.Analysing correlation in missing data
+  
+
+7. Finding the Most Common Values Across multiple columns
+  > we want to find the most common values across multiple columns. In order to do this, we first need to convert our dataframe of 
+   multiple columns into one single column, and then we can use Series.value_counts() to count the items.
+ > To convert a dataframe to a single column of values, we use the DataFrame.stack() method, which stacks 
+   a dataframe object into a Series object.
+ 
+8. Filling Unknown Values with a Placeholder
+   > We can use Series.mask() to replace the values
+   
