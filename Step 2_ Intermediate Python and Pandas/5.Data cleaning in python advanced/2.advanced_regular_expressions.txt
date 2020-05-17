@@ -1,0 +1,53 @@
+
+
+1. Introduction
+   > regular expressions provide powerful ways to describe patterns in text that can help us clean and extract data
+   > The ignorecase flag is particularly useful when we have many different capitalizations for a word or phrase. 
+     eg- sql, SQL, Sql
+     pattern = r"[Ss][Qq][Ll]" or
+     pattern=r'sql'
+     series.str.contains(pattern, flags=re.I).sum()
+
+2. Capture Groups
+  > We define a capture group by wrapping the part of our pattern we want to capture in parentheses. 
+   If we want to capture the whole pattern, we just wrap the whole pattern in a pair of parentheses:
+  > To extract mentions from series, we need to do two things:
+     Use the Series.str.extract() method.
+     Use a regex capture group.
+  
+3. Using Capture groups to extract data
+   >  Capture groups can also be useful to extract specific data from within our expression.
+   > [pP]ython [\d\.]+  pattern to capture python group such as python2.7 ,python 3.5.0 etc
+   > We can use capture groups to extract the version of Python that is mentioned most often in our dataset by wrapping parentheses 
+     around the part of our regular expression which captures the version number.
+   > pattern=r"[pP]ython ([\d\.]+)"
+
+4. Counting Mentions of the 'c' Language
+   > pattern1 = r"\b[Cc]\b it includes c++ ,C.r such words also
+     pattern2= r"\b[Cc]\b[^\.\+] it includes only 'C' 
+
+5. Using Lookarounds to Control Matches Based on Surrounding Text
+   >  Lookaround                      pattern            Explanation
+    1) Positive lookahead             zzz[?=abc]       matches zzz only when it is followed by abc
+    2) Negative lookahead             zzz[?!abc]       matches zzz only when it is not followed by abc
+    3) Positive lookbehind            [?<=abc]zzz      matches zzz only when it is preceded by abc 
+    4) Negative lookbehind            [?<!abc]zzz      matches zzz only when it is not preceded by abc
+  > Inside the parentheses, the first character of a lookaround is always ?
+  > If the lookaround is a lookbehind, the next character will be <, which you can think of as an arrow head pointing behind the match.
+  > The next character indicates whether the lookaround is positive (=) or negative (!).
+  > The contents of a lookaround can include any other regular expression component
+    r"Green(?=.{5})" we match only cases that are followed by exactly five characters:
+
+6. BackReferences: Using Capture Groups in a RegEx Pattern
+   >  we need a way to specify a capture group and then to repeat it to capture 'rr' kind of patterns where char repeates
+   > (good)\1 : it will search for 'goodgood' pattern 
+    eg- (a)(b)\1\2: look for abab pattern
+
+7.  Substituting Regular Expression Matches
+   > we used the str.replace() method to replace simple substrings. We can achieve the same with regular expressions using the 
+    re.sub() function.The basic syntax for re.sub() is:  re.sub(pattern, repl, string, flags=0)
+    eg: re.sub(r"[A-Z]", "-", string) where string= "aBcDEfGHIj" results in a-c--f---j , it replaces all capital chars
+  > When working in pandas, we can use the Series.str.replace() method, which uses nearly identical syntax:
+    Series.str.replace(pat, repl, flags=0)
+  
+8.    
