@@ -1,0 +1,86 @@
+
+
+1.Introduction
+  > complex operations with string data can be written a lot quicker, which will save you time.
+    Regular expressions are often faster to execute than their manual equivalents.
+    Regular expressions are supported in almost every modern programming language, as well as other places like command line utilities 
+    and databases.Understanding regular expressions gives you a powerful tool that you can use wherever you work with data.
+
+2. The regular Expression Module
+   > When working with regular expressions, we use the term pattern to describe a regular expression that we've written. 
+    If the pattern is found within the string we're searching, we say that it has matched.
+   > We previously used regular expressions with pandas, but Python also has a built-in module for regular expressions: The re module. 
+    This module contains a number of different functions and classes for working with regular expressions.
+   > One of the most useful functions from the re module is the re.search() function, which takes two required arguments:
+      The regex pattern
+      The string we want to search that pattern for  : re.search(pattern,string)
+   >  The power of regular expressions comes when we use one of the special character sequences.
+   > A set allows us to specify two or more characters that can match in a single character's position.
+      [bsl]end : it matches bend,send,lend
+ 
+
+3. counting Matches with pandas methods
+   > We've learned that we should avoid using loops in pandas, and that vectorized methods are often faster and require less code
+   >  Series.str.contains(pattern) method can be used to test whether a Series of strings match a particular regex pattern.
+      It returns boolean mask,you can use the Series.sum() method to sum all the values in the boolean mask, with each True value counting as 1,
+      and each False as 0.
+    > series.str.contains(pattern).sum() 
+   
+
+4. Using Regular Expressions to select Data
+   > series[series.str.contains(pattern)]
+
+5. Quantifiers
+   > we could use braces ({}) to specify that a character repeats in our regular expression.
+    [1-2][0-9]{3} : matches the numbers in text from 1000 to 2999
+    The name for this type of regular expression syntax is called a quantifier
+   > Quantifiers specify how many of the previous character our pattern requires, which can help us 
+     when we want to match substrings of specific lengths
+   > In addition to numeric quantifiers, there are single characters in regex that specify some common quantifiers that you're likely to use
+ 
+    Quantifier          pattern     Equivalent            Explanation
+   
+    zero or more         a*           a{0,}                the character 'a' 0 or more times
+    one or more          a+           a{1,}                the character 'a' 1 or more times
+    optional             a?           a{0,1}               the character 'a' 0 or 1 times
+
+
+6. Character Classes
+   > To match unknown characters using regular expressions, we use character classes.
+    Character classes allow us to match certain groups of characters.
+   > Ranges can be used for letters as well as numbers.
+     Sets and ranges can be combined in characater classes
+   > We can use a backslash to escape characters that have special meaning in regular expressions (e.g. \ will match an open bracket character).
+     Character classes let us match certain groups of characters (e.g. \w will match any word character).
+     Character classes can be combined with quantifiers when we want to match different numbers of characters.
+
+7. Accessing the Matching Text with Capture Groups
+   >  The character sequence \b has a special meaning in regular expressions,so we need a way to write these characters 
+      without triggering the escape sequence.One way is to add an extra backslash before the "b"
+   > This can make regular expressions even more difficult to read and interpret, so instead we use raw strings, 
+     which we denote by prefixing our string with the r character
+   > Capture groups allow us to specify one or more groups within our match that we can access separately.
+   > We use the Series.str.extract() method to extract the match within our parentheses
+     
+
+8. Negative character classes
+   > Negative character classes are character classes that match every character except a character class.
+   
+
+9. Word Boundaries
+  > A word boundary matches the position between a word character and a non-word character, or a word character and the start/end of a string.
+  > specified using the syntax \b
+   
+
+10. Matching at the Start and End of Strings
+   > Note that the ^ character is used both as a beginning anchor and to indicate a negative set, 
+    depending on whether the character preceding it is a [ or not.
+   > More generally in regular expressions, an anchor matches something that isn't a character,
+     as opposed to character classes which match specific characters.
+   
+11.  Challenge: Using Flags to Modify Regex Patterns
+   > Both re.search() and the pandas regular expression methods accept an optional flags argument.
+     This argument accepts one or more flags, which are special variables in the re module that modify the behavior
+     of the regex interpreter.
+   > we can use flags to specify that our regular expression should ignore case.
+   >  re.IGNORECASE flag, which is also available using the alias re.I for convenience
