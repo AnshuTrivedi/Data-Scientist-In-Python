@@ -1,0 +1,43 @@
+
+
+1. The Rule of Product
+   > In this mission, we'll direct our focus not so much toward calculating probabilities, 
+    but toward calculating the number of outcomes associated with various random experiments. 
+  > We'll learn some powerful counting techniques that will allow us to answer questions like:
+   What is the probability of cracking a 4-digit PIN code using the code 8362?
+   What is the probability of cracking a 6-digit PIN code using the code 348821? 
+ > Generally, if we have an experiment E1 (like flipping a coin) with a outcomes, followed by an experiment E2 
+   (like rolling a die) with b outcomes, then the total number of outcomes for the composite experiment E1E2 can be found by
+    multiplying a with b:
+   The formula above is known as the rule of product (or the multiplication principle).
+
+2. Extended rule of product
+   > We can extend the rule of product for any number of experiments.
+   > More generally, if we have an experiment E1 with a outcomes, followed by an experiment E2 with b outcomes, 
+    followed by an experiment En with z outcomes, the total number of outcomes for the composite experiment E1E2 ... En can be found 
+    by multiplying their individual outcomes:
+
+3. Permutations
+   > More generally, a certain arrangement where the order of the individual elements matters is called a permutation. 
+      Because order matters, the code 1289 is different than the code 9821, even though both are composed of the same 
+      four digits: 1, 2, 8 and 9.
+   > To summarize, when we sample without replacement, the number of permutations is given by the formula:
+       permutations=n!
+
+4. More About Permutations
+   > In practice, however, we're usually interested in finding the number of permutations for a limited number of cards
+   > We can use the extended rule of product to calculate the number of permutations
+   > More generally, when we have a group of n objects, but we're taking only k objects, the number of permutations
+     (which we abbreviate as "P") is:
+     nPk=n*(n-1)*(n-2)*(n-K+1)
+
+5.  Permutation formulas
+   > nPk= n!/(n-k)!
+
+6. Unique Arrangements
+   > we might be interested instead in ignoring the order and finding the number of unique card arrangements.
+
+7. Combinations
+   > More generally, if the order of the elements in an arrangement doesn't matter, the arrangement is called a combination. 
+   > nCk= npk/k! > n!/(n-k)!*K!
+
