@@ -1,0 +1,59 @@
+
+1. Complex probability problems
+  > What is the probability that it takes three flips or more for a coin to land heads up? (opposite events)
+    What is the probability of a coin landing heads up 18 times in a row? (multiplication rule)
+    What is the probability of getting at least one 6 in four throws of a single six-sided die?
+    What is the probability of getting at least one double-six
+  > In this mission, we're going to develop new techniques that will help us answer all five questions — and many others.
+
+
+2. Opposite Events
+  > we learned the probability of any event ranges between 0 and 1:
+    a coin lands on something other than head and tail - impossible (0)
+    a coin lands on tail                               - probabal   (0.5)
+    a coind lands on tail oro head                     - certain    (1)
+  > Now consider the two events below, which we're going to call "B" and "non-B":
+    Getting a 2 when rolling a fair six-sided die (event B)
+    Not getting a 2 when rolling a fair six-sided die (event non-B)
+  > When we throw the die, it's certain we'll get either a 2 (B) or other number (non-B). This means the event "B or non-B" (B ? non-B) is
+    certain, and it has a probability of 1.
+  > in set notation we write "B or non-B" as B ? non-B. Note that B and non-B are also mutually exclusive events, 
+    which means they can't happen simultaneously
+  > for any random experiment either event "E" or "non-E" will happen, so the event "E or non-E" is certain and has a probability of 1
+  > p(E U non-E)=p(E) + p(non-E)=1
+  > p(E)= 1 - p(non-E)
+
+3.  Set complements
+   > In set theory, the opposite of a set is called its complement
+   > For instance, the opposite of set B is BC, where the "C" in the superscript stands for "complement."
+       b={2},where bc={1,3,4,5,6} is complement of event b
+
+4. The Multiplication rule
+   > Finding P(HH) means finding the probability that the coin lands heads up on the first flip (we'll call this event H1), 
+     and the coin lands heads up on the second flip (we'll call this event H2). So we want to find P(H1 and H2), or, using set notation,
+     P(H1 n H2).
+   > To find P(H1 n H2), we can use a new rule called the multiplication rule of probability and multiply P(H1) by P(H2)
+   >  In more general terms, the multiplication rule says that for two events E1 and E2, the probability that
+     both event E1 and E2 happen can be found by multiplying the probability of E1 by the probability of E2
+
+5. Independent Events
+   > Events that don't influence each other's probability are called independent events.
+   > The multiplication rule we learned only works for independent events.   
+   > So far, we've used the multiplication rule to calculate the probability of two independent events. The rule, however, 
+     works for any number of events — what we need to do is multiply together the probability of all the events
+
+6. Combining formulas
+   > We can combine multiplication rule ,opposite event method to calculate probability of problems 
+      What is the probability of getting at least one 6 in four throws of a single six-sided die?
+      What is the probability of getting at least one double-six in 24 throws of two six-sided dice 
+      (the two dice are thrown simultaneously)?
+
+7. Sampling with and without replacement
+   > When we replace the cards after drawing, we say that we're sampling with replacement. 
+     When we don't put the cards back, we're sampling without replacement.
+ 
+ 
+
+
+
+5. 
