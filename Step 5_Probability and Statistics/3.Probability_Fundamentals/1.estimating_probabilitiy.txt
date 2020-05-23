@@ -1,0 +1,59 @@
+
+1. Introduction
+  > estimating probabilities is an extremely powerful technique that can enable us to build non-trivial applications, including:
+    Image recognition systems (used for self-driving cars, medical diagnosis, etc.)
+    Spam filters for inboxes
+    Statistical hypothesis tests
+  > Throughout this course, we'll learn:
+    How to estimate probabilities theoretically and empirically.
+   What are the fundamental rules of probability.
+   Counting techniques — tree diagrams, the rule of product, permutations, and combinations.
+
+2. The Empirical Probabilitiy
+   > Whenever we can't predict outcomes with certainty, we're dealing with a random experiment.
+   > a random experiment is any process for which we can't predict outcomes with certainty.
+   > Although we can't predict the outcome of a random experiment, we can at least estimate the probability (the chances) associated 
+     with its outcomes.
+   > Generally, for any event E (like a coin landing heads up), we can find its probability by using the following formula:
+     P(E)= no of times event E happened / total no of events
+   > When we calculate the probability of an event by performing an experiment one or more times, 
+     we calculate the experimental — or empirical probability — of the event.
+   
+
+3. Probability as Relative Frequency
+   > the empirical probability of an event is nothing but the relative frequency (proportion or percentage) of that event
+     with respect to the total number of times the experiment was performed.
+   > Using percentages gives us a more intuitive understanding of what a probability value really is.
+   > eg- p= 56 heads/ 100 tosses , 0.56 represents proportion of heads from total 100 tosses
+
+4.  Repeating  an Experiment
+   > Keep experimenting and increase experiment no
+
+5. The true probability value
+   > Generally, the probability of an event (a coin landing heads up, getting a 5 when we roll a die, etc.) approaches the true probability value
+     as the number of trials of the random experiment (a coin toss, the rolling of a die, etc.) increases without bound.
+   
+
+6. The Theoretical Probability
+   > Properly calculating empirical probabilities requires to perform a random experiment many times, which may not always be feasible in practice
+   > easier way to estimate probabilities is to start with the assumption that the outcomes of a random experiment have equal chances of occurring.
+     This allows us to use the following formula to calculate the probability of an event E: 
+      P(E)=1/Total no of possible outcomes
+   > we can't use this formula to compute theoretical probabilities for events that include more than one outcome. 
+   > When we calculate the probability of an event under the assumption that the outcomes have equal chances of occurring, 
+     we say that we're calculating the theoretical probability of an event.
+   
+
+7. Events vs outcomes
+   > An outcome is any result that a random experiment may terminate in. 
+   >  An outcome is a possible result of a random experiment, while an event can include more than one outcome.
+   > The event that we'll get an odd number when we roll a six-sided die — this event includes the outcomes 1, 3, and 5.
+   > P(E): no of successful events/total no of possible outcomes
+   > The "number of successful outcomes" part represents the number of outcomes included in the event E,
+     and "total number of possible outcomes" is the number of possible outcomes that the random experiment associated with the event E could
+     terminate in.
+
+8. A Biased Die
+   > When assumption of equally likely outcomes is violated — in case of biased die having 3 sides of 6, 6 has more chances of occurring than the other outcomes.
+     Above formula of no of successful events/total possible outcomes fails
+
