@@ -1,0 +1,70 @@
+
+1. Introducton to git branches
+   > For file on master branch commited by differenct devops most recent commit is different for each person. 
+     What's even worse is that all of the commits make changes to the same files.
+     There's no way for Git to determine which changes are the "correct" ones. It will cause merge conflict on pushing changes.
+   > Git gives us a few ways to avoid merge conflicts. The best method involves using branches. 
+     Git branches allow us to create several different work areas within the same repo. 
+     It's common to create a new branch whenever we want to make a change to a project, and then merge that branch back 
+     into the master branch when we're done.
+   > We can create a branch with the 'git branch branchname' command
+   >  we can switch to the new branch using the 'git checkout branchname' command.
+   > Alternatively, we can create a shortcut by combining the two commands with git checkout -b rocky.
+     This will create a branch named rocky and then switch to it right away, without our having to type a second, separate command.
+
+2.  Switching Branches
+   > Switching to a different branch will change the working directory to reflect the latest commit in that branch.
+   > Switching to a new branch, making a new commit, then switching back to master will switch our 
+     working directory back to the state of the latest commit in master
+   > The git checkout command allows us to switch branches. 
+   > Switching between branches is very useful when we want to work on changes to a project 
+     that require different amounts of testing or development time
+   
+3. Pushing a branch to a remote
+   > we can use git branch -r to show all of the branches on the remote and confirm that ours is there.
+    In contrast, git branch -a will show all of the branches available locally.
+   > git push remote localbranch
+   > origin/HEAD -> origin/master                                                  
+     origin/master                                                                   
+     origin/more-speech
+     The output shows that there are two branches (master and more-speech) on the remote called origin, 
+     and that the current branch (the HEAD branch) is master.
+     Git uses HEAD to refer to the current branch, as well as the latest commit in that branch.
+4. Merging Branches
+   > Merging allows us to copy commits from one branch into another. 
+    This enables us to efficiently develop features for projects on their own branches without conflicts, 
+    then merge them into master so that end users will have access to them.
+   > git merge brnachename , merges branch in current branch
+
+5. Deleting Branches
+   > To delete a branch once we've merged all of its commits into another branch, we use the 'git branch -d branchname' command.
+   >  If you are extremely sure you want to delete the branch with unmerged commits inside it, you can do so with 'git branch -D branchname'
+
+6. Checking Out Branches From the Remote
+   > In order to see what other collaborators in the remote repo are working on, we can check out their branches.
+     This will automatically create a local branch with the same name,and copy any commits from the remote branch to the local branch.
+   > We'll need to use two different commands:
+     1) 'git fetch' will fetch all of the current branches and commits from the remote. 
+        This won't make any changes to the working directory, but will update Git's list of branch names and commits.
+     2) 'git checkout' branch_name will look for the branch_name branch in the local repo and remote repo.
+        Because it only exists in the remote repo, Git will copy it into the local repo. Git will also make branch_name the current branch.
+
+7.  Finding Differences acrross branches
+    > When we use GitHub as our remote repo, pull requests will show us the differences 
+     between branches in an attractive interface, and allow other developers to add comments 
+    > additions as + and deletions as -
+    > The order in which we specify the two branches as arguments to git diff influences whether 
+      Git sees the changes as additions or deletions. It's generally preferable to put the "older" branch first.
+      git diff branch1 branch2
+
+8. Branch naming conventions
+   > When naming branches, it's common to use a prefix that describes the type of branch, then a slash, 
+     then the name of the feature or fix we're making. 
+   > eg - Feature - feature/happy-bot
+          Fix - fix/remove-error
+          Chore - chore/add-analytics
+ 
+9. Branch history
+  > git log branch_name
+
+
