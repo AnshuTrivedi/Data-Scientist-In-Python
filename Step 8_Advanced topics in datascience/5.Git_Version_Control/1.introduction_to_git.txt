@@ -1,0 +1,64 @@
+
+1. Introduction to Version Control Systems
+  > When you're working on a team, everyone will generally be making changes to the same files. 
+  >  If you didn't have a distributed version control system, whoever changed the file last would overwrite the changes of the other person.
+  > These systems will "merge" changes together intelligently, enabling multiple developers to work on a project at the same time.
+  > There are a few distributed version control systems, including Mercurial and Bazzar. Git is by far the most popular, however.
+
+  > We can initialize a repository by typing git init inside the folder we want to use for our project.
+
+2. The .git folder
+  > Initializing a Git repository will create a folder called .git inside the repository folder
+    git -al
+  
+3. Creating Files in the Repository
+  > The typical Git workflow involves adding files, making changes, 
+    and then storing a checkpoint (or "snapshot") of those changes. These checkpoints are called commits.
+  > Instead of storing every file in every commit, Git stores the diff, or the things that change between commits.
+  > Git would only store the part of the file that changed since the last commit
+  >  using 'touch filename' or 'echo content > filename' 
+
+4. Checking file status
+  > Files can have one of three states in Git:
+    1) committed - The current version of the file has been added to a commit, and Git has stored it.
+    2) staged - The file has been marked for inclusion in the next commit, but hasn't been committed yet 
+      (and Git hasn't stored it yet). You might stage one file before working on a second file, for example, 
+       then commit both files at the same time when you're done.
+    3) modified - The file has been modified since the last commit, but isn't staged yet.
+       git status
+
+5. Configuring Identity in git
+   > Before we can make our first commit, we need to tell Git who we are so it can store that information along with the commit. 
+     This step ensures that all of the members on a team can tell who made a certain commit.
+   > We can do this by running git config
+     git config --global user.email "your.email@domain.com"
+     git config --global user.name "Your name"
+
+6. Commiting Changes
+   >  A commit stores a snapshot of the files in the repository at a certain point in time. By building a history of these snapshots, 
+     we can rewind to an earlier point in time, or merge someone else's changes with our own.
+     git commit -m "Commit message here" 
+   > It's customary to make the commit message something informative, so if we do have to rewind or merge code,
+     it's obvious what changes we made and when.
+
+7. Viewing file differences
+   > Before we place a file in the staging area, 
+    we can use git diff to see all of the line differences between the current and previous version
+    git diff 
+   > If we want to see the differences after we stage a file, we can use git diff --staged.
+
+8. Making second commit
+  > after modification of file again stage it and commit
+
+9. Reviewing the commit history
+  > We can pull up a repository's commit history using the git log command. 
+   This command will show us a list of all of the commits to the repository, in descending order by creation date.
+
+10. Viewing Commit Differences
+   > We can use git log --stat to see more details about the commits in the git log output.
+
+
+
+
+
+ 
