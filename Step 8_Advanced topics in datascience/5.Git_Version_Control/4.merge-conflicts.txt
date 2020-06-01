@@ -1,0 +1,68 @@
+
+1. Introduction
+   > When we merge a branch into another one, our changes can sometimes conflict with other people's commits.
+   > Git is designed to preserve everyone's work, 
+     so it won't cause a loss of effort by intentionally overwriting one person's commit with another's.
+   > Sorting out a merge conflict involves editing the code that conflicts to create the "correct" version. This way, the person who wrote the code is in charge of resolving the issue,
+      and Git isn't intentionally overwriting anyone's changes.
+
+2.  Aborting merge
+   > When a merge conflict occurs, Git adds markup lines to the problem files to identify where the conflicts are. 
+    These lines can prevent code from executing properly, because the Python interpreter doesn't understand them. 
+    It's important to resolve conflicts and remove the markup immediately for this reason.
+   > One way to resolve a conflict is to abort the merge altogether. We can do this with 'git merge --abort'.
+   > When we abort a merge, Git resets the working directory and Git history to the state they were in before we tried to merge.
+   
+3. Resolving conflicts
+   > When a merge conflict occurs, Git will edit the problematic file to add markup indicating where the conflicts are.
+   > Because the last commit in each branch is exclusive to that branch, 
+     Git can't automatically determine which line is the most recent edit. 
+   > This means we have to manually edit the file to remove the lines that Git added, and leave only the code we want.
+   
+
+4. Resolving multi-line conflicts
+   > When Git detects a multi-line conflict, it places the entire block into a single merge conflict.
+   > same process as for single line conflict
+
+5. Resolving multiple conflicts
+   > With larger teams, it's possible to have multiple merge conflicts. 
+    That can mean several conflicts within a single file, or individual conflicts spread out across different files.
+   > When working on large projects involving many files, it's common for a single branch to alter dozens of files.
+    Git's Graphical merge tool can be useful.To use them, we'd need to run the 'git mergetool' command,
+    along with the --tool option flag to specify which graphical tool to use. 
+    We can pull up a full list of available tools by running 'git mergetool --tool-help'.
+   > To run a specific tool, you would run git mergetool --tool=[tool name]
+
+6.  Accepting Changes From only one branch
+   > With some merges, we know that one branch has the "correct" changes, and want to ignore the other branch.
+     We can keep files from one of the conflicting branches only by using git checkout with the --ours and --theirs options 
+     when we run into a merge conflict.
+   > In general, --ours will keep files from the current branch, and --theirs will keep files from the branch we're merging in.
+   > git checkout --ours [filename]
+   > If you had multiple files that caused conflicts, it would be daunting to follow this process for every file. 
+     Luckily for us, Git has an easy solution! You can add . at the end of git checkout --ours to keep all of the files 
+     on the current branch. You can do the same for git add to stage multiple files at once!
+   > After running git checkout, we'll need to commit the files to complete the merge.
+   
+
+7. Ignoring Files
+   > There are some files that change very often, and aren't particularly useful to a project.
+   > The best way to handle these types of files is to tell Git to ignore them.
+     That means Git won't add them to commits or track them, so we won't have to deal with merge conflicts and other issues they may cause.
+   > To do this, we create a file called .gitignore. Then, we add lines to it indicating which files Git should ignore
+     when adding to the staging area and committing. These lines accept wildcard characters, 
+     so we can ignore all files that have a certain extension in a single line
+   > You can find default .gitignore configurations for several popular languages in this GitHub repo (https://github.com/github/gitignore)
+  
+8.  Removing cashed files
+   > Adding files to .gitignore doesn't remove any files that have already been added to a Git commit. 
+    Git will still track changes to these files, and add them to future commits. This can be frustrating, 
+    especially when those files cause merge conflicts that require a lot of effort to resolve.
+   > Removing files from the Git cache can be helpful in these situations. This will prevent Git from tracking changes to those files, 
+     and adding them to future commits.
+   > git rm --cashed file_name
+   > This will remove any files called file_name from our Git repo, but not from our working directory. 
+     The files will still exist on the computer, but will be invisible to Git for version tracking purposes.
+
+
+
