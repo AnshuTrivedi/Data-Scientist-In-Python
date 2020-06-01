@@ -1,0 +1,69 @@
+
+1. Introduction to Remote Repositories
+   > Using Git with GitHub allows us to push our code to remote repositories. This enables us to:
+    Share our code with others and build a portfolio.
+    Collaborate with others on a project and build code together.
+    Download and use code others have created.
+   > To download a remote repository to your own computer, you'll need to clone it. 
+     cloning copies a repository from one location (in this case, a remote one) to a folder on your computer. 
+    The repository retains all of its Git history, and you can work with it just like you would with a Git repository you created yourself.
+     git clone 'repo url'
+
+2. Making Changes to Cloned Repositories
+   >  We'll be able to edit files, add them to the staging area, and then commit the changes.
+     The local version of the repo will then reflect the changes,but the remote version won't.
+   
+3. Overview of the master branch
+   > Every Git repository consists of one or more branches. Each branch contains a slightly different version of the code
+   > Developers create separate branches when they want to work on new features for a project,
+     then add the commits in those branches back into master when the features are ready.
+   > The master branch is usually the most up-to-date shared version of any code project.
+   > We can check which branch we're on with the git branch command. This command will list all of the branches in the repo. 
+     It will also highlight the currently active branch, and add an asterisk next to its name.
+   
+4. Pushing changes to the Remote
+   >  Until we push the branch to the remote repo, the changes are only in our local repo.
+      Pushing to the remote will update the remote with our latest changes.
+   > When we run git push, we need to specify both the name of the remote repo to push to, and the name of the branch we're pushing.
+     git push origin master
+   > When we clone a repo, Git automatically names the remote repo 'origin'
+   > The git remote command will list all of the repo's remotes
+
+5. Viewing individual commits
+   > git log
+   > Use the commit hash along with git show to see what the commit did.
+
+6. Commits and the Working directory
+   > Git commit workflow has three main components:
+    The working directory
+    The staging area
+    Commits
+   > The working directory is the folder we're version controlling with Git
+   
+
+7. Switching to a Specific commit
+   > Switching between commits allows us to quickly move between different historical versions of a project. 
+   > If we introduce a change that causes issues and want to revert to an earlier version, for example, 
+     switching between commits will let us do so.
+   > Commit hashes are permanent; Git preserves them and includes them in transfers between the local repo and the remote repo. 
+     This is because the commit is the same in the remote and our local repo -- the same changes were made to the same files.
+   > We can switch between commits in the local repo without changing what commits are in the remote repo. 
+     We can do this with the git reset command:
+    git reset --flag hash
+   > The --hard flag resets both the working directory and the Git history to a specific state. If we omitted the flag,
+     or used the --soft flag instead, it would skip making changes to the working directory, and only reset the Git history.
+   
+8. Pulling From a remote repo
+   > When the latest commit in our local repo is older than the latest commit in the remote repo, 
+    we can use git pull to update the current branch with the latest commits.
+    git pull
+
+9. Reffering to the most recent Commit
+   > While we can use the full commit hash, that approach can be cumbersome. 
+     Fortunately, Git has a special variable called HEAD that always refers to the most recent commit in the current branch.
+   > We can use git rev-parse along with the HEAD variable to find the commit hash corresponding to a particular commit number. 
+   > Let's say we modify a file and then want to undo our changes; 
+     using HEAD will revert the working directory to the state of the most recent commit.
+   > git rev-parse HEAD will return 646, and git rev-parse HEAD~3 will return c53,use HEAD~n to find nth hash
+
+
