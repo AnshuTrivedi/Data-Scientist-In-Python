@@ -1,0 +1,48 @@
+
+1. Introduction
+  > Here's a rough outline of the steps in this exercise:
+   Create a Python script.
+   Create a virtual environment.
+   Change file permissions.
+   Execute a Python script from the command line.
+ 
+  1) Change out of the current directory, then back in.
+     cd ..
+     cd -
+  2) Print the path of the current folder to the standard output.
+     pwd
+
+2. Create a script
+   1) Create a Python script that takes in a command line argument and prints it out.
+       echo -e 'import sys\n\nif __name__ == "__main__":\n    print(sys.argv[1])' > script.py
+
+3. Change file Permissions
+    Edit the file permissions for script.py so that only the current user can access it.
+   1) Assign read, write, and execute permissions to the current user.
+      chmod 0700 script.py or
+      chmod u=rwx script.py  or
+      chmod u=rwx,g=---,o=---  filename (both operations together)
+   2) Don't assign any permissions to your group, or to other users.
+      chmod 0700 script.py
+      chmod go-rwx script.py
+
+4. Create virtual environment
+    1) Create a Python 3 virtualenv called script.
+       virtualenv -p /user/bin/python3 script
+    2) Activate the script virtualenv.
+       source script/bin/activate
+
+5. Move the script
+   1) Create a folder called printer in the current user's home directory (/home/dq/).
+       mkdir printer
+   2) Move script.py into the printer folder.
+      mv script.py printer
+
+6. Execute script
+   1) Change the current directory to the printer directory.
+      cd printer
+   2) Execute script.py, and pass in the string I'm so good at challenges!.
+      python script.py "I'm so good at challenges!"
+      or
+      echo "I'm so good at challenges!" > script.py
+      python script.py
