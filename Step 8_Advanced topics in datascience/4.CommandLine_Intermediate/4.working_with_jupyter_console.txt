@@ -1,0 +1,52 @@
+
+1. Jupyter console
+  > The Jupyter console, formerly known as IPython, is an enhanced Python interpreter
+  > The main difference between Jupyter console and Jupyter notebook is that the console functions in interactive mode.
+  > Whenever you type a line of code, it is immediately executed, and you can see the results.
+    If you want to write medium-length pieces of code, do deep exploration of a dataset to tell a story, the notebook is better. 
+    If you want to test out code you're writing, or run quick commands, the console is better.
+  > you can access the console by typing either jupyter console or ipython at the command line.
+
+
+2. Getting Help
+  > You can type ? after starting the console. This will display help about Jupyter. You can exit by typing q.
+  > You can type %quickref. This is a magic that will tell you some useful commands.
+  > If you want information about a variable, just type the name of the variable, followed by ?. eg- dq? where dq is variable
+  > Type help() to get access to Python help. This will enable you to get help on all the modules and functions currently available.
+    You can quit by typing quit.
+  > If you want to use the Python help system to get information on a variable, type help(variable_name). 
+    If you wanted help with the variable dq, you'd type help(dq).
+
+3. Persistent Sessions
+   > Just like with Jupyter notebook, Jupyter console starts a kernel session when you first load it.
+     Every time you run code in the console, the variables are stored in the session. Any subsequent lines you execute can access those variables.
+   > This functionality is extremely powerful, and allows you to execute longer scripts line by line and inspect the variables at each step.
+
+4. Jupyter magics
+   >  Magics are special Jupyter commands that always start with %. 
+      They enable you to access Jupyter-specific functionality, without Python executing your commands.
+   > Some useful magics are:
+     %run -- allows you to run an external Python script. Any variables in the script will be stored in the current kernel session.
+     %edit -- opens a file editor. Any code you type into the editor will be executed by Jupyter when you exit the editor.
+     %debug -- if there's an error in any of your code, running %debug afterwards will open an interactive debugger ,can use to trace the error.
+     %history -- shows you the last few commands you ran.
+     %save -- saves the last few commands you ran to a file.
+     %who -- print all the variables in the session.
+     %reset -- resets the session, and removes all stored variables.
+     eg- %run filename
+
+5. AutoCompletion
+   > use tab key while typing name
+
+6. Accessing the shell
+   > You can run shell commands in Jupyter console. Just prefix your shell commands with an exclamation point(!). 
+     eg- !ls will list all files
+
+7. Pasting in code
+   > In order to paste in code with indents, you'll need to use paste magics:
+   > %cpaste -- opens a special editing area where you can paste in code normally, without whitespace being a problem.
+     You can type -- alone on a line to exit. After you exit, any code you pasted in will be immediately executed.
+   > %paste -- takes code from your clipboard and runs it in Jupyter. 
+     This won't work on a remote system where Jupyter doesn't have access to your clipboard. 
+
+
