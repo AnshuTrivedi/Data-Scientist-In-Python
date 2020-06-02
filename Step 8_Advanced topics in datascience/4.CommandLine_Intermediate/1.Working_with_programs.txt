@@ -1,0 +1,49 @@
+
+1.Setting Variables
+  > A command language is a special kind of programming language through which we can control applications and the system as a whole.
+  > we can use Bash to create scripts, set variables, and more. Because it's a language, Bash is far more powerful than a graphical shell.
+  > In the command line environment, variables consist entirely of uppercase characters, numbers, and underscores.
+    We can assign any data type to a variable.
+  > Quotes are optional when using strings in Bash, unless the string contains a space. Bash is sensitive to spaces, 
+    so strings that have them won't work properly if we don't surround them with quotes.
+  
+
+2. Accessing varibales
+   > We need to add a dollar sign to the beginning of the variable name when we try to retrieve its value.Because variable is taken as command 
+     whcih gives error.
+   > PATH is a dynamic-named value specifying a set of directories where executable programs are located.
+   > echo $variable_name : to see variable value
+
+3. Setting Environment Variables
+   > we've been creating shell variables. We can only access these variables within the Bash shell.
+     Another type of variable is an environment variable. We can access these through any program we run from the shell.
+   > We can create environment variables using the export command.
+   > export variable_name='path'
+ 
+4. Accessing environment variables
+   > import os
+     os.environ['key'] where key is variable name
+ 
+5. Calling Programs 
+   > We can access any program by typing its full path. 
+     The full path for Python, which itself is a program, is /usr/bin/python.
+   
+6. Tha Path variable
+   > PATH environment variable, which is configured to point to several folders (creating a "shortcut"). 
+     We can run any program in any one of these folders just by typing the program's name. 
+   > We can re-create an environment variable called PATH and append our new directory. For example,
+     export PATH="/usr/bin:$PATH"will allow us to type in the name of any executable inside /usr/bin at any time without typing 
+     the absolute path in order to execute the file.
+   
+7. Flags
+   > Programs can also have optional flags. These are like keyword arguments in Python, which modify program behavior.
+     eg- ls -l where -l flag in command will list the files in the directory in long mode
+
+8. Combining flags
+   > Most flags have short, single-character names, as well as longer versions of those names
+   > When we have multiple flags with short, single-character names, we can chain them together to save time. 
+     ls -la will list all of the files in long format; it's equivalent to ls -a -l. The order of the l and the a doesn't matter.
+
+9. Long Flags
+   > We can specify longer flags with two dashes. 
+    One such longer flag for ls is --ignore. Using ls --ignore=test.txt won't include any files named test.txt in the output of ls.
