@@ -1,0 +1,50 @@
+
+1. Introduction to command Line Python
+  > Command Line interpreter very useful for quickly testing snippets of code, as well as debugging. 
+    But it's not a good way to develop Python programs, because the commands aren't saved anywhere.
+  > We can make a file that Python can execute on the command line by adding some lines of Python code to a blank file.
+    eg-  if __name__ == "__main__":
+       print("Welcome to a Python script")
+
+2. Installing Packages that Extend Python
+   > Packages are an important way to extend Python's functionality
+   > In order to install a package with pip, we just use pip install. 
+     pip install requests will install the requests package, which developers use to interact with websites and APIs.
+
+3. Overview of virtual environments
+  >  Different projects can require different packages and Python versions. This type of version switching can become confusing.
+  > Virtual environments, or virtualenvs, let us do this. We can create a new virtualenv with the 'virtualenv' command. 
+    While we normally have to install the virtualenv package first in order to access this command
+  > Typing virtualenv main will create a virtualenv named main. 
+    It will create a folder in the current directory called main that will hold all of the packages we install into the virtual environment.
+  > By default, virtualenv will use the python executable when it makes a new virtualenv, 
+    which means that it has the same version of Python as the system
+  > we pass the -p flag to the virtualenv command, which will allow us to change the Python interpreter that virtualenv uses.
+     virtualenv -p /usr/bin/python3 python3 to use Python 3 instead of Python 2.
+
+4. Activating a virtualenv
+  > we can activate it using 'source python3/bin/activate' (this assumes that the virtualenv is called python3,
+    and that the folder for the virtualenv is in our current directory).
+
+5. Verifying installed packages
+   > We can find out which version of Python we're using with 'python -V'
+   > We can also look up which packages are currently installed (along with their versions) with 'pip freeze'
+
+6. IMporting Saved Functions into a file
+   > One of the great things about Python is that we can import functions from a package into a file.
+     We can also import functions and classes from one file into another file. 
+     This gives us a powerful way to structure larger projects without having to put everything into one file.
+   > If there's a file named utils.py, we can import it into another file in the same directory using import utils. 
+     All of the functions and classes defined in utils.py will then be available using dot notation
+
+7. Accessing command Line Arguments
+  > We can also pass command line options into Python scripts
+  > We can retrieve them from inside the script through the sys package.
+  > Once we import the sys package, the argv list will allow us to retrieve the positional arguments passed into the script
+    import sys
+    if __name__ == "__main__":
+        print(sys.argv[1])
+
+8.  Deactivating virtualenv
+    > we deactivate it with the deactivate command. This command will automatically shut down the current virtualenv, 
+      so we don't need to pass in its name.
