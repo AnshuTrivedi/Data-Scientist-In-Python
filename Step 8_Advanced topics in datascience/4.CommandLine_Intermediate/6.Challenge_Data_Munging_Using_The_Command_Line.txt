@@ -1,0 +1,28 @@
+
+1. Data munging
+   >  Data munging involves transforming datasets to make them easier to work with. 
+      Some datasets are too large to load into Python, so looking at them or transforming them beforehand can be useful. 
+      Even for smaller datasets, simple exploration on the command line is faster than exploration in Python, 
+      and file-based tasks like unifying datasets can be faster on the command line.
+  
+2. Data exploration
+   > head n no_of_line filename
+   > tail n no_lines filename
+
+3. Filtering
+   > connecting all files into one
+     head -1 filename1 > singlefile
+     wc -l filename1
+     tail -no_of_lines filename1 >> singlefile
+
+4. consolidating datasets
+   > add all data sets in one file as above
+     head -1 filename2 > singlefile
+     wc -l filename2
+     tail -no_of_lines filename2 >> singlefile
+
+5. counting
+   > count no of lines 
+     eg- grep '1980-1989' combined_hud.csv | wc -l , counts no of lines containg 1980-1989
+
+     
