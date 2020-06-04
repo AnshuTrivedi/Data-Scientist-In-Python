@@ -1,0 +1,54 @@
+
+1. Csvkit
+   > we'll learn about the Csvkit library, which supercharges your workflow by adding 13 new command line tools 
+     specifically for working with CSV files.
+     1) csvlook: renders CSV in pretty table format.
+     2) csvcut: for selecting specific columns from a CSV file.
+     3) csvstat: for calculating descriptive statistics for some or all columns.
+     4) csvgrep: for filtering tabular data using specific criteria.
+     5) csvstack: for stacking rows from multiple CSV files.
+
+2. Csvstack
+   > csvstack file1.csv file2.csv file3.csv > final.csv
+   > if you want to be able to trace the file where each row originated from in the merged file, 
+     you can use the -g flag to specify a grouping value for each filename.
+   > When stacking the rows from a file, csvstack will add the corresponding value in a new column. 
+     Lastly, you can use the -n flag to specify the name of this new column.
+
+    csvstack -n origin -g 1,2,3 file1.csv file2.csv file3.csv > final.csv
+  
+3. Csvlook
+  > The csvlook tool parses CSV formatted data from its stdin and outputs a pretty formatted table representation of that data to its stdout
+  > Csvlook returns a table formatted output of the merged CSV file
+    eg- head -10 final.csv | csvlook , outputs first 10 rows in tabular format
+
+4. Csvcut
+   > Using the csvcut command with just the -n flag parses and displays all the columns in a CSV file 
+     along with an unique integer identifier for each column:
+     eg- csvcut -n Combined_hud.csv
+   > You can use the integer identifier for each column and the -c flag to select just a specific column:
+     eg- csvcut -c 1 Combined_hud.csv
+
+5. Csvstat
+   > to calculate summary statistics for that column
+   > This calculates a full suite of summary statistics, including:
+      max,min,sum,mean,median,standard deviation.
+   > Depending on the size of the data, the full summary statistics for a column can take a long time and you often just 
+     want a specific summary statistic. You can use -- flags to choose specific summary statistics, which will greatly improve the speed:
+     eg- # Just the max value.
+           csvcut -c 2 Combined_hud.csv | csvstat --max
+         # Just the mean value.
+           csvcut -c 2 Combined_hud.csv | csvstat --mean
+
+6. Csvgrep
+   > we can restrict the search to specific columns using the -c flag (just like with csvcut). We then use the -m flag to specify the pattern:
+     eg- csvgrep -c 2 -m -9 Combined_hud.csv
+  
+
+
+  Csvkit is not optimized for speed and struggles to run some commands over larger files.
+
+  Csvkit has very limited capabilities for actually editing problematic values in a dataset, 
+  since the community behind the library aspired to keep the library small and lightweight.
+
+
