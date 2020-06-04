@@ -1,0 +1,42 @@
+
+1. Appending
+  > Redirect output from a command to a file using >
+    If the file already exists, it overwrite the file 
+    If the file doesn't exist, it will be created
+  > This involves redirecting from the standard output of the command to the standard input of the file
+  > If we don't want to overwrite file, and we instead want to add to it, we can use >>.
+  
+
+2. Redirecting From File
+   > We've seen how to redirect from a command to a file. We can also redirect the other way, from a file to a command.
+   > This involves redirecting from the standard output of the file to the standard input of the command.
+   > command <filename
+
+3. The grep command
+   > Sometimes, we'll want to search through the contents of a set of files to find a specific line of text.
+     We can use the grep command for this.
+   > grep 'word' filename 
+
+4. Special Characters
+   > We could also use a wildcard character, ?. ? is used to represent a single, unknown character
+    eg- grep 'bottles' file1.txt file2.txt or grep 'bottles' file?.txt
+
+5. The star wildcard
+   > We can use the * character to match any number of characters, including 0
+    eg- grep 'beer' *.txt , will look for beer word in any file ending with .txt
+
+6. Piping output
+   > The pipe character, |, allows you to send the standard output from one command to the standard input of another command.
+   >  This can be very useful for chaining together commands.
+   > We can also pipe the output of a Python script
+     eg- python rand.py | grep 9 , execute rand file and find if 9 occurs 
+   
+7.  Chaining Commands
+   > If we want to run two commands sequentially, but not pass output between them, we can use && to chain them
+   > The && only runs the second command if the first command doesn't return an error.
+     echo "All the beers are gone" >> beer.txt && cat beer.txt , first append line to file then prints 
+
+8. Escaping characters
+   > Escaping tells the shell to not treat the character as special, but to treat it as a plain character instead.
+     eg- echo "\"Get out of here,\" said Neil Armstrong to the moon people." >> famous_quotes.txt
+
