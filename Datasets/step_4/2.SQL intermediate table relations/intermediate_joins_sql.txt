@@ -1,0 +1,14 @@
+
+
+
+1. Working with larger Datasets
+  > 
+
+2. > Joining multiple tables is as simple as adding an extra JOIN clause. The SQL engine interprets joins in order, 
+     so the first join will be executed, and then the second join will be executed against the result of the first join.
+   > Joining three tables
+     SELECT [column_names] FROM [table_name_one]
+     [join_type] JOIN [table_name_two] ON [join_constraint]
+     [join_type] JOIN [table_name_three] ON [join_constraint];
+
+3. 
