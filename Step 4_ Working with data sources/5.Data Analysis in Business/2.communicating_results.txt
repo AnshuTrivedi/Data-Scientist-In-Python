@@ -1,0 +1,23 @@
+
+1. Business Contexr
+   > Line and Functional organisation
+   > We see that there's a large swath of people who we may need to communicate with. They will have varying degrees of data literacy,
+     which makes it harder to not only report results, but also:
+     Makes it harder for these colleagues to request things of you
+     Makes it harder for you to manage a larged and varied influx of requests
+
+2.  The scenario 
+   making a rough analysis with some lax assumptions, instead of making a full-fledged analysis. Prototyping has several advantages:
+
+   1) Having a prototype makes it much easier to estimate the cost of a fully fleshed-out project, be it human, technological, or
+     financial resources.
+   2) Having a more accurate estimate of the cost allows decision-makers to not go through with the project if it doesn't seem 
+      profitable enough, or not the best allocation of resources at that point in time.
+   3) It allows grunt workers (like ourselves) to change and add missing requirements to complete the project. Oftentimes these are overlooked and only spotted later; some examples are missing data, the creation of a new database, the development of an API.
+   4) It allows business people (like the account manager) to tweak the project's goal.
+   5) It gives all stakeholders an opportunity to add side-goals to the project that easily accomplishable given the main goal,
+      thus maximizing the project's output.
+   6) Despite the above, we should not only limit the scope of the project (focus on one goal) when prototyping, but we should also 
+     timebox it — prototypes without deadlines run the danger of becoming time wasters that do not let us capitalize on the above advantages.
+
+
