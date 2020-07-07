@@ -1,0 +1,28 @@
+
+1. Introduction
+   > we will learn how to calculate probabilities based on certain conditions — hence the name conditional probability
+   > We will learn how to 
+     Assign probabilities to events based on certain conditions by using conditional probability rules.
+     Assign probabilities to events based on whether they are in a relationship of statistical independence or not with other events.
+     Assign probabilities to events based on prior knowledge by using Bayes' theorem.
+
+2. Brief Recap
+   > p(E)=no of successful outcomes/total no of outcomes
+
+3. Updating Probabilities
+   > probability of getting 5 on rolling fair die given die showed odd number
+    omega={1,3,5} p(5)=1/3 not p(5)=1/6
+
+4. Conditional probability
+  > p(5 given the die showed odd no)=1/3
+    p(5|odd) where | is used to represent condition
+
+5. Conditional Probability Formula
+   >  Using probability notation, we want to find P(A|B) where:
+     A is the event that the number is odd: A = {1, 3, 5}
+     B is the event that the number is greater than 1: B = {2, 3, 4, 5, 6}
+    we know for sure event B happened (the number is greater than 1), so the sample space is reduced from 
+    {1, 2, 3, 4, 5, 6} to {2, 3, 4, 5, 6}: 
+   > The number of elements in a set is called the cardinal of the set
+   > p(A|B)=card(A intersection B)/card(B)    
+
