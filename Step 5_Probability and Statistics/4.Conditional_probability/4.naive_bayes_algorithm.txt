@@ -1,0 +1,13 @@
+
+
+1. A Spam Filter
+   > In this mission and the next, we'll look at an application of conditional probability — we'll build a spam filter.
+   > Spam is most commonly associated with emails. For instance, unwanted and unsolicited advertising emails are usually classified as spam. Spamming, however, occurs in ways and environments that don't necessarily relate to emails:
+       Articles or blog posts can be spammed with comments — the comments are ads or they are repetitive.
+       An educational forum may be spammed with posts that are, in fact, ads.
+       Mobile phone users may receive unwanted and unsolicited SMS messages, usually about advertising.
+   > To build the spam filter, we're going to use an algorithm called Naive Bayes — as the name suggests, 
+     the algorithm is based on Bayes' theorem
+  
+2. Naive Bayes Overview
+  > 
