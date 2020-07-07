@@ -1,0 +1,58 @@
+
+
+1.Independence vs. Exclusivity
+  > Both independence and exclusivity describe the relationship between two or more events, and we see that 
+    they have different mathematical meanings:
+    Independence= P(A n B) = P(A).P(B)
+    Dependence  = P(A n B) = P(A).P(B|A)
+    Exclusive   = P(A n B) = 0
+  > If two events A and B are mutually exclusive, then it's impossible that they both occur, which means (A n B) 
+    is an impossible event (and the probability of impossible events is always 0):
+  >  two events A and B are independent if the occurrence of one doesn't change the probability of the other and 
+     two events — A and B — are mutually exclusive if they cannot occur both at the same time.
+  
+2. Example Walkthrough
+   > The person is infected with HIV and gets a positive result. 
+    The person is not infected with HIV and gets a positive result.
+    In the first scenario, note that two events happen: HIV and T+. In set notation, we write (HIV n T+) if both HIV and T+ occur.
+    In the second scenario, two events happen: HIVC and T+. In set notation, we write (HIVC n T+) if both HIVC and T+ happen.
+  > we can understand the event T+ as the union of the events (HIV n T+) and (HIVC n T+):
+   T+=(HIV n T+)U(HIVC n T+) , The events (HIV n T+) and (HIVC and T+) are mutually exclusive (they cannot happen both at the same time), 
+   because a person tested positive cannot both have and not have HIV. 
+  > expand above as P(A+B)=P(A)+P(B)
+   P(T+)=P(HIV n T+)+P(HIVC n T+) : P(HIV)*P(T+|HIV)+P(HIVC)*P(T+|HIVC)
+
+3. A General Formula
+  > The events HIV and HIVC are mutually exclusive and exhaustive. 
+    If two events are exhaustive, it means they make up the whole sample space .
+  > P(A)=P(B n A) + P(Bc n A)
+    p(A)=P(B)*P(A/B) + P(Bc)*P(A|Bc)
+
+4.  Formula for three events
+   > we have events A, B1, B2, and B3
+   > P(A)=P(B1 n A) + P(B2 n A) +P(B3 n A)
+     p(A)=P(B1)*P(B1|A)+ P(B2)*P(B2|A) + P(B3)*P(B3|A)
+   eg- p(delay)=P(boing)*P(delay|boing)+P(airbus)*P(delay|airbus)+ P(erj)*P(delay|erj)
+
+
+5. Law of total Probability
+  > let's say the sample space  is made up of n mutually exclusive and exhaustive events:
+    P(A)=P(B1)*P(A|B1) +P(B2)*P(A|B2) + P(B3)*P(A|B3) + .............+ P(Bn)*P(A|Bn)
+ > The above formula is called the law of total probability.
+    The law of total probability is often rewritten using the summation sign :
+    P(A)= i=1 to n P(Bi)*P(A|Bi)
+
+6. Bayes' Theorem
+   > P(B|A)=P(B n A)/P(A) where p(A) is calculated by Law of total probability
+   > Conditional Probability : P(B|A)=P(B n A)/P(A)
+     Law of total Probability :  P(A)=P(B1)*P(A|B1) +P(B2)*P(A|B2) + P(B3)*P(A|B3) + .............+ P(Bn)*P(A|Bn)
+     Bayes' Theorem : P(B|A)= P(B n A)/P(B1)*P(A|B1) +P(B2)*P(A|B2) + P(B3)*P(A|B3) + .............+ P(Bn)*P(A|Bn)
+   eg- P(boing|delay)=? ,what is probability of boing given it is delayed
+   
+
+7. Prior and Posterior Probability
+   > Before doing any test: P(HIV)
+    After testing positive: P(HIV|T+)
+   > The probability of being infected with HIV before doing any test is called the prior probability ("prior" means "before"). 
+     The probability of being infected with HIV after testing positive is called the posterior probability ("posterior" means "after").
+ 
