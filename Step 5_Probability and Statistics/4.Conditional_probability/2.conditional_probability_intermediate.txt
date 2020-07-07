@@ -1,0 +1,62 @@
+
+1. An Important difference
+  > p(A|B)=card(A n B)/card(B)
+  > p(A|B)=P(A n B)/p(B)
+  > what's the difference between P(A|B) and P(A n B), if any?
+  > P(A n B) means finding the probability that both A and B occur, while P(A|B) means finding only the probability 
+    that A occurs (given that B occurs)
+  > With P(A n B), we're trying to find the probability of two events (A and B), while with P(A|B) we're only trying 
+    to find the probability of a single event, which is A.
+  > P(A) means finding the probability of A
+    P(A|B) means finding the conditional probability of A (given that B occurs)
+    P(A n B) means finding the probability that both A and B occur
+    P(A ? B) means finding the probability that A occurs or B occurs (this doesn't exclude the situation where both A and B occur)
+
+2.  Complements
+  > p(A|B) + P(Ac|B)=1 i.e event happen + event not happened=1(certain)
+
+3. Order of Conoditioning
+  > it matters how we condition — P(A|B) does not necessarily have the same value as P(B|A) 
+    (although in some rare circumstances, they may end up being equal).
+  
+4. The Multiplication Rule
+   > Either of the two formulas is belowl called the multiplication rule of probability — or, in short, the multiplication rule
+    1) P(A n B)=p(B).p(A|B)
+    2) P(A n B)=p(A).p(B|A)
+
+5. Statistical Independence
+   > In more general terms, if event A occurs and the probability of B remains unchanged and vice versa 
+     (A and B can be any events for any random experiment), then events A and B are said to be statistically independent 
+   > P(A n B)=p(B).P(A) where P(A) is equal to P(A|B)
+
+6.  Statistical Dependence
+    > p(A)=P(A|B)
+      p(B)=P(B|A)
+      P(A n B)=p(B).P(A)
+   > If any of the three relationships above does not hold, then events A and B are said to be 
+     statistically dependent (or just "dependent")
+
+7. Independence for three events
+   > So pairwise independence is the first condition that has to be respected if three events A, B, C are to be independent. 
+       events A, B, C are independent in pairs — we say they are pairwise independent
+      p(A n B)=P(A).P(B)
+      P(A n C)=P(A).P(C)
+      p(B n C)=P(B).P(C)
+
+   > The second condition is that they should be also independent together, which mathematically means:
+     If both conditions above hold, events A, B, C are said to be mutually independent. B
+     p(A n B C)=p(A).P(B).(C)
+
+8. Formula for three dependent events
+   > Note that we can think of P(A n B n C) as the probability of two events instead of three and derive formula from it
+   > P(A n B n C)=P(A).P(B|A).P(C|A n B)
+
+In this mission, we continued learning about conditional probability and managed to cover important concepts and ideas:
+
+We saw P(A n B) and P(A|B) mean different things.
+We learned that  and .
+We saw that the order of conditioning matters: P(A|B) is different than P(B|A).
+We covered the multiplication rule for dependent and independent events (two or more events).
+      
+
+      
