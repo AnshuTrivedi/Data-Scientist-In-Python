@@ -1,0 +1,43 @@
+
+
+1. Hypothesis testing
+  > A hypothesis is a pattern or rule about a process in the world that can be tested. 
+    We use hypothesis testing to determine if a change we made had a meaningful impact or not.
+  > ou can use hypothesis testing to help you determine:
+     if a new banner ad on a website caused a meaningful drop in the user engagement,
+     if raising the price of a product caused a meaningful drop in sales,
+     if a new weight loss pill helped people lose more weight.
+  > Hypothesis testing allows us to calculate the probability that random chance was actually responsible for the difference in outcome.
+  > Every process has some inherent amount of randomness that we can't measure and understanding the role of chance helps 
+     us reach a conclusion that's more likely to be correct. 
+  > We first set up a null hypothesis that describes the status quo. We then state an alternative hypothesis, 
+    which we used to compare with the null hypothesis to decide which describes the data better. In the end, we either need to:
+    1) reject the null hypothesis
+    2) fail to reject the null hypothesis
+   
+
+2. Research Design
+   > Before exploring and analyzing a dataset, it's important to understand how the study was conducted. 
+     Flaws in how the study was run can lead you to reach the wrong conclusions.
+   > Understanding the research design for a study is an important first step that informs the rest of your analysis.
+     It helps us uncover potential flaws in the study that we need to keep in mind as we dive deeper
+   > A key part of running an experimental study is random assignment, which involves assigning participants 
+     in the study to random groups without revealing which group each participant is in.
+
+3. Statistical significance
+   > Statistics helps us determine if the difference in the weight lost between the 2 groups is because of random chance or
+    because of an actual difference in the outcomes. If there is a meaningful difference, we say that the results are
+    statistically significant.
+   
+4. Test Statistic
+  > To decide which hypothesis more accurately describes the data, we need to frame the hypotheses more quantitatively. 
+    The first step is to decide on a test statistic, which is a numerical value that summarizes the data and we can use in 
+    statistical formulas. We use this test statistic to run a statistical test that will determine how likely the difference
+    between the groups were due to random chance.
+  
+5. Perrmutation test
+   > The permutation test is a statistical test that involves simulating rerunning the study many times and 
+     recalculating the test statistic for each iteration. 
+   > The goal is to calculate a distribution of the test statistics over these many iterations. This distribution is called 
+    the sampling distribution and it approximates the full range of possible test statistics under the null hypothesis.
+   > 
