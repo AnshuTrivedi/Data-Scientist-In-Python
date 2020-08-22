@@ -1,0 +1,53 @@
+
+1. Introduction
+   >  In this mission, we'll explore how to create indexes for speeding up queries that filter on multiple columns.
+   > We'll also explore how to modify the queries we write to better take advantage of indexe
+
+2. Query Plan
+  > query plan for two columns
+   eg- conn.execute("EXPLAIN QUERY PLAN SELECT * FROM facts WHERE population>1000000 AND population_growth<0.05;").fetchall()
+
+3. Query plan for multi-column queries
+   sample code 
+        conn = sqlite3.connect("factbook.db")
+        conn.execute("CREATE INDEX IF NOT EXISTS pop_idx ON facts(population);").fetchall()
+        conn.execute("CREATE INDEX IF NOT EXISTS pop_growth_idx ON facts(population_growth);").fetchall() 
+       query_plan_two=conn.execute("EXPLAIN QUERY PLAN SELECT * FROM facts WHERE population>1000000 AND population_growth<0.05;").fetchall()
+       print(query_plan_two)
+
+4. Explanation
+   > SQLite struggles to take advantage of both indexes since each index is optimized for lookups on just that column.
+   > when there are 2 possible indexes available, SQLite tries to estimate which index will result in better performance. 
+      Unfortunately, to keep SQLite lightweight,
+     limited ability was added to estimate and plan accurately and SQLite often ends up picking an index at random.
+   
+
+5. Multi-column index
+   > When creating a multi-column index, we need to specify which of the columns we want as the primary key. 
+   
+6. Create multi-column index
+   > CREATE INDEX index_name ON table_name(column_name_1, column_name_2);
+   > The important thing to know here is that the first column in the parentheses becomes the primary key for the index.
+
+7. Covering index
+   > When an index contains all of the information necessary to answer a query, it's called a covering index.
+   > Since the index covers for the actual table and can return the requested results to the query, 
+     SQLite doesn't need to query the actual table. For many queries, especially as your data gets larger, this can be much more efficient.
+   > instead of USING INDEX the query plan says USING COVERING INDEX
+    SAMPLE CODE
+       conn = sqlite3.connect("factbook.db")
+       conn.execute("create index if not exists pop_pop_growth_idx on facts(population, population_growth);")
+       query_plan_four = conn.execute("explain query plan select population, population_growth from facts where population > 1000000 and 
+       population_growth < 0.05;").fetchall()
+       print(query_plan_four)
+
+8. Covering Index for single column
+    SAMple code
+    conn.execute("explain query plan select population from facts where population > 1000000;").fetchall()
+   > Since only the population values were necessary to service the query, SQLite used the pop_idx index as a covering index 
+    and didn't have to access the facts table.
+
+
+
+
+ 

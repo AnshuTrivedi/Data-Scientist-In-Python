@@ -1,0 +1,70 @@
+
+1. The psql tool
+  > PostgreSQL command line tool, called psql
+  >  psql connects to a running PostgreSQL server process, then enables you to:
+    Run queries.
+    Manage users and permissions. 
+    Manage databases.
+    See PostgreSQL system information.
+  > If you don't specify a user and database to connect to, it will use the defaults. 
+    By default, the name of the currently logged in system user will be used as both the PostgreSQL user name and database name.
+  > psql shell is about giving instant feedback, transactions don't apply, and each command we type is immediately executed. 
+    This allows us to quickly test out queries and get results.
+  > Queries in psql must end with a semicolon (;), or they won't be performed.
+
+3. Special PostgreSQL commands
+  > We can run several special commands using psql. These commands start with a backslash (\), and can perform a variety of functions, 
+    including:
+    Listing databases
+    Listing tables
+    Managing users
+  > You can see a full list of all of the special functions by running \?
+  > Three common functions to run are:
+    \l -- list all available databases.
+    \dt -- list all tables in the current database.
+    \du -- list users
+
+4. Switching databases
+   > You can connect to a different database using the -d option of psql
+     psql -d database;
+   
+5. Creating Users
+   > In order to manage access to different databases, you can also create users.
+     Users will be able to log into a PostgreSQL database and run queries. 
+     You can create a user with the CREATE ROLE statement.
+   > CREATE ROLE userName;
+   > By default, the user isn't allowed to login to PostgreSQL and run queries. You can fix this by adding the WITH and LOGIN statements:
+     CREATE ROLE userName WITH LOGIN;
+   > You can create a password using the WITH PASSWORD statement like this:
+     CREATE ROLE userName WITH LOGIN PASSWORD `password`;
+   > If the user needs to be able to create databases, you can add that ability in with the CREATEDB statement:
+     CREATE ROLE userName WITH CREATEDB LOGIN PASSWORD 'password';
+
+6. Adding Permissions
+   > When users are created, they don't have any ability, or permissions, to access tables in existing databases. 
+     This is done for security reasons,so that all permissions are issued explicitly instead of being unexpected.
+   > The GRANT statement will issue permissions to access certain tables in a database to a certain user.
+     GRANT SELECT ON tableName TO userName;
+   > If you want to grant different types of permissions, you can separate them with commas.
+     GRANT SELECT, INSERT, UPDATE, DELETE ON tableName TO userName;
+   > A shortcut for this is to use the ALL PRIVILEGES statement:
+     GRANT ALL PRIVILEGES ON tableName TO userName;
+   > You can use the psql \dp command to find out what privileges have been granted to users for a specific table:
+     \dp tableName
+   
+7. Removing Permissions
+   > Permissions can be removed using the REVOKE statement. 
+     The REVOKE statement enables you to take back any permissions given via the GRANT statement.
+     REVOKE SELECT ON tableName FROM userName;
+   > If you want to revoke different types of permissions, you can separate them with commas.
+     REVOKE SELECT, INSERT, UPDATE, DELETE ON tableName FROM userName;
+   > A shortcut for this is to use the ALL PRIVILEGES statement:
+     REVOKE ALL PRIVILEGES ON tableName FROM userName;
+
+8. Superusers
+   >  A superuser is a special type of user that overrides all access restrictions. Superusers can perform any function in a database,
+     and a user should only be made a superuser in special cases.
+   > CREATE ROLE userName WITH SUPERUSER;
+   > You can also setup login and a password for the superuser:
+     CREATE ROLE userName WITH LOGIN PASSWORD 'password' SUPERUSER;
+   

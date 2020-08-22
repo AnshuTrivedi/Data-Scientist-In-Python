@@ -1,0 +1,87 @@
+
+1. Introduction
+   > Learn about how sqlite accesses data and speeed up execution using indexing
+   > As our data gets larger and our queries more complex, it's important to be able to tweak the queries 
+    we write and optimize a database's schema to ensure that we're getting results back quickly.
+  
+
+2. Query planner
+   > When you execute a SQL query, SQLite performs many steps before returning the results to you.
+    1) First, it tokenizes and parses your query to look for any syntax errors.
+    2) If there are any syntax errors, the query execution process halts and the error message is returned to you. 
+       If the parser was able to successfully parse the query,then SQLite moves on to the query planning and optimization phase.
+    3) There are many different ways for SQLite to access the underlying data in a database.
+       When working with a database that's stored on disk as a file, it's crucial to minimize the amount of disk reads necessary 
+       to avoid long running times.
+   > The query optimizer generates cost estimates for the various ways to access the underlying data, 
+     factoring in the schema of the tables and the operations the query requires. 
+   > The optimizer quickly assesses the various ways to access the data and generates a best guess for the fastest query plan
+   > This high level query plan is then converted into highly efficient, lower-level C code to interact with the database file on disk
+
+3. Explain query plan
+   > We can use the 'EXPLAIN QUERY PLAN' statement before any query we're running to get a high level query plan that would be performed.
+   > If you write a SELECT statement and place the EXPLAIN QUERY PLAN statement before it:
+    EXPLAIN QUERY PLAN SELECT * FROM facts;
+    the results of the SELECT query won't be returned and instead the high level query plan will be:
+    [(0, 0, 0, 'SCAN TABLE facts')]
+   > SCAN TABLE table_name , means that every row in the entire table (table_name) had to be accessed to evaluate the query
+    eg- query_plan_one = conn.execute("EXPLAIN QUERY PLAN SELECT * FROM facts WHERE area > 40000;").fetchall()
+ 
+4. Data representation
+   > How we set primary key matters in search operation
+   > it matches with all ids in table and end up scanning all rows depending on primary key setting
+
+5. Time Complexity
+   > Binary search on a table using the primary key would be O(log N) time complexity where N is the number of total rows in the table. 
+   > On the other hand, a full table scan would would be O(N) time complexity since each row would have to be accessed
+   > Many organizations work with databases that contains billions or trillions of rows and understanding the 
+     time complexity of queries is important to avoid writing queries that take a long time to complete. 
+   
+
+6. Search and rowid
+   > SQLite uses rowid to refer to the primary key of a table. The alias rowid will be displayed in the query plan,
+     no matter what you name the primary key column for that table. 
+     Either SCAN or SEARCH will always appear at the start of the query explanation for SELECT queries.
+     
+
+7. Indexing
+   > SQLite can take advantage of speedy lookups when searching for a specific primary key.
+   >  Unfortunately, we don't always have the primary keys for the rows we're interested in beforehand.
+     We need to find a way that allows us to benefit from the speed of primary key lookups without actually knowing the primary key in advance.
+   > To that end, we could create a separate table that's optimized for lookups by a different column from the facts table instead 
+     of by the id. We can make the column we want to query by the primary key, so we get the speed benefits, and embed the id value 
+     from the facts table corresponding to that row. We call this table an index and each row in the index contains:
+      the value we want to be able to search by, as the primary key,
+      an id value for the corresponding row in facts.
+   > Instead of performing a single full table scan of facts, SQLite would perform a binary search on the index then another binary search on facts using the id value.
+     Both queries are taking advantage of the primary key for the index and the facts table to quickly return the results we want. 
+
+8. Create an Index
+   > Instead of creating a separate table and updating it ourselves,
+     we can specify a column we want an index table for and SQLite will take care of the rest.
+   >  To create an index we use the CREATE INDEX statement.
+      eg- CREATE INDEX index_name ON table_name(column_name);
+   > Similar to when you add a table to a database, using the IF NOT EXISTS clause helps you avoid 
+     attempting to create an index that already exists
+     eg- CREATE INDEX IF NOT EXISTS area_idx ON facts(area);
+   > A table can have many indexes, and most tables in production environments usually do have many indexes. 
+     Every time you add or delete a row to the table, all of the indexes will be updated. 
+    If you edit the values in a row, SQLite will figure out which indexes are affected by the changes and update those indexes.
+  > While creating indexes gives us tremendous speed benefits, they come at the cost of space.
+    Each index needs to be stored in the database file.
+  > Since indexes can be created after a table is created, it's recommended to only create an index 
+    when you find yourself querying on a specific column frequently.
+
+  sAMPLE CODE:
+
+    import sqlite3
+    conn=sqlite3.connect('factbook.db')
+    query_plan_six=conn.execute("EXPLAIN QUERY PLAN SELECT * FROM facts WHERE population>10000;").fetchall()
+    print(query_plan_six)
+    conn.execute("CREATE INDEX IF NOT EXISTS pop_idx ON facts(population);")
+    query_plan_seven=conn.execute("EXPLAIN QUERY PLAN SELECT * FROM facts WHERE population>10000;").fetchall()
+    print(query_plan_seven)
+    
+
+
+

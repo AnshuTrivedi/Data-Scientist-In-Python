@@ -1,0 +1,88 @@
+
+1. SQLite vs PostgreSQL
+ 
+ SQLite is one of the most common database engines, and has many advantages:
+   1) The database is stored in a single file, making it portable.
+   2) You can use a SQLite database directly from Python, and don't need a separate program running.
+   3) It implements most SQL commands, enabling you to use most of the statements you're familiar with.
+
+ SQLite has a few downsides that make other database engines more attractive:
+    1) Only one process at a time can write to the database. When you have a complex web application, you may have multiple processes 
+       updating information in the database at the same time. For example, on Facebook, one process might handle updating user information,
+       and another might handle generating the news feed.
+    2) You can't take advantage of performance features, such as caching. Because a SQLite database is a single file, and it doesn't require 
+        a special program to run,it can't have performance optimizations like caching. When running a site like Facebook that has a ton of
+        traffic, it's important to be able to lookup data quickly.
+    3) SQLite doesn't have any built-in security. With a production website, it's common to want some people to be able to modify tables in 
+        a database (write),and others to only be able to make SELECT queries to tables in the database (read). 
+        This is because giving someone write access to the database can be a security risk, in that they can update or overwrite data. 
+        SQLite doesn't allow for restricting access to a database in this way.
+
+   SQLite is good in cases where having a small and simple database engine is important. 
+   SQLite is used extensively in embedded applications, such as Android and iOS applications.
+   In cases where there will be multiple users or performance is important, PostgreSQL is the most commonly used database engine.
+    PostgreSQL is open source, and is free to download and use.
+
+2. PostGreSQL Overview
+  > At a high level, PostgreSQL consists of two pieces, a server and clients.
+  > The server is a program that manages databases and handles queries. Clients communicate back and forth to the server.
+    Only the server ever directly accesses the databases -- the clients can only make requests to the server.
+  > One of the advantages of this model is that multiple clients can communicate with the server at the same time.
+    This allows multiple processes to write to a database at the same time.
+  >  By default, PostgreSQL uses port 5432 to communicate with the outside world. If you start a PostgreSQL server, 
+    it will listen for incoming connections on port 5432. Clients will be able to connect to the server using this port.
+     If you start a client, you'll have to specify which server to connect to, along with the port to connect to.
+
+3. Psycopg2
+   > There are many clients for PostgreSQL, including graphical clients. The most common Python client for PostgreSQL is called psycopg2.
+     Connecting to a PostgreSQL database using psycopg2 is similar to connecting to a SQLite database using the sqlite3 library. 
+    psycopg2 also uses Connection and Cursor objects. 
+  >  We'd connect to a database using psycopg2 like this:
+    import psycopg2
+    conn = psycopg2.connect("dbname=postgres user=postgres")
+    cur = conn.cursor()
+    conn.close()
+  > Closing a connection will terminate the client's connection with the PostgreSQL server
+
+4. Creating a table
+  > create a table inside database using CREATE TABLE
+  > In order to execute the query, we can use the execute method of the Cursor object:
+   conn = psycopg2.connect("dbname=dq user=dq")
+   cur = conn.cursor()
+   cur.execute("SELECT * FROM notes;")
+
+5. SQL Transactions
+   > If any of the transactions fail, the whole group fails, and no changes are made to the database at all
+  >  Not calling either commit or rollback will cause the transaction to stay in a pending state,
+     and will result in the changes not being applied to the database.
+  > When commit is called, the PostgreSQL engine will run all the queries at once.
+  > If we don't want to apply the changes in the transaction block, we can call the rollback method to remove the transaction.
+  > connection.commit()
+  
+
+6. Autocommiting
+  > There are cases when you won't want to manage a transaction, and you'll instead want changes right away.  
+    This is most common when you're making changes to the database that you want to be guaranteed to happen immediately.
+  > To activate autocommit mode, we'll need to set the autocommit property of the Connection object to True.
+    conn.autocommit=True
+
+7. Executing Queries
+   > We can issue SELECT queries against a database using the execute method, along with the fetchall and fetchone methods to retrieve results:
+     cur.execute("SELECT * FROM notes;")
+     rows = cur.fetchall()
+     print(rows)
+
+8. Creating a database
+  > most powerful aspects of PostgreSQL is that it enables you to create multiple databases. 
+   Different databases are generally used to hold information about different applications
+  > We can create a database using the CREATE DATABASE SQL statement:
+  > We can specify the user who will own the database when we create it as well, using the OWNER statement:
+    CREATE DATABASE notes OWNER postgres;
+
+9. Deleting a database
+  > We can delete a database using the DROP DATABASE statement
+    DROP DATABASE dbName;
+  
+ 
+
+ 
