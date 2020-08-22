@@ -1,0 +1,39 @@
+
+1.Introducing Joins
+  > In the real world, it's much more common for databases to have data in more than one table. 
+    If we want to be able to work with that data, we'll have to combine multiple tables within a query. 
+    The way we do this in SQL is using joins. 
+ > The most common way to join data using SQL is using an inner join. The syntax for an inner join is:
+   SELECT [column_names] FROM [table_name_one]
+   INNER JOIN [table_name_two] ON [join_constraint];
+ >  eg- SELECT * FROM facts
+        INNER JOIN cities ON cities.facts_id = facts.id
+        LIMIT 5;
+
+2.Understanding Inner Joins
+  > An inner join works by including only rows from each table that have a match as specified using the ON clause
+  > Our inner join will not include:
+    Rows from the cities table that have a cities.facts_id that doesn't match any facts.id from facts.
+    Rows from the facts table that have a facts.id that doesn't match any cities.facts_id from cities.
+
+3.Practicing inner joins
+  SELECT f.name country,c.name capital_city FROM facts f
+  INNER JOIN cities c ON c.facts_id=f.id
+  WHERE c.capital=1
+
+4. Left Joins
+  >  A left join includes all the rows that an inner join will select,
+     plus any rows from the first (or left) table that don't have a match in the second table. 
+
+    SELECT f.name country,f.population FROM facts f 
+    LEFT JOIN cities c ON c.facts_id=f.id
+    WHERE c.name IS NULL;
+
+5.Right Joins and Outer Joins
+  > It's important whenever you use inner joins to be mindful that you might be excluding important data, 
+    especially if you are joining based on columns that aren't linked in the database schema.
+  > There are two less-common join types SQLite does not support the first is a right join and another outer join
+  > The main reason a right join would be used is when you are joining more than two tables.
+    In these cases, using a right join is preferable because it can avoid restructuring your whole query to join one table.
+    Outside of this, right joins are used reasonably rarely, so for simple joins it's better
+    to use a left join than a right as it will be easier for your query to be read and understood by others.
