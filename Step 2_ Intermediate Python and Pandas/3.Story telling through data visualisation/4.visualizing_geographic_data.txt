@@ -1,0 +1,28 @@
+
+1. Geographic Data
+  > From scientific fields like meteorology and climatology, through to the software on our smartphones like Google Maps and Facebook 
+    check-ins, geographic data is always present in our everyday lives.
+  > To explore this kind of data, you'll need to learn how to visualize the data on maps.
+
+
+2.Geographic Coordinate System
+  > A geographic coordinate system allows us to locate any point on Earth using latitude and longitude coordinates.
+  > Latitude and longitude values describe points on a sphere, which is three-dimensional. 
+    To plot the values on a two-dimensional plane, we need to convert the coordinates to the Cartesian coordinate system 
+     using a map projection.
+  > A map projection transforms points on a sphere to a two-dimensional plane. 
+   When projecting down to the two-dimensional plane, some properties are distorted. Each map projection makes trade-offs in 
+   what properties to preserve. We'll use the Mercator projection, because it is commonly used by popular mapping software.
+
+3. Installing Basemap
+  >  Basemap is an extension to Matplotlib that makes it easier to work with geographic data. 
+  > The matplotlib basemap toolkit is a library for plotting 2D data on maps in Python
+  > conda install basemap
+    conda install -c conda-forge basemap (from linux kernel)
+ 
+4. Workflow with Basemap
+   > Create a new basemap instance with the specific map projection we want to use and how much of the map we want included.
+    Convert spherical coordinates to Cartesian coordinates using the basemap instance.
+    Use the matplotlib and basemap methods to customize the map.
+    Display the map.
+   > 
