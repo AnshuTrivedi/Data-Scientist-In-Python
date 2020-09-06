@@ -50,6 +50,6 @@ I have mentioned link of jupyter notebook files of course parts mentioned as 1,2
  4.[Working with Missing Data](https://github.com/AnshuTrivedi/Data-Scientist-In-Python/blob/master/Step%202_%20Intermediate%20Python%20and%20Pandas/5.Data%20cleaning%20in%20python%20advanced/4.working_with_missing_data.txt)</br>
  
 # Data Cleaning Project Walkthrough
-  [Data cleaning Project Walkthrough](https://github.com/AnshuTrivedi/Data-Scientist-In-Python/tree/master/Step%202_%20Intermediate%20Python%20and%20Pandas/6.Data%20cleaning%20project%20walkthrough) 
+  [Data cleaning Project Walkthrough](https://github.com/AnshuTrivedi/Data-Scientist-In-Python/tree/master/Step%202_%20Intermediate%20Python%20and%20Pandas/6.Data%20cleaning%20project%20walkthrough) </br>
  [Project_8:Analyzing NYC High School Data](https://github.com/AnshuTrivedi/Data-Scientist-In-Python/blob/master/Projects/step_2/Course_6/Guided%20Project_Analyzing%20NYC%20High%20School%20Data.ipynb)</br>
  [Project_9:Star Wars Survey](https://github.com/AnshuTrivedi/Data-Scientist-In-Python/blob/master/Projects/step_2/Course_6/Guided%20Project_Star%20Wars%20Survey.ipynb)
